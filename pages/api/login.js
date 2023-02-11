@@ -23,10 +23,14 @@ export default async function handler(req, res) {
       });
     }
 
+    const REDIRECT_URI =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/home"
+        : process.env.REDIRECT_URI;
     const { data, status } = await axiosAccessTokenClient().post("/", {
       grant_type: "authorization_code",
       code,
-      redirect_uri: process.env.REDIRECT_URI,
+      redirect_uri: REDIRECT_URI,
     });
 
     if (status !== 200) {

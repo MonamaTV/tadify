@@ -6,12 +6,16 @@ const encodeBasicAuth = Buffer.from(
 ).toString("base64");
 
 export const axiosAuthClient = () => {
+  const REDIRECT_URI =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/home"
+      : process.env.REDIRECT_URI;
   return axios.create({
     baseURL: process.env.AUTH_URL + "/authorize",
     params: {
       client_id: process.env.CLIENT_ID,
       response_type: "code",
-      redirect_uri: process.env.REDIRECT_URI,
+      redirect_uri: REDIRECT_URI,
       scope: scopes,
     },
     headers: {
@@ -66,9 +70,13 @@ export const axioAPIClient = () => {
 };
 
 export const getUserAccessData = async (refresh) => {
+  const REDIRECT_URI =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/home"
+      : process.env.REDIRECT_URI;
   return await axiosRefreshAccessTokenClient().post("/", {
     grant_type: "refresh_token",
     refresh_token: refresh,
-    redirect_uri: process.env.REDIRECT_URI,
+    redirect_uri: REDIRECT_URI,
   });
 };
