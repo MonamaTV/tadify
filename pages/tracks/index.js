@@ -76,8 +76,7 @@ const Tracks = (props) => {
           onClick={() => setIsComponentVisible(true)}
           className="absolute right-10 top-2 md:top-auto bg-[#191414] rounded-lg text-gray-100 text-xs px-4 py-1 shadow-xl flex items-center justify-center "
         >
-          Share
-          {/* <Image src={"/shares.png"} width={14} height={12} /> */}
+          <Image src={"/share.png"} width={14} height={14} alt="Share" />
         </button>
         {isComponentVisible && (
           <div

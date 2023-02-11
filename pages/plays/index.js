@@ -54,7 +54,7 @@ const Plays = (props) => {
           onClick={() => setIsComponentVisible(true)}
           className="absolute right-10 top-2 md:top-auto bg-[#191414] rounded-lg text-gray-100 text-xs px-4 py-1 shadow-xl md:flex items-center justify-center "
         >
-          <Image src={"/share.png"} width={14} height={14} />
+          <Image src={"/share.png"} width={14} height={14} alt="Share" />
           Share
         </button>
         {isComponentVisible && (
