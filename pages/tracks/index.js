@@ -5,6 +5,7 @@ import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
+import { axioAPIClient } from "../../src/utils/axios";
 
 const Tracks = (props) => {
   const [share, setShare] = useState(false);
@@ -52,6 +53,7 @@ const Tracks = (props) => {
     <>
       <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
         <Image
+          alt="Main cover art"
           src={extractTopTrack().cover}
           width={"300"}
           height={"300"}
@@ -142,28 +144,6 @@ const Tracks = (props) => {
             </tbody>
           </table>
         </div>
-        {/* More details */}
-        <div className="flex justify-end relative">
-          <button
-            onClick={() => setMShare(true)}
-            className="w-1/2 rounded-lg bg-[#1c2dc5] text-white py-2 text-xs px-3 shadow-lg"
-          >
-            Share
-          </button>
-          {mShare && (
-            <div className="absolute bottom-0 md:flex flex-col items-baseline text-xs bg-[#1c2dc5] rounded-xl shadow-xl text-white px-5 py-4 gap-y-1 ">
-              <button className=" hover:bg-[#1c2dc5] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-                Download
-              </button>
-              <button className=" hover:bg-[#1c2dc5] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-                Facebook
-              </button>
-              <button className=" hover:bg-[#1c2dc5] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-                Twitter
-              </button>
-            </div>
-          )}
-        </div>
       </div>
     </>
   );
@@ -171,12 +151,14 @@ const Tracks = (props) => {
 export async function getServerSideProps(context) {
   //   const value = cookie.parse(context.req.headers.cookie[0]);
 
+  console.log(process.env.NODE_ENV);
+
   try {
     const { refresh_token, access_token } = cookie.parse(
       context.req.headers.cookie
     );
 
-    const res = await axios.get("http://localhost:3000/api/tracks", {
+    const res = await axioAPIClient().get("/tracks", {
       withCredentials: true,
       params: {
         refresh_token,

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Artist from "../../src/components/Artist";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
+import { axioAPIClient } from "../../src/utils/axios";
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
 
@@ -49,6 +50,7 @@ const Artists = (props) => {
           width={"300"}
           height={"300"}
           className="shadow-2xl"
+          alt="Artist photo"
         />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
@@ -106,7 +108,7 @@ export async function getServerSideProps(context) {
       context.req.headers.cookie
     );
 
-    const res = await axios.get("http://localhost:3000/api/artists", {
+    const res = await axioAPIClient().get("/artists", {
       withCredentials: true,
       params: {
         refresh_token,

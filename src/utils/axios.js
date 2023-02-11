@@ -52,6 +52,19 @@ export const axiosClient = () => {
   });
 };
 
+export const axioAPIClient = () => {
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/api"
+      : process.env.API_URL;
+  return axios.create({
+    baseURL: url,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+};
+
 export const getUserAccessData = async (refresh) => {
   return await axiosRefreshAccessTokenClient().post("/", {
     grant_type: "refresh_token",

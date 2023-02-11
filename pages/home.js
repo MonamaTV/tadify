@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cookie from "cookie";
+import { axioAPIClient } from "../src/utils/axios";
 const RedirectUser = () => {
   return (
     <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
@@ -20,7 +21,7 @@ export async function getServerSideProps(context) {
     };
   }
   try {
-    const res = await axios.post("http://localhost:3000/api/login", {
+    const res = await axioAPIClient().get("/login", {
       code,
     });
 

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Nav = () => {
+  const router = useRouter();
   return (
     <>
       <div className="hidden md:block h-screen w-1/6 fixed bg-[#191414] px-10 pt-20 ">
@@ -10,22 +12,49 @@ const Nav = () => {
           <li>
             <Link href={"/tracks"}>
               <a className="flex items-center gap-3">
-                <Image src={"/artists.png"} width={20} height={20} /> Fav tracks
+                <Image
+                  src={
+                    router.pathname === "/tracks"
+                      ? "/gartists.png"
+                      : "/artists.png"
+                  }
+                  width={20}
+                  height={20}
+                  alt="Tracks"
+                />{" "}
+                Fav tracks
               </a>
             </Link>
           </li>
           <li>
             <Link href={"/artists"}>
               <a className="flex items-center gap-3">
-                <Image src={"/favorite.png"} width={20} height={20} /> Fav
-                artists
+                <Image
+                  src={
+                    router.pathname === "/artists"
+                      ? "/gfavorite.png"
+                      : "/favorite.png"
+                  }
+                  width={20}
+                  height={20}
+                  alt="Artists"
+                />{" "}
+                Fav artists
               </a>
             </Link>
           </li>
           <li>
             <Link href={"/plays"}>
               <a className="flex items-center gap-3">
-                <Image src={"/play.png"} width={20} height={20} /> Recent plays
+                <Image
+                  src={
+                    router.pathname === "/plays" ? "/gplay.png" : "/play.png"
+                  }
+                  width={20}
+                  height={20}
+                  alt="Plays"
+                />{" "}
+                Recent plays
               </a>
             </Link>
           </li>
@@ -36,22 +65,49 @@ const Nav = () => {
           <li>
             <Link href={"/tracks"}>
               <a className="flex items-center gap-2 flex-col text-xs w-32">
-                <Image src={"/artists.png"} width={20} height={20} /> Fav tracks
+                <Image
+                  src={
+                    router.pathname === "/tracks"
+                      ? "/gartists.png"
+                      : "/artists.png"
+                  }
+                  width={20}
+                  height={20}
+                  alt="Tracks"
+                />{" "}
+                Fav tracks
               </a>
             </Link>
           </li>
           <li>
             <Link href={"/artists"}>
               <a className="flex items-center gap-2 flex-col text-xs w-32">
-                <Image src={"/favorite.png"} width={20} height={20} /> Fav
-                artists
+                <Image
+                  src={
+                    router.pathname === "/artists"
+                      ? "/gfavorite.png"
+                      : "/favorite.png"
+                  }
+                  width={20}
+                  alt="Artists"
+                  height={20}
+                />{" "}
+                Fav artists
               </a>
             </Link>
           </li>
           <li>
             <Link href={"/plays"}>
               <a className="flex items-center gap-2 flex-col text-xs w-32">
-                <Image src={"/play.png"} width={20} height={20} /> Recent plays
+                <Image
+                  src={
+                    router.pathname === "/plays" ? "/gplay.png" : "/play.png"
+                  }
+                  width={20}
+                  height={20}
+                  alt="Plays"
+                />{" "}
+                Recent plays
               </a>
             </Link>
           </li>

@@ -18,6 +18,7 @@ const Track = ({ track, pos }) => {
           className={`shadow-xl items-center justify-center ${
             loadingImg && "bg-slate-600"
           }`}
+          alt="Cover art"
           onLoadingComplete={() => setLoadingImg(false)}
         />
       </td>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import useVisibility from "../../src/hooks/useVisibility";
+import { axioAPIClient } from "../../src/utils/axios";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
@@ -36,6 +37,7 @@ const Plays = (props) => {
           className={`shadow-2xl shadow-black  ${
             loadingImg ? "bg-gray-400" : ""
           }`}
+          alt="Main cover art"
           loading="lazy"
           onLoadingComplete={() => setLoadingImg(false)}
         />
@@ -106,7 +108,7 @@ export async function getServerSideProps(context) {
       context.req.headers.cookie
     );
 
-    const res = await axios.get("http://localhost:3000/api/plays", {
+    const res = await axioAPIClient().get("/plays", {
       withCredentials: true,
       params: {
         refresh_token,

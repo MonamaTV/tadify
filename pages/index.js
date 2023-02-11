@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
-      <Image src={"/logo.svg"} width={300} height={70} />
+      <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
       <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what's been your music pallete in last
         couple of months? You have come to the right place!
