@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
     };
   }
   try {
-    const res = await axioAPIClient().get("/login", {
+    const res = await axioAPIClient().post("/login", {
       code,
     });
 
