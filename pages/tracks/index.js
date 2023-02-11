@@ -8,9 +8,6 @@ import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
 
 const Tracks = (props) => {
-  const [share, setShare] = useState(false);
-  const [mShare, setMShare] = useState(false);
-
   const [tracks, setTracks] = useState(props.tracks ?? []);
   const [loadingImg, setLoadingImg] = useState(true);
 
@@ -74,9 +71,9 @@ const Tracks = (props) => {
         </div>
         <button
           onClick={() => setIsComponentVisible(true)}
-          className="absolute right-10 top-2 md:top-auto bg-[#191414] rounded-lg text-gray-100 text-xs px-4 py-1 shadow-xl flex items-center justify-center "
+          className="absolute right-10 top-2 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
         >
-          <Image src={"/share.png"} width={14} height={14} alt="Share" />
+          <Image src={"/sharew.png"} width={20} height={20} alt="Share" />
         </button>
         {isComponentVisible && (
           <div

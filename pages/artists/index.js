@@ -8,6 +8,7 @@ import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
+  const [loadingImg, setLoadingImg] = useState(true);
 
   const fetchTopArtists = async (range) => {
     const ranges = ["short_term", "medium_term", "long_term"];
@@ -44,12 +45,16 @@ const Artists = (props) => {
 
   return (
     <>
-      <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 flex-col  sm:flex-row">
+      <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 py-12 flex-col sm:flex-row">
         <Image
           src={favArtist().photoUrl}
           width={"300"}
           height={"300"}
-          className="shadow-2xl"
+          className={`shadow-2xl shadow-black ${
+            loadingImg ? "bg-gray-400" : ""
+          }`}
+          loading="lazy"
+          onLoadingComplete={() => setLoadingImg(false)}
           alt="Artist photo"
         />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10 ">
@@ -61,7 +66,7 @@ const Artists = (props) => {
         </div>
         <button
           onClick={() => setIsComponentVisible(true)}
-          className="absolute right-10 top-2 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
+          className="absolute right-10 top-2 md:top-auto rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center"
         >
           <Image src={"/sharew.png"} width={20} height={20} alt="Share" />
         </button>
