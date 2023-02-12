@@ -20,8 +20,8 @@ const Artist = ({ artist, pos }) => {
           src={photoUrl}
           width={70}
           height={70}
-          className={`shadow-xl items-center justify-center ${
-            loading && "bg-gray-700"
+          className={`shadow-xl items-center justify-center duration-700 ease-in-out ${
+            loading ? "grayscale blur-2xl scale-110" : ""
           }`}
           onLoadingComplete={() => setLoading(false)}
           alt="Artist photo"

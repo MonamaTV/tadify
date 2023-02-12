@@ -24,8 +24,9 @@ const RedirectUser = () => {
           href="https://www.spotify.com/za-en/account/apps/"
           rel="noreferrer"
           target={"_blank"}
-          className="text-blue-800"
+          className="text-blue-500 font-bold"
         >
+          {" "}
           here
         </a>
       </p>

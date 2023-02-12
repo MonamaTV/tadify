@@ -33,8 +33,8 @@ const Plays = (props) => {
           src={extractTopTrack().cover}
           width={"300"}
           height={"300"}
-          className={`shadow-2xl shadow-black  ${
-            loadingImg ? "bg-gray-400" : ""
+          className={`shadow-2xl shadow-black duration-700 ease-in-out ${
+            loadingImg ? "grayscale blur-2xl scale-110" : ""
           }`}
           alt="Main cover art"
           loading="lazy"

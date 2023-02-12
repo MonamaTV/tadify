@@ -15,8 +15,8 @@ const Track = ({ track, pos }) => {
           src={cover}
           width={70}
           height={70}
-          className={`shadow-xl items-center justify-center ${
-            loadingImg && "bg-slate-600"
+          className={`shadow-xl items-center justify-center duration-700 ease-in-out ${
+            loadingImg ? "grayscale blur-2xl scale-110" : ""
           }`}
           alt="Cover art"
           onLoadingComplete={() => setLoadingImg(false)}
