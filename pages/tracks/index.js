@@ -12,7 +12,8 @@ import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 
 const Tracks = (props) => {
-  const download = () => {
+  const download = (e) => {
+    e.target.disabled = true;
     htmlToImage
       .toJpeg(document.getElementById("artists"), { quality: 1 })
       .then(function (dataUrl) {
@@ -21,13 +22,14 @@ const Tracks = (props) => {
         link.href = dataUrl;
         link.click();
       });
+    e.target.disabled = false;
   };
 
   const [view, setView] = useState(false);
   const [tracks, setTracks] = useState(props.tracks ?? []);
   const [loadingImg, setLoadingImg] = useState(true);
 
-  const [timeRange, setTimeRange] = useState(0);
+  const [timeRange, setTimeRange] = useState(1);
 
   const fetchTopTracks = async (range) => {
     setTimeRange(range);
