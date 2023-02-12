@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Meta from "../src/components/Head";
 
 const Home = () => {
   const loginUser = async () => {
@@ -7,6 +8,8 @@ const Home = () => {
 
   return (
     <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
+      <Meta />
+
       <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
       <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what has been your music pallete in last

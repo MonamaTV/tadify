@@ -10,6 +10,7 @@ import { axioAPIClient } from "../../src/utils/axios";
 import * as htmlToImage from "html-to-image";
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
+import Meta from "../../src/components/Head";
 
 const Tracks = (props) => {
   const download = (e) => {
@@ -22,7 +23,7 @@ const Tracks = (props) => {
         link.href = dataUrl;
         link.click();
       });
-    e.target.disabled = false;
+    // e.target.disabled = false;
   };
 
   const [view, setView] = useState(false);
@@ -69,6 +70,7 @@ const Tracks = (props) => {
 
   return (
     <>
+      <Meta />
       <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
         <Image
           alt="Main cover art"

@@ -10,6 +10,8 @@ import Modal from "../../src/components/Modal";
 import DownloadableArtistsList from "../../src/downloads/artists";
 
 import * as htmlToImage from "html-to-image";
+import Head from "next/head";
+import Meta from "../../src/components/Head";
 
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
@@ -67,6 +69,7 @@ const Artists = (props) => {
 
   return (
     <>
+      <Meta />
       <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 py-12 flex-col sm:flex-row">
         <Image
           src={favArtist().photoUrl}

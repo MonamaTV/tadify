@@ -1,10 +1,12 @@
 import axios from "axios";
 import * as cookie from "cookie";
+import Meta from "../src/components/Head";
 import { axioAPIClient } from "../src/utils/axios";
 const RedirectUser = () => {
   return (
     <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
       <h1 className="text-white font-bold text-3xl">Loading...</h1>
+      <Meta />
     </div>
   );
 };

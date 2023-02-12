@@ -4,6 +4,7 @@ import { useState } from "react";
 import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import { axioAPIClient } from "../../src/utils/axios";
+import Meta from "../../src/components/Head";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
@@ -25,6 +26,8 @@ const Plays = (props) => {
 
   return (
     <div>
+      <Meta />
+
       <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
         <Image
           src={extractTopTrack().cover}
