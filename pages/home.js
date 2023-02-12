@@ -11,16 +11,15 @@ const RedirectUser = () => {
       <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
       <h3 className="text-white text-2xl">Access</h3>
       <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
-        In order to use this app, you agree that you are granting it (the app
-        "Tadify") access to your Spotify profile. We use your profile data to
-        display your favorite artists and tracks as well as your recently played
-        tracks.
+        In order to use this app, you agree that you are granting it access to
+        your Spotify profile. We use your profile data to display your favorite
+        artists and tracks as well as your recently played tracks.
       </p>
       <br />
       <h3 className="text-white text-2xl">Privacy</h3>
       <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
-        This app "Tadify" does not save or process any of your Spotify data to
-        any server. You can revoke its access to your Spotify profile{" "}
+        This Tadify app does not save or process any of your Spotify data to any
+        server. You can revoke its access to your Spotify profile
         <a href="https://www.spotify.com/za-en/account/apps/" target={"_blank"}>
           here
         </a>

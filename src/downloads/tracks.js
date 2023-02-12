@@ -24,6 +24,7 @@ const DownloadableTracksList = ({ data, range = 0, ...props }) => {
                 src={cover}
                 width={50}
                 height={50}
+                alt={name}
                 objectFit="cover"
                 className="shadow-2xl shadow-black"
               />

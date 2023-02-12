@@ -9,7 +9,12 @@ const Modal = ({ children, downloadStats, closeModal }) => {
           onClick={closeModal}
           className="border-none bg-none absolute md:top-20 md:right-36 right-10"
         >
-          <Image src={"/closes.png"} width={20} height={20} />
+          <Image
+            src={"/closes.png"}
+            width={20}
+            height={20}
+            alt="close button"
+          />
         </button>
         <h2 className="text-3xl font-bold"> Stats</h2>
 

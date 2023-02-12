@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <>
       <div className="hidden md:block h-screen w-1/6 fixed bg-[#191414] px-10 pt-20 ">
-        <Image src={"/logo.svg"} width={80} height={90} />
+        <Image src={"/logo.svg"} width={80} height={90} alt="Logo" />
         <ul className="my-4 list-none text-white text-sm space-y-5">
           <li>
             <Link href={"/tracks"}>

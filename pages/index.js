@@ -2,6 +2,7 @@ import Image from "next/image";
 import Meta from "../src/components/Head";
 import * as cookie from "cookie";
 import { getUserAccessData } from "../src/utils/axios";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -13,12 +14,11 @@ const Home = () => {
         Welcome... if you have wondered what has been your music pallete in last
         couple of months? You have come to the right place!
       </p>
-      <a
-        href="/api/login"
-        className="px-10 py-3 bg-[#1db954] text-white rounded-full my-4 no-underline"
-      >
-        Continue With Spotify
-      </a>
+      <Link href="/api/login">
+        <a className="px-10 py-3 bg-[#1db954] text-white rounded-full my-4 no-underline">
+          Continue With Spotify
+        </a>
+      </Link>
     </div>
   );
 };

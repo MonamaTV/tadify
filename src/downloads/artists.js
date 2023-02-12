@@ -29,6 +29,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
                 src={photoUrl}
                 width={60}
                 height={60}
+                alt={name}
                 className="shadow-2xl shadow-black"
               />
               <h4 className="pl-3 text-sm font-medium w-64">
