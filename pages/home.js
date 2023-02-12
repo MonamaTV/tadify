@@ -20,7 +20,12 @@ const RedirectUser = () => {
       <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
         This Tadify app does not save or process any of your Spotify data to any
         server. You can revoke its access to your Spotify profile
-        <a href="https://www.spotify.com/za-en/account/apps/" target={"_blank"}>
+        <a
+          href="https://www.spotify.com/za-en/account/apps/"
+          rel="noreferrer"
+          target={"_blank"}
+          className="text-blue-800"
+        >
           here
         </a>
       </p>
