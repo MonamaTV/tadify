@@ -74,6 +74,7 @@ export const getUserAccessData = async (refresh) => {
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000/home"
       : process.env.REDIRECT_URI;
+
   return await axiosRefreshAccessTokenClient().post("/", {
     grant_type: "refresh_token",
     refresh_token: refresh,

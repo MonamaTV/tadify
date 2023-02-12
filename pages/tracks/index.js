@@ -16,7 +16,7 @@ const Tracks = (props) => {
   const download = (e) => {
     e.target.disabled = true;
     htmlToImage
-      .toJpeg(document.getElementById("artists"), { quality: 1 })
+      .toJpeg(document.getElementById("tracks"), { quality: 1 })
       .then(function (dataUrl) {
         var link = document.createElement("a");
         link.download = "tadify-tops.jpeg";
@@ -119,7 +119,7 @@ const Tracks = (props) => {
         )}
         {/* Menu for mobile */}
       </div>
-      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] ">
+      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] pb-12">
         <Filter handleFilter={fetchTopTracks} />
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">
@@ -144,7 +144,7 @@ const Tracks = (props) => {
         <Modal closeModal={() => setView(!view)} downloadStats={download}>
           <DownloadableTracksList
             data={tracks.slice(0, 10)}
-            id={"artists"}
+            id={"tracks"}
             range={timeRange}
           />
         </Modal>

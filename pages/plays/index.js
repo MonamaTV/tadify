@@ -49,13 +49,8 @@ const Plays = (props) => {
             {extractTopTrack().displayArtists}
           </h4>
         </div>
-
-        {/* Menu for mobile */}
       </div>
-      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] ">
-        {/* Filtering */}
-
-        {/* From 2 to 20 */}
+      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] pb-12">
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">
             <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-100 ">

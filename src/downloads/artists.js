@@ -11,7 +11,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
       {...props}
       className="flex w-full md:w-[500px]  bg-gradient-to-b to-[#1db954] from-[#191414] text-white p-10 flex-col h-[750px] justify-center"
     >
-      <h2 className="font-bold text-2xl">My Spotify Top Arists</h2>
+      <h2 className="font-bold text-2xl">My Spotify Top Artists</h2>
       <p className="text-sm">{timeRange}</p>
       <div className="my-4">
         {data.slice(0, 10).map((artist, index) => {

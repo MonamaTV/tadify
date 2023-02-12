@@ -1,9 +1,8 @@
-import axios from "axios";
-import * as cookie from "cookie";
 import Image from "next/image";
 import Meta from "../src/components/Head";
-import { axioAPIClient } from "../src/utils/axios";
-const RedirectUser = () => {
+import { getUserAccessData } from "../src/utils/axios";
+import * as cookie from "cookie";
+const App = () => {
   return (
     <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
@@ -37,48 +36,12 @@ const RedirectUser = () => {
 };
 
 export async function getServerSideProps(context) {
-  const code = context.query.code;
-  //If the callback does not contain a code
-  if (!code) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-    };
-  }
   try {
-    const res = await axioAPIClient().post("/login", {
-      code,
-    });
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
 
-    if (res.status !== 200) {
-      return {
-        redirect: {
-          permanent: false,
-          destination: "/",
-        },
-      };
-    }
-
-    const { code: status, success, data } = res.data;
-
-    const accessCookie = cookie.serialize("access_token", data.access, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-      maxAge: data.expires_in,
-      path: "/",
-    });
-
-    const refreshCookie = cookie.serialize("refresh_token", data.refresh, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-      path: "/",
-    });
-
-    context.res.setHeader("Set-Cookie", [accessCookie, refreshCookie]);
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
 
     return {
       props: { state: true },
@@ -91,14 +54,15 @@ export async function getServerSideProps(context) {
           destination: "/api/login",
         },
       };
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/tracks",
+        },
+      };
     }
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/",
-      },
-    };
   }
 }
 
-export default RedirectUser;
+export default App;
