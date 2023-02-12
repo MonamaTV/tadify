@@ -6,11 +6,31 @@ import Artist from "../../src/components/Artist";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
+import Modal from "../../src/components/Modal";
+import DownloadableArtistsList from "../../src/downloads/artists";
+
+import * as htmlToImage from "html-to-image";
+
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
   const [loadingImg, setLoadingImg] = useState(true);
 
+  const [view, setView] = useState(false);
+  const [timeRange, setTimeRange] = useState(0);
+
+  const download = () => {
+    htmlToImage
+      .toJpeg(document.getElementById("artists"), { quality: 1 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "tadify-tops.jpeg";
+        link.href = dataUrl;
+        link.click();
+      });
+  };
+
   const fetchTopArtists = async (range) => {
+    setTimeRange(range);
     const ranges = ["short_term", "medium_term", "long_term"];
     try {
       const response = await axios.get("/api/artists", {
@@ -75,8 +95,11 @@ const Artists = (props) => {
             ref={ref}
             className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs bg-[#191414] rounded-lg shadow-xl text-gray-100 px-4 py-4 gap-y-1 w-40"
           >
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Download
+            <button
+              onClick={() => setView(true)}
+              className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs"
+            >
+              View
             </button>
             <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
               Facebook
@@ -101,6 +124,15 @@ const Artists = (props) => {
           </table>
         </div>
       </div>
+      {view && (
+        <Modal closeModal={() => setView(!view)} downloadStats={download}>
+          <DownloadableArtistsList
+            data={artists.slice(0, 10)}
+            id={"artists"}
+            range={timeRange}
+          />
+        </Modal>
+      )}
     </>
   );
 };

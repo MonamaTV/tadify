@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import Track from "../../src/components/Track";
 import * as cookie from "cookie";
-import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
 
 const Plays = (props) => {
@@ -23,9 +22,6 @@ const Plays = (props) => {
       uri,
     };
   };
-
-  const { ref, isComponentVisible, setIsComponentVisible } =
-    useVisibility(false);
 
   return (
     <div>
@@ -50,28 +46,7 @@ const Plays = (props) => {
             {extractTopTrack().displayArtists}
           </h4>
         </div>
-        <button
-          onClick={() => setIsComponentVisible(true)}
-          className="absolute right-10 top-2 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
-        >
-          <Image src={"/sharew.png"} width={20} height={20} alt="Share" />
-        </button>
-        {isComponentVisible && (
-          <div
-            ref={ref}
-            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs bg-[#191414] rounded-lg shadow-xl text-gray-100 px-4 py-4 gap-y-1 w-40"
-          >
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Download
-            </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Facebook
-            </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Twitter
-            </button>
-          </div>
-        )}
+
         {/* Menu for mobile */}
       </div>
       <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] ">
@@ -90,7 +65,7 @@ const Plays = (props) => {
             </thead>
             <tbody className="w-full">
               {tracks.slice(1, tracks.length).map((track, index) => (
-                <Track track={track} key={track.id} pos={++index} />
+                <Track track={track} key={track.id + index} pos={++index} />
               ))}
             </tbody>
           </table>
