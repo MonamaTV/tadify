@@ -66,7 +66,7 @@ export async function getServerSideProps(context) {
       };
     }
 
-    const { code: status, success, data } = res.data;
+    const { data } = res.data;
 
     const accessCookie = cookie.serialize("access_token", data.access, {
       httpOnly: true,

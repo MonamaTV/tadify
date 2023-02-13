@@ -12,6 +12,7 @@ import DownloadableArtistsList from "../../src/downloads/artists";
 import * as htmlToImage from "html-to-image";
 import Head from "next/head";
 import Meta from "../../src/components/Head";
+import DynamicImage from "../../src/components/Image";
 
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
@@ -70,18 +71,8 @@ const Artists = (props) => {
   return (
     <>
       <Meta />
-      <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 py-12 flex-col sm:flex-row">
-        <Image
-          src={favArtist().photoUrl}
-          width={"300"}
-          height={"300"}
-          className={`shadow-2xl shadow-black duration-700 ease-in-out ${
-            loadingImg ? "grayscale blur-2xl scale-110" : ""
-          }`}
-          loading="lazy"
-          onLoadingComplete={() => setLoadingImg(false)}
-          alt="Artist photo"
-        />
+      <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 pt-12 flex-col sm:flex-row">
+        <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl">{favArtist().name}</h2>

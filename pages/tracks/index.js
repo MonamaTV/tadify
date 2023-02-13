@@ -11,6 +11,7 @@ import * as htmlToImage from "html-to-image";
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 import Meta from "../../src/components/Head";
+import DynamicImage from "../../src/components/Image";
 
 const Tracks = (props) => {
   const download = (e) => {
@@ -28,7 +29,6 @@ const Tracks = (props) => {
 
   const [view, setView] = useState(false);
   const [tracks, setTracks] = useState(props.tracks ?? []);
-  const [loadingImg, setLoadingImg] = useState(true);
 
   const [timeRange, setTimeRange] = useState(1);
 
@@ -72,17 +72,7 @@ const Tracks = (props) => {
     <>
       <Meta />
       <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
-        <Image
-          alt="Main cover art"
-          src={extractTopTrack().cover}
-          width={"300"}
-          height={"300"}
-          className={`shadow-2xl shadow-black duration-700 ease-in-out ${
-            loadingImg ? "grayscale blur-2xl scale-110" : ""
-          }`}
-          loading="lazy"
-          onLoadingComplete={() => setLoadingImg(false)}
-        />
+        <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl">

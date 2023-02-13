@@ -5,10 +5,10 @@ import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import { axioAPIClient } from "../../src/utils/axios";
 import Meta from "../../src/components/Head";
+import DynamicImage from "../../src/components/Image";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
-  const [loadingImg, setLoadingImg] = useState(true);
 
   const extractTopTrack = () => {
     const track = tracks[0];
@@ -29,17 +29,7 @@ const Plays = (props) => {
       <Meta />
 
       <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
-        <Image
-          src={extractTopTrack().cover}
-          width={"300"}
-          height={"300"}
-          className={`shadow-2xl shadow-black duration-700 ease-in-out ${
-            loadingImg ? "grayscale blur-2xl scale-110" : ""
-          }`}
-          alt="Main cover art"
-          loading="lazy"
-          onLoadingComplete={() => setLoadingImg(false)}
-        />
+        <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl">

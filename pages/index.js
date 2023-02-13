@@ -26,7 +26,6 @@ const Home = () => {
 export async function getServerSideProps(context) {
   try {
     const { refresh_token } = cookie.parse(context.req.headers.cookie);
-    console.log(context.req.headers);
     const {
       data: { access_token },
     } = await getUserAccessData(refresh_token);

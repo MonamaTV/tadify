@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
       const { data, status } = await axiosClient().get("/me/top/tracks", {
         params: {
-          limit: 30,
+          limit: 40,
           time_range: range,
         },
         headers: {

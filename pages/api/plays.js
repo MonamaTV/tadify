@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         "/me/player/recently-played",
         {
           params: {
-            limit: 10,
+            limit: 20,
           },
           headers: {
             Authorization: "Bearer " + access_token,
