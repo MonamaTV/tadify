@@ -24,6 +24,7 @@ const Artists = (props) => {
 
     html2canvas(document.getElementById("artists"), {
       imageTimeout: 3000,
+      scale: 2,
     }).then(function (canvas) {
       const url = canvas.toDataURL();
       const link = document.createElement("a");
