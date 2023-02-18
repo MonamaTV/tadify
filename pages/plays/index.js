@@ -1,6 +1,3 @@
-import axios from "axios";
-import Image from "next/image";
-import { useState } from "react";
 import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import { axioAPIClient } from "../../src/utils/axios";
@@ -32,10 +29,10 @@ const Plays = (props) => {
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
-          <h2 className="md:text-5xl font-bold text-2xl">
+          <h2 className="md:text-5xl font-bold text-2xl select-none">
             {extractTopTrack().name}
           </h2>
-          <h4 className="my-2 sm:my-4 text-sm sm:text-base">
+          <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
             {extractTopTrack().displayArtists}
           </h4>
         </div>

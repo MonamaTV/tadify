@@ -9,7 +9,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
   return (
     <div
       {...props}
-      className="flex w-full md:w-[500px]  bg-gradient-to-b to-[#1db954] from-[#191414] text-white p-10 flex-col h-[750px] justify-center"
+      className="flex w-full md:w-[500px]  bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 flex-col h-[750px] justify-center relative"
     >
       <h2 className="font-bold text-2xl">My Spotify Top Artists</h2>
       <p className="text-sm">{timeRange}</p>
@@ -24,7 +24,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
           const photoUrl = images[0].url;
           return (
             <div className="flex items-center gap-2 my-2" key={id}>
-              <p className="w-5">{++index}</p>
+              <p className="w-5 pb-4">{++index}</p>
               <Image
                 src={photoUrl}
                 width={60}
@@ -32,7 +32,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
                 alt={name}
                 className="shadow-2xl shadow-black"
               />
-              <h4 className="pl-3 text-sm font-medium w-64">
+              <h4 className="pl-3 text-sm font-medium w-64 pb-4">
                 {name}
                 <span className="block text-xs font-normal">
                   {displayGenres}
@@ -41,6 +41,9 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
             </div>
           );
         })}
+      </div>
+      <div className="absolute bottom-5 sm:bottom-10 left-8">
+        <img src={"/spotify.png"} width={80} height={25} />
       </div>
     </div>
   );

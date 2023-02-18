@@ -7,24 +7,25 @@ import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
 
-import * as htmlToImage from "html-to-image";
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
+import html2canvas from "html2canvas";
 
 const Tracks = (props) => {
   const download = (e) => {
     e.target.disabled = true;
-    htmlToImage
-      .toJpeg(document.getElementById("tracks"), { quality: 1 })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = "tadify-tops.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
-    // e.target.disabled = false;
+    html2canvas(document.getElementById("tracks"), {
+      imageTimeout: 3000,
+    }).then(function (canvas) {
+      const url = canvas.toDataURL();
+      const link = document.createElement("a");
+      link.download = "tadify-top-tracks.jpeg";
+      link.href = url;
+      link.click();
+    });
+    setView(false);
   };
 
   const [view, setView] = useState(false);
@@ -75,10 +76,10 @@ const Tracks = (props) => {
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
-          <h2 className="md:text-5xl font-bold text-2xl">
+          <h2 className="md:text-5xl font-bold text-2xl select-none">
             {extractTopTrack().name}
           </h2>
-          <h4 className="my-2 sm:my-4 text-sm sm:text-base">
+          <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
             {extractTopTrack().displayArtists}
           </h4>
         </div>
@@ -133,7 +134,7 @@ const Tracks = (props) => {
       {view && (
         <Modal closeModal={() => setView(!view)} downloadStats={download}>
           <DownloadableTracksList
-            data={tracks.slice(0, 10)}
+            data={tracks.slice(0, 5)}
             id={"tracks"}
             range={timeRange}
           />

@@ -9,29 +9,29 @@ import { axioAPIClient } from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableArtistsList from "../../src/downloads/artists";
 
-import * as htmlToImage from "html-to-image";
-import Head from "next/head";
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
+import html2canvas from "html2canvas";
 
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
-  const [loadingImg, setLoadingImg] = useState(true);
 
   const [view, setView] = useState(false);
   const [timeRange, setTimeRange] = useState(1);
 
   const download = (e) => {
     e.target.disabled = true;
-    htmlToImage
-      .toJpeg(document.getElementById("artists"), { quality: 1 })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = "tadify-tops.jpeg";
-        link.href = dataUrl;
-        link.click();
-      });
-    // e.target.disabled = false;
+
+    html2canvas(document.getElementById("artists"), {
+      imageTimeout: 3000,
+    }).then(function (canvas) {
+      const url = canvas.toDataURL();
+      const link = document.createElement("a");
+      link.download = "tadify-top-artists.jpeg";
+      link.href = url;
+      link.click();
+    });
+    setView(false);
   };
 
   const fetchTopArtists = async (range) => {
@@ -75,7 +75,9 @@ const Artists = (props) => {
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
-          <h2 className="md:text-5xl font-bold text-2xl">{favArtist().name}</h2>
+          <h2 className="md:text-5xl font-bold text-2xl select-none">
+            {favArtist().name}
+          </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base">
             {favArtist().genres}
           </h4>
@@ -123,7 +125,7 @@ const Artists = (props) => {
       {view && (
         <Modal closeModal={() => setView(!view)} downloadStats={download}>
           <DownloadableArtistsList
-            data={artists.slice(0, 10)}
+            data={artists.slice(0, 5)}
             id={"artists"}
             range={timeRange}
           />
