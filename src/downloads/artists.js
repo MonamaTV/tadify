@@ -9,7 +9,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
   return (
     <div
       {...props}
-      className="flex w-full md:w-[500px]  bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 flex-col h-[750px] justify-center relative"
+      className="flex w-full md:w-[500px]  bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 flex-col h-[750px] justify-center relative min-h-[700px]"
     >
       <h2 className="font-bold text-2xl">My Spotify Top Artists</h2>
       <p className="text-sm">{timeRange}</p>
