@@ -69,6 +69,25 @@ const Tracks = (props) => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useVisibility(false);
 
+  if (tracks.length < 1 || !tracks) {
+    return (
+      <>
+        <Meta />
+        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
+          <h3 className="font-bold text-2xl">
+            It seems like you do not have any data{" "}
+            {
+              ["for the last 4 weeks", "for the last 6 months", "Of all time"][
+                --timeRange
+              ]
+            }
+          </h3>
+          <Filter handleFilter={fetchTopTracks} />
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <Meta />

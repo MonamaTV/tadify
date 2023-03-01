@@ -3,6 +3,7 @@ import * as cookie from "cookie";
 import { axioAPIClient } from "../../src/utils/axios";
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
+import Link from "next/link";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
@@ -20,6 +21,24 @@ const Plays = (props) => {
       uri,
     };
   };
+
+  if (tracks.length < 0 || !tracks) {
+    return (
+      <>
+        <Meta />
+        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
+          <h3 className="font-bold text-2xl">
+            It seems like you do not have any data yet...{" "}
+          </h3>
+          <Link href="/tracks">
+            <a className="inline-block  border px-2 py-1 border-white">
+              Go back home
+            </a>
+          </Link>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div>
