@@ -79,8 +79,6 @@ const Plays = (props) => {
   );
 };
 export async function getServerSideProps(context) {
-  //   const value = cookie.parse(context.req.headers.cookie[0]);
-
   try {
     const { refresh_token, access_token } = cookie.parse(
       context.req.headers.cookie

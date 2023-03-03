@@ -12,6 +12,7 @@ import DownloadableArtistsList from "../../src/downloads/artists";
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
 import html2canvas from "html2canvas";
+import { colors } from "../../src/utils/app";
 
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
@@ -91,9 +92,11 @@ const Artists = (props) => {
   return (
     <>
       <Meta />
-      <div className="flex w-full bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10 pt-12 flex-col sm:flex-row">
+      <div
+        className={`flex w-full bg-gradient-to-b ${props.color} to-[#191414] text-white md:p-10 md:pt-12 flex-col sm:flex-row`}
+      >
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
-        <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10 ">
+        <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
             {favArtist().name}
@@ -186,6 +189,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
+        color: colors[Math.floor(Math.random() * colors.length)],
         artists: items ?? [],
         refresh_token,
       },

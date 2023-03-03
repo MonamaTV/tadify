@@ -9,7 +9,7 @@ const DynamicImage = ({ imgUrl }) => {
       src={imgUrl}
       width={"300"}
       height={"300"}
-      className={`shadow-2xl shadow-black duration-700 ease-in-out ${
+      className={`fixed top-0 left-0 object-cover object-top shadow-2xl shadow-black duration-700 ease-in-out ${
         loading ? "grayscale blur-2xl scale-110" : ""
       }`}
       alt="Main cover"
