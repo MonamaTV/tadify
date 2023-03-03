@@ -44,9 +44,9 @@ const Plays = (props) => {
     <div>
       <Meta />
 
-      <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col md:flex-row sm:flex-row">
+      <div className="flex w-full relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white md:p-10  flex-col md:flex-row sm:flex-row">
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
-        <div className="flex flex-col justify-center md:pl-10 md:w-5/6 sm:pl-10">
+        <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
             {extractTopTrack().name}
