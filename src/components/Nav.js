@@ -79,7 +79,7 @@ const Nav = () => {
         <ul className="py-2 list-none flex flex-row text-white text-xs w-full justify-evenly items-start">
           <li>
             <Link href={"/tracks"}>
-              <a className="flex items-center gap-2 flex-col text-xs w-24">
+              <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
                     router.pathname === "/tracks"
@@ -96,7 +96,7 @@ const Nav = () => {
           </li>
           <li>
             <Link href={"/artists"}>
-              <a className="flex items-center gap-2 flex-col text-xs w-24">
+              <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
                     router.pathname === "/artists"
@@ -113,7 +113,7 @@ const Nav = () => {
           </li>
           <li>
             <Link href={"/artists"}>
-              <a className="flex items-center gap-2 flex-col text-xs w-24">
+              <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
                     router.pathname === "/playlists" ? "/gadd.png" : "/add.png"
@@ -128,7 +128,7 @@ const Nav = () => {
           </li>
           <li>
             <Link href={"/plays"}>
-              <a className="flex items-center gap-2 flex-col text-xs w-24">
+              <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
                     router.pathname === "/plays" ? "/gplay.png" : "/play.png"

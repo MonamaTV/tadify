@@ -4,6 +4,7 @@ import * as cookie from "cookie";
 import { colors } from "../../src/utils/app";
 import { axioAPIClient } from "../../src/utils/axios";
 import Link from "next/link";
+import Meta from "../../src/components/Head";
 
 const Playlists = (props) => {
   const [playlists, setPlaylists] = useState(props.playlists ?? []);
@@ -29,6 +30,8 @@ const Playlists = (props) => {
 
   return (
     <>
+      <Meta />
+
       <div
         className={`flex  w-full relative bg-gradient-to-b ${props.color} to-[#191414] text-white md:p-10 flex-col md:flex-row sm:flex-row h-[200px] md:h-[250px]`}
       >
@@ -38,7 +41,7 @@ const Playlists = (props) => {
           </h2>
           <Link href={"/playlists/create"}>
             <a className="bg-green-500 rounded-md py-1 my-3 w-60 text-sm shadow-2xl text-center">
-              Let's get started
+              Let&apos;s get started
             </a>
           </Link>
         </div>
