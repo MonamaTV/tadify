@@ -80,7 +80,7 @@ const Playlists = (props) => {
                       <Link href={"#"}>{play?.name}</Link>
                     </span>
                     <small className="md:hidden text-center">
-                      {/* {displayArtists} */}
+                      Created by {play?.owner?.display_name}
                     </small>
                   </td>
                   <td className="hidden md:table-cell md:text-sm">
@@ -121,7 +121,6 @@ export async function getServerSideProps(context) {
 
     const { data } = res;
     const items = data.data.items;
-    //generate a number between 0 and 5
 
     return {
       props: {

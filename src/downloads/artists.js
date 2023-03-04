@@ -32,9 +32,9 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
                 alt={name}
                 className="shadow-2xl shadow-black"
               />
-              <h4 className="pl-3 text-sm font-medium w-64 pb-4">
+              <h4 className="pl-3 text-sm font-normal w-64 pb-4">
                 {name}
-                <span className="block text-xs font-normal">
+                <span className="block text-xs font-light">
                   {displayGenres}
                 </span>
               </h4>
