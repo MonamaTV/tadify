@@ -112,7 +112,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/artists"}>
+            <Link href={"/playlists"}>
               <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
