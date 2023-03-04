@@ -13,6 +13,7 @@ import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
 import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
+import Link from "next/link";
 
 const Artists = (props) => {
   const [artists, setArtists] = useState(props.artists ?? []);
@@ -55,10 +56,11 @@ const Artists = (props) => {
   };
 
   const favArtist = () => {
-    const { name, images, genres } = artists[0];
+    const { name, images, genres, uri } = artists[0];
 
     return {
       name,
+      uri,
       photoUrl: images[0].url,
       genres: genres
         .slice(0, 3)
@@ -101,10 +103,10 @@ const Artists = (props) => {
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
-            {favArtist().name}
+            <Link href={favArtist()?.uri}>{favArtist()?.name}</Link>
           </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base">
-            {favArtist().genres}
+            {favArtist()?.genres}
           </h4>
         </div>
         <button

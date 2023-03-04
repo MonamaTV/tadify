@@ -49,7 +49,7 @@ const Plays = (props) => {
         <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
-            {extractTopTrack().name}
+            <Link href={extractTopTrack().uri}>{extractTopTrack().name}</Link>
           </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
             {extractTopTrack().displayArtists}

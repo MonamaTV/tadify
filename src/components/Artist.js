@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const Artist = ({ artist, pos }) => {
-  const { name, images, genres } = artist;
+  const { name, images, genres, uri } = artist;
 
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +29,9 @@ const Artist = ({ artist, pos }) => {
         />
       </td>
       <td className="">
-        <span className="text-sm md:text-[1.1em]">{name}</span>
+        <span className="text-sm md:text-[1.1em]">
+          <Link href={uri}>{name}</Link>
+        </span>
         <small className="block text-xs">{displayGenres}</small>
       </td>
     </tr>
