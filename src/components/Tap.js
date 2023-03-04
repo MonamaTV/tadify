@@ -42,13 +42,13 @@ const Tap = ({ artists }) => {
         seed_genres: "",
       });
       setRecommendedTracks(data.data);
-      setTap(2);
       setLoading(false);
+      setTap(2);
     } catch (error) {
       console.log(error);
-      setLoading(false);
       setRecommendedTracks([]);
     }
+    setLoading(false);
   };
 
   const handleNextTap = () => {
@@ -59,9 +59,9 @@ const Tap = ({ artists }) => {
   };
 
   const removeUnwantedTracks = (id) => {
-    // setRecommendedTracks((prevRecommendedTracks) => {
-    //   return prevRecommendedTracks.filter((track) => track.id !== id);
-    // });
+    setRecommendedTracks((prevRecommendedTracks) => {
+      return prevRecommendedTracks.filter((track) => track.id !== id);
+    });
   };
 
   const handleGenerateRecommendedTracks = async () => {};
@@ -103,7 +103,7 @@ const Tap = ({ artists }) => {
         <SelectRecommendedTracks
           handleAdd={removeUnwantedTracks}
           options={recommendedTracks}
-          heading={"Select tracks you do not want..."}
+          heading={"Remove tracks you do not want by clicking them..."}
         />
       );
     }

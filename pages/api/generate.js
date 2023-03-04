@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       });
 
       if (status !== 200) {
+        console.log("First", status);
         return res.status(status).json({
           message: "Failed to authenticate user",
           success: false,
@@ -40,6 +41,8 @@ export default async function handler(req, res) {
         data: data.tracks,
       });
     } catch (error) {
+      console.log("seconds", error);
+
       return res.status(400).json({
         message: "Failed to authenticate user",
         success: false,

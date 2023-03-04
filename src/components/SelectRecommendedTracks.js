@@ -17,7 +17,7 @@ const SelectRecommendedTracks = ({
             name={opt.name}
             key={opt.id}
             url={opt.url}
-            // initial={true}
+            initial={true}
           />
         ))}
 
