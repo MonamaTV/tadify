@@ -43,7 +43,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
         })}
       </div>
       <div className="absolute bottom-5 sm:bottom-10 left-8">
-        <img src={"/spotify.png"} width={80} height={25} />
+        <Image src={"/spotify.png"} width={80} height={25} />
       </div>
     </div>
   );
