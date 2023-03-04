@@ -47,17 +47,21 @@ const Tap = ({ artists }) => {
     } catch (error) {
       console.log(error);
       setLoading(false);
-
       setRecommendedTracks([]);
     }
   };
 
   const handleNextTap = () => {
-    if (!playlistName) {
+    if (!playlistName || playlistName.length < 5) {
       return;
     }
-
     setTap(3);
+  };
+
+  const removeUnwantedTracks = (id) => {
+    // setRecommendedTracks((prevRecommendedTracks) => {
+    //   return prevRecommendedTracks.filter((track) => track.id !== id);
+    // });
   };
 
   const handleGenerateRecommendedTracks = async () => {};
@@ -79,6 +83,7 @@ const Tap = ({ artists }) => {
       return (
         <Select
           options={artistsAsArray}
+          heading={"Select artists you want in the playlist"}
           handleAdd={handleArtistsInput}
           handleContinue={generateRecommendedTracks}
         />
@@ -94,7 +99,13 @@ const Tap = ({ artists }) => {
       );
     }
     case 3: {
-      return <SelectRecommendedTracks options={recommendedTracks} />;
+      return (
+        <SelectRecommendedTracks
+          handleAdd={removeUnwantedTracks}
+          options={recommendedTracks}
+          heading={"Select tracks you do not want..."}
+        />
+      );
     }
   }
 };

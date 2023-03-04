@@ -11,8 +11,8 @@ const Button = ({ id, name, url, handleAdd, initial = false }) => {
         setClicked(!clicked);
       }}
       className={`py-2  my-1 rounded-3xl px-4 text-xs border ${
-        clicked && "bg-[#1db954]"
-      } border-[#1db954] flex flex-row items-center justify-between`}
+        clicked && "bg-[#FF5665]"
+      } border-[#564a4b] flex flex-row items-center justify-between`}
     >
       {/* <Image
         src={url}
@@ -21,7 +21,8 @@ const Button = ({ id, name, url, handleAdd, initial = false }) => {
         alt="Image"
         className="rounded-xl"
       /> */}
-      {name}
+      <span>{name}</span>
+      {/* <span className="block text-xs font-light">A-Reece</span> */}
     </button>
   );
 };

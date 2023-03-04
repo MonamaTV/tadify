@@ -2,17 +2,21 @@ import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import * as cookie from "cookie";
 import Tap from "../../src/components/Tap";
 import { colors } from "../../src/utils/app";
+import Meta from "../../src/components/Head";
 export default function Create(props) {
   return (
-    <div
-      className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-gradient-to-b gradient via-[#191414] ${props.color} to-[#191414] flex flex-col justify-center items-center text-white`}
-    >
-      <h1 className="text-4xl font-bold">Create new playlist</h1>
-      <p className="text-sm my-1">Select artists you want in the playlist</p>
-      <br />
+    <>
+      <Meta />
+      <div
+        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-gradient-to-b gradient via-[#191414] ${props.color} to-[#191414] flex flex-col justify-center items-center text-white`}
+      >
+        <h1 className="text-4xl font-bold">Create new playlist</h1>
 
-      <Tap artists={props.artists} />
-    </div>
+        <br />
+
+        <Tap artists={props.artists} />
+      </div>{" "}
+    </>
   );
 }
 
