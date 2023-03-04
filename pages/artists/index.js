@@ -97,7 +97,7 @@ const Artists = (props) => {
     <>
       <Meta />
       <div
-        className={`flex w-full bg-gradient-to-b ${color} to-[#191414] text-white md:p-10 md:pt-12 flex-col sm:flex-row relative`}
+        className={`flex w-full bg-gradient-to-b ${color} to-[#191414] text-white md:p-10 md:pt-12 flex-col sm:flex-row relative transition-colors`}
       >
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
@@ -127,7 +127,7 @@ const Artists = (props) => {
               View
             </button>
             <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Facebook
+              Create playlist
             </button>
             <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
               Twitter

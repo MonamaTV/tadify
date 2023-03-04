@@ -3,11 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["i.scdn.co"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.scdn.co",
+        hostname: "*.scdn.co",
+        port: "",
+        pathname: "*/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.spotifycdn.com",
         port: "",
         pathname: "*/**",
       },
