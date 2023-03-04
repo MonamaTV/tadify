@@ -15,7 +15,6 @@ import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
 
 const Tracks = (props) => {
-  console.log(props.color);
   const download = (e) => {
     e.target.disabled = true;
     html2canvas(document.getElementById("tracks"), {
@@ -50,7 +49,7 @@ const Tracks = (props) => {
       const { data } = response;
       setTracks(data.data.items);
     } catch (error) {
-      console.log(error);
+      setTracks([]);
     }
   };
 

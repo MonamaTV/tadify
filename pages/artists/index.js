@@ -50,7 +50,7 @@ const Artists = (props) => {
       const { data } = response;
       setArtists(data.data.items);
     } catch (error) {
-      console.log(error);
+      setArtists([]);
     }
   };
 
@@ -89,11 +89,13 @@ const Artists = (props) => {
     );
   }
 
+  const color = colors[Math.floor(Math.random() * colors.length)];
+
   return (
     <>
       <Meta />
       <div
-        className={`flex w-full bg-gradient-to-b ${props.color} to-[#191414] text-white md:p-10 md:pt-12 flex-col sm:flex-row`}
+        className={`flex w-full bg-gradient-to-b ${color} to-[#191414] text-white md:p-10 md:pt-12 flex-col sm:flex-row relative`}
       >
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
@@ -189,7 +191,6 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        color: colors[Math.floor(Math.random() * colors.length)],
         artists: items ?? [],
         refresh_token,
       },
