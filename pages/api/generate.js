@@ -9,6 +9,8 @@ export default async function handler(req, res) {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
 
+      console.log({ access_token });
+
       //Get seed_artists, seed_tracks and seed_genres from the req.body
       const { seed_artists, seed_tracks, seed_genres } = req.body;
 
@@ -43,8 +45,8 @@ export default async function handler(req, res) {
     } catch (error) {
       if (error.response) {
         //do something
+        console.log(error.response);
         console.log(error.response.status);
-        console.log(error.response.headers);
       } else if (error.request) {
         console.log("Request", error.request);
         //do something else
@@ -54,7 +56,7 @@ export default async function handler(req, res) {
       }
 
       return res.status(400).json({
-        message: error,
+        message: error.toJSON(),
         success: false,
         code: 400,
       });

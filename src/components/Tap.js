@@ -17,7 +17,7 @@ const Tap = ({ artists }) => {
     setPlaylistName(event.target.value);
   };
   const handleArtistsInput = (id) => {
-    const index = selectedArtistsIds.findIndex((a) => a.id === id);
+    const index = selectedArtistsIds.findIndex((trackID) => trackID === id);
     if (index === -1) {
       setSelectedArtistsIds((prevSelectedArtists) => {
         return [...prevSelectedArtists, id];
