@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const { refresh_token } = cookie.parse(req.headers.cookie);
-
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
@@ -15,14 +14,15 @@ export default async function handler(req, res) {
 
       const { data, status } = await axiosClient().get("/recommendations", {
         params: {
-          limit: 20,
           seed_artists,
-          seed_tracks,
           seed_genres,
+          seed_tracks,
+          limit: 20,
         },
         headers: {
           Authorization: "Bearer " + access_token,
         },
+        withCredentials: true,
       });
 
       if (status !== 200) {
@@ -41,10 +41,20 @@ export default async function handler(req, res) {
         data: data.tracks,
       });
     } catch (error) {
-      console.log("seconds", error);
+      if (error.response) {
+        //do something
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log("Request", error.request);
+        //do something else
+      } else if (error.message) {
+        console.log("Message", error.message);
+        //do something other than the other two
+      }
 
       return res.status(400).json({
-        message: "Failed to authenticate user",
+        message: error,
         success: false,
         code: 400,
       });

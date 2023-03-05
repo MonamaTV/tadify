@@ -75,7 +75,7 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      <div className="md:hidden fixed bottom-1 bg-gradient-to-b from-[#191414d6] to-[#191414] w-screen z-20 h-14">
+      <div className="md:hidden fixed bottom-0 bg-gradient-to-b from-[#191414d6] to-[#191414] w-screen z-20 h-14">
         <ul className="py-2 list-none flex flex-row text-white text-xs w-full justify-evenly items-start">
           <li>
             <Link href={"/tracks"}>

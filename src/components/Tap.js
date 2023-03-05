@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { axiosClient, getUserAccessData } from "../utils/axios";
 import Select from "./Select";
-import * as cookie from "cookie";
 import InputPlaylist from "./InputPlaylist";
 import axios from "axios";
 import SelectRecommendedTracks from "./SelectRecommendedTracks";
@@ -36,13 +34,11 @@ const Tap = ({ artists }) => {
     setLoading(true);
     try {
       const { data, status } = await axios.post("/api/generate", {
-        limit: 20,
         seed_artists: selectedArtistsIds.join(","),
         seed_tracks: "",
         seed_genres: "",
       });
       setRecommendedTracks(data.data);
-      setLoading(false);
       setTap(2);
     } catch (error) {
       console.log(error);
@@ -64,7 +60,12 @@ const Tap = ({ artists }) => {
     });
   };
 
-  const handleGenerateRecommendedTracks = async () => {};
+  const handleGeneratePlaylistFromRecommendedTracks = async () => {
+    try {
+      const data = await axios.post("/api/playlists/");
+      console.log(data);
+    } catch (error) {}
+  };
 
   const artistsAsArray = artists?.map((art) => {
     return {
@@ -102,6 +103,7 @@ const Tap = ({ artists }) => {
       return (
         <SelectRecommendedTracks
           handleAdd={removeUnwantedTracks}
+          handleContinue={handleGeneratePlaylistFromRecommendedTracks}
           options={recommendedTracks}
           heading={"Remove tracks you do not want by clicking them..."}
         />
