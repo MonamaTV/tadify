@@ -19,6 +19,7 @@ const Button = ({ id, name, url, handleAdd, artist, initial = false }) => {
         width={25}
         height={25}
         alt="Image"
+        loading="lazy"
         className="rounded-xl"
       />
       <div>

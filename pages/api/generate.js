@@ -9,8 +9,6 @@ export default async function handler(req, res) {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
 
-      console.log({ access_token });
-
       //Get seed_artists, seed_tracks and seed_genres from the req.body
       const { seed_artists, seed_tracks, seed_genres } = req.body;
 
@@ -28,7 +26,6 @@ export default async function handler(req, res) {
       });
 
       if (status !== 200) {
-        console.log("First", status);
         return res.status(status).json({
           message: "Failed to authenticate user",
           success: false,
@@ -43,20 +40,8 @@ export default async function handler(req, res) {
         data: data.tracks,
       });
     } catch (error) {
-      if (error.response) {
-        //do something
-        console.log(error.response);
-        console.log(error.response.status);
-      } else if (error.request) {
-        console.log("Request", error.request);
-        //do something else
-      } else if (error.message) {
-        console.log("Message", error.message);
-        //do something other than the other two
-      }
-
       return res.status(400).json({
-        message: error.toJSON(),
+        message: "Failed to generate tracks",
         success: false,
         code: 400,
       });

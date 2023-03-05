@@ -51,12 +51,26 @@ export default async function handler(req, res) {
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
-      const { name } = req.body;
+      const { name, tracks } = req.body;
       const user = await getUsersDetails(access_token);
-      const playlist = await createPlaylist(access_token, name, user.id);
-      res.json(playlist);
+      const playlist = await createPlaylist(
+        access_token,
+        name,
+        tracks,
+        user.id
+      );
+      res.json({
+        message: "Playlist created successfully",
+        code: 200,
+        success: true,
+        data: playlist,
+      });
     } catch (err) {
-      console.log(err);
+      return res.status(400).json({
+        message: "Failed to create playlist",
+        success: false,
+        code: 400,
+      });
     }
   }
 }
@@ -71,12 +85,24 @@ const getUsersDetails = async (access_token) => {
   return data;
 };
 
-const createPlaylist = async (access_token, name, userID) => {
-  const { data } = await axiosClient().post(
+const createPlaylist = async (access_token, name, tracks, userID) => {
+  const { data: playlist } = await axiosClient().post(
     `/users/${userID}/playlists`,
     {
       name,
       public: false,
+    },
+    {
+      headers: {
+        Authorization: "Bearer " + access_token,
+      },
+    }
+  );
+
+  const { data } = await axiosClient().post(
+    `/playlists/${playlist?.id}/tracks`,
+    {
+      uris: tracks,
     },
     {
       headers: {

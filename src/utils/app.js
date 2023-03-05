@@ -20,4 +20,5 @@ export const colors = [
   "from-lime-700",
   "from-indigo-700",
   "from-rose-700",
+  "from-fuchsia-700",
 ];

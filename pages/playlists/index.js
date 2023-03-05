@@ -77,7 +77,7 @@ const Playlists = (props) => {
                   </td>
                   <td className="text-xs md:text-sm md:w-2/6 md:px-0 px-2">
                     <span className="block">
-                      <Link href={"#"}>{play?.name}</Link>
+                      <Link href={play?.uri}>{play?.name}</Link>
                     </span>
                     <small className="md:hidden text-center">
                       Created by {play?.owner?.display_name}

@@ -3,8 +3,12 @@ import Select from "./Select";
 import InputPlaylist from "./InputPlaylist";
 import axios from "axios";
 import SelectRecommendedTracks from "./SelectRecommendedTracks";
+import Loading from "./Loading";
+import { useRouter } from "next/router";
 
 const Tap = ({ artists }) => {
+  const router = useRouter();
+
   const [tap, setTap] = useState(1);
   const [selectedArtistsIds, setSelectedArtistsIds] = useState([]);
   const [recommendedTracks, setRecommendedTracks] = useState([]);
@@ -34,6 +38,7 @@ const Tap = ({ artists }) => {
   const generateRecommendedTracks = async () => {
     setLoading(true);
     try {
+      if (selectedArtistsIds.length < 1) return;
       const { data, status } = await axios.post("/api/generate", {
         seed_artists: selectedArtistsIds.join(","),
         seed_tracks: "",
@@ -42,7 +47,6 @@ const Tap = ({ artists }) => {
       setRecommendedTracks(data.data);
       setTap(2);
     } catch (error) {
-      console.log(error);
       setRecommendedTracks([]);
     }
     setLoading(false);
@@ -50,22 +54,33 @@ const Tap = ({ artists }) => {
 
   const handleNextTap = () => {
     if (!playlistName || playlistName.length < 5) {
+      //Todo: handle the error by informing the user
       return;
     }
     setTap(3);
   };
 
   const removeUnwantedTracks = (id) => {
+    if (recommendedTracks.length < 5) return;
     setRecommendedTracks((prevRecommendedTracks) => {
       return prevRecommendedTracks.filter((track) => track.id !== id);
     });
   };
 
   const handleGeneratePlaylistFromRecommendedTracks = async () => {
+    setLoading(true);
     try {
-      const data = await axios.post("/api/playlists/");
-      console.log(data);
-    } catch (error) {}
+      const tracksURIs = recommendedTracks.map((track) => track.uri);
+      const { status } = await axios.post("/api/playlists/", {
+        tracks: tracksURIs,
+        name: playlistName,
+      });
+      if (status === 200) {
+        router.push("/playlists");
+      }
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const artistsAsArray = artists?.map((art) => {
@@ -77,7 +92,7 @@ const Tap = ({ artists }) => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   switch (tap) {
