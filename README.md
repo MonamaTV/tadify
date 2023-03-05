@@ -1,4 +1,4 @@
-#Tadify
+# Tadify
 
 - The app gives you a birds view of the music you are listening to on Spotify.
 - You can see the top artists, top tracks based on a time frame, e.g your top tracks in the last 4 weeks.
@@ -8,5 +8,5 @@
 
 ## Todo
 
-- [] - Integrate with the ChatGTP to be able to generate playlist based on user prompts
-- [] - Generate a playlist by simply giving the app a prompt. For example, "suggest raps songs that used to be popular in the 90s"
+- [ ] Integrate with the ChatGTP to be able to generate playlist based on user prompts
+- [ ] Generate a playlist by simply giving the app a prompt. For example, "suggest raps songs that used to be popular in the 90s"
