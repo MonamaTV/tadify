@@ -40,7 +40,7 @@ const Playlists = (props) => {
             Create new playlists
           </h2>
           <Link href={"/playlists/create"}>
-            <a className="bg-green-500 rounded-md py-1 my-3 w-60 text-sm shadow-2xl text-center">
+            <a className="bg-green-500 rounded-md py-1 my-3 w-60 text-sm shadow-2xl text-center shadow-black">
               Let&apos;s get started
             </a>
           </Link>

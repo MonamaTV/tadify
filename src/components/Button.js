@@ -10,9 +10,9 @@ const Button = ({ id, name, url, handleAdd, artist, initial = false }) => {
         handleAdd(id);
         setClicked(!clicked);
       }}
-      className={`py-2 my-1 rounded-3xl px-4 text-xs border ${
-        clicked && "bg-[#FF5665]"
-      } border-[#564a4b] flex flex-row items-center justify-between space-x-1`}
+      className={`py-2 my-1 rounded-3xl px-4 text-xs  border ${
+        clicked ? "bg-[#FF5665] border-[#FF5665]" : "border border-[#564a4b]"
+      }  flex flex-row items-center justify-between space-x-1`}
     >
       <Image
         src={url}
@@ -24,7 +24,7 @@ const Button = ({ id, name, url, handleAdd, artist, initial = false }) => {
       />
       <div>
         <span>{name}</span>
-        {artist && <p className="block text-xs font-light">By {artist}</p>}
+        {artist && <small className="block text-xs font-light">{artist}</small>}
       </div>
     </button>
   );

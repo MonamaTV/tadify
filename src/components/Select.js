@@ -15,7 +15,6 @@ const Select = ({ options, handleAdd, handleContinue, heading }) => {
           />
         ))}
 
-        {/*  */}
         <div className="space-x-2  flex flex-row w-full justify-center">
           <button className="py-2 rounded-3xl px-5 text-xs border text-red-600  border-[red] my-4">
             Cancel
@@ -27,7 +26,7 @@ const Select = ({ options, handleAdd, handleContinue, heading }) => {
             Continue
           </button>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };
