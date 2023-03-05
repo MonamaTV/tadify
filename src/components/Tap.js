@@ -19,6 +19,7 @@ const Tap = ({ artists }) => {
   const handleArtistsInput = (id) => {
     const index = selectedArtistsIds.findIndex((trackID) => trackID === id);
     if (index === -1) {
+      if (selectedArtistsIds.length >= 5) return;
       setSelectedArtistsIds((prevSelectedArtists) => {
         return [...prevSelectedArtists, id];
       });
@@ -84,7 +85,7 @@ const Tap = ({ artists }) => {
       return (
         <Select
           options={artistsAsArray}
-          heading={"Select artists you want in the playlist"}
+          heading={"Select 5 artists you want in the playlist"}
           handleAdd={handleArtistsInput}
           handleContinue={generateRecommendedTracks}
         />
