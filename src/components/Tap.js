@@ -23,7 +23,7 @@ const Tap = ({ artists }) => {
   const handleArtistsInput = (id) => {
     const index = selectedArtistsIds.findIndex((trackID) => trackID === id);
     if (index === -1) {
-      if (selectedArtistsIds.length >= 5) return;
+      //   if (selectedArtistsIds.length >= 5) return;
       setSelectedArtistsIds((prevSelectedArtists) => {
         return [...prevSelectedArtists, id];
       });

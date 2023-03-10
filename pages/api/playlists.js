@@ -75,7 +75,7 @@ export default async function handler(req, res) {
   }
 }
 
-const getUsersDetails = async (access_token) => {
+export const getUsersDetails = async (access_token) => {
   const { data } = await axiosClient().get("/me/", {
     headers: {
       Authorization: "Bearer " + access_token,
@@ -85,7 +85,7 @@ const getUsersDetails = async (access_token) => {
   return data;
 };
 
-const createPlaylist = async (access_token, name, tracks, userID) => {
+export const createPlaylist = async (access_token, name, tracks, userID) => {
   const { data: playlist } = await axiosClient().post(
     `/users/${userID}/playlists`,
     {

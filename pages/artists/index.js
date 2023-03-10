@@ -8,7 +8,6 @@ import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableArtistsList from "../../src/downloads/artists";
-
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
 import html2canvas from "html2canvas";
@@ -21,16 +20,15 @@ const Artists = (props) => {
   const [view, setView] = useState(false);
   const [timeRange, setTimeRange] = useState(1);
 
-  const download = (e) => {
+  const downloadFavoriteArtists = (e) => {
     e.target.disabled = true;
-
     html2canvas(document.getElementById("artists"), {
       imageTimeout: 3000,
       scale: 2,
     }).then(function (canvas) {
       const url = canvas.toDataURL();
       const link = document.createElement("a");
-      link.download = "tadify-top-artists.jpeg";
+      link.download = "tadify-top-artists.png";
       link.href = url;
       link.click();
     });
@@ -148,7 +146,10 @@ const Artists = (props) => {
         </div>
       </div>
       {view && (
-        <Modal closeModal={() => setView(!view)} downloadStats={download}>
+        <Modal
+          closeModal={() => setView(!view)}
+          downloadStats={downloadFavoriteArtists}
+        >
           <DownloadableArtistsList
             data={artists.slice(0, 5)}
             id={"artists"}

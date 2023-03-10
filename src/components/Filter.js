@@ -14,7 +14,7 @@ const Filter = ({ handleFilter }) => {
         onClick={() => fetchTop(1)}
         className={`px-3 md:px-5 py-1 ${
           tapButton === 1 ? "bg-[#1db954]" : "bg-[#191414]"
-        } mx-1 text-white text-xs md:text-sm rounded-md md:rounded-xl`}
+        } mx-1 text-white text-xs md:text-sm `}
       >
         Last 4 weeks
       </button>
@@ -22,7 +22,7 @@ const Filter = ({ handleFilter }) => {
         onClick={() => fetchTop(2)}
         className={`px-3 md:px-5 py-1 ${
           tapButton === 2 ? "bg-[#1db954]" : "bg-[#191414]"
-        } mx-1 text-white text-xs md:text-sm rounded-md md:rounded-xl`}
+        } mx-1 text-white text-xs md:text-sm `}
       >
         Last 6 months
       </button>
@@ -30,7 +30,7 @@ const Filter = ({ handleFilter }) => {
         onClick={() => fetchTop(3)}
         className={`px-3 md:px-5 py-1 ${
           tapButton === 3 ? "bg-[#1db954]" : "bg-[#191414]"
-        } mx-1 text-white text-xs md:text-sm rounded-md md:rounded-xl`}
+        } mx-1 text-white text-xs md:text-sm `}
       >
         All time
       </button>

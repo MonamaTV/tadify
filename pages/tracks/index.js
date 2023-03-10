@@ -6,7 +6,6 @@ import * as cookie from "cookie";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
 import { axioAPIClient } from "../../src/utils/axios";
-
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 import Meta from "../../src/components/Head";
@@ -16,14 +15,15 @@ import { colors } from "../../src/utils/app";
 import Link from "next/link";
 
 const Tracks = (props) => {
-  const download = (e) => {
+  //
+  const downloadFavoriteTracks = (e) => {
     e.target.disabled = true;
     html2canvas(document.getElementById("tracks"), {
       imageTimeout: 3000,
     }).then(function (canvas) {
       const url = canvas.toDataURL();
       const link = document.createElement("a");
-      link.download = "tadify-top-tracks.jpeg";
+      link.download = "tadify-top-tracks.png";
       link.href = url;
       link.click();
     });
@@ -155,7 +155,10 @@ const Tracks = (props) => {
       </div>
 
       {view && (
-        <Modal closeModal={() => setView(!view)} downloadStats={download}>
+        <Modal
+          closeModal={() => setView(!view)}
+          downloadStats={downloadFavoriteTracks}
+        >
           <DownloadableTracksList
             data={tracks.slice(0, 5)}
             id={"tracks"}

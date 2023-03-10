@@ -69,6 +69,16 @@ export const axioAPIClient = () => {
   });
 };
 
+export const axiosOPENAIClient = () => {
+  return axios.create({
+    baseURL: process.env.OPEN_AI_BASE_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.OPEN_AI_KEY,
+    },
+  });
+};
+
 export const getUserAccessData = async (refresh) => {
   const REDIRECT_URI =
     process.env.NODE_ENV === "development"

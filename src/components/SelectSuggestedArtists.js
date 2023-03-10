@@ -1,10 +1,17 @@
 import Link from "next/link";
 import Button from "./Button";
 
-const Select = ({ options, handleAdd, handleContinue, heading }) => {
+const SelectSuggestedArtists = ({
+  options,
+  handleAdd,
+  handleContinue,
+  heading,
+}) => {
   return (
     <>
-      <p className="text-sm my-1">{heading}</p>
+      <p className="text-sm my-1">
+        {"Remove artists you do not want by clicking them..."}
+      </p>
       <div className="space-x-2 px-1 md:w-2/5 flex flex-row flex-wrap justify-center items-center">
         {options.map((opt) => (
           <Button
@@ -13,6 +20,7 @@ const Select = ({ options, handleAdd, handleContinue, heading }) => {
             name={opt.name}
             key={opt.id}
             url={opt.url}
+            initial={true}
           />
         ))}
 
@@ -33,4 +41,4 @@ const Select = ({ options, handleAdd, handleContinue, heading }) => {
     </>
   );
 };
-export default Select;
+export default SelectSuggestedArtists;

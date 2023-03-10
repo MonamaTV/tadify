@@ -1,17 +1,17 @@
 import { axiosClient } from "../../src/utils/axios";
 import { getUserAccessData } from "../../src/utils/axios";
+import * as cookie from "cookie";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      const { refresh_token } = req.query;
+      const { refresh_token } = req.query ?? cookie.parse(req.headers.cookie);
 
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
 
       //Get time_range
-
       const ranges = ["long_term", "short_term", "medium_term"];
       const range = ranges.includes(req.query?.range)
         ? req.query.range
