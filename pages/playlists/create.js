@@ -9,11 +9,13 @@ export default function Create(props) {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] via-[#191414] to-[#191414] text-white p-10  flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data on Spotfy yet...{" "}
-            <Link href="playlists/suggest">
-              <a className="block">Try out describing playlists</a>
+            <Link href="/playlists/suggest">
+              <a className="block text-sm border font-normal w-56 px-3 py-2 my-2">
+                Try out describing playlists
+              </a>
             </Link>
           </h3>
         </div>
