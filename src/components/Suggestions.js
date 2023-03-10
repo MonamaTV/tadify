@@ -58,7 +58,6 @@ const Suggestions = () => {
       setSuggestedArtists(suggested);
       setTap((prev) => prev + 1);
     } catch (error) {
-      console.log(error);
       setSuggestedArtists([]);
     }
     setLoading(false);
@@ -82,12 +81,9 @@ const Suggestions = () => {
       });
 
       if (response.status === 200) {
-        if (status === 200) {
-          router.push("/playlists");
-        }
+        router.push("/playlists");
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };

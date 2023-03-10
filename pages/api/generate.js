@@ -56,7 +56,6 @@ export default async function handler(req, res) {
 
       //
       const prompt = req.query?.prompt;
-      console.log({ prompt });
       if (!prompt) {
         return res.status(400).json({
           message: "No prompt provided",
@@ -110,7 +109,6 @@ export default async function handler(req, res) {
         artists,
       });
     } catch (error) {
-      console.log(error);
       res.status(400).json({
         message: "Failed to generate artists list",
         success: false,

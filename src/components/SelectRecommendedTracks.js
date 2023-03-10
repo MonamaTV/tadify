@@ -10,7 +10,7 @@ const SelectRecommendedTracks = ({
   return (
     <>
       <p className="text-sm my-1">{heading}</p>
-      <div className="space-x-2 px-1 md:w-4/5 flex flex-row flex-wrap justify-center items-center">
+      <div className="gap-x-2 px-1 md:w-4/5 flex flex-row flex-wrap md:justify-center items-center">
         {options.map((opt) => {
           const url = opt.album.images[0]?.url;
           const artist = opt.artists[0]?.name;

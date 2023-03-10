@@ -34,7 +34,7 @@ const RedirectUser = () => {
       <br />
       <a
         href={"/tracks"}
-        className="px-10 py-3 bg-[#1db954] text-white rounded-full my-4 no-underline "
+        className="px-10 py-3 bg-[#1db954] text-white  my-4 no-underline "
       >
         Continue
       </a>

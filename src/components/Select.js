@@ -4,8 +4,8 @@ import Button from "./Button";
 const Select = ({ options, handleAdd, handleContinue, heading }) => {
   return (
     <>
-      <p className="text-sm my-1">{heading}</p>
-      <div className="space-x-2 px-1 md:w-2/5 flex flex-row flex-wrap justify-center items-center">
+      <p className="text-sm my-1 mb-2 text-left">{heading}</p>
+      <div className="gap-x-2 px-1 md:w-2/5 flex flex-row flex-wrap md:justify-center md:items-center">
         {options.map((opt) => (
           <Button
             handleAdd={handleAdd}

@@ -27,10 +27,9 @@ export default function Create(props) {
     <>
       <Meta />
       <div
-        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-gradient-to-b gradient via-[#191414] ${props.color} to-[#191414] flex flex-col justify-center items-center text-white pt-16`}
+        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-gradient-to-b gradient via-[#191414] ${props.color} to-[#191414] flex flex-col justify-center md:items-center text-white pt-16 px-7`}
       >
-        <h1 className="text-3xl md:text-4xl font-bold">Create new playlist</h1>
-        <br />
+        <h1 className="text-4xl font-bold text-left">Create new playlist</h1>
         <Tap artists={props.artists} />
       </div>
     </>

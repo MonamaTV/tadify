@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const { refresh_token } = req.query;
-      console.log(req.headers);
+      req.headers;
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
@@ -43,7 +43,6 @@ export default async function handler(req, res) {
         data,
       });
     } catch (error) {
-      console.log(error);
       return res.status(400).json({
         message: "Failed to authenticate user",
         success: false,
