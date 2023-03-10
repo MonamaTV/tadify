@@ -47,7 +47,7 @@ const Playlists = (props) => {
             </Link>
             <Link href={"/playlists/suggest"}>
               <a className="border border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
-                Describe my playlist
+                AI-inspired playlist
               </a>
             </Link>
           </div>
