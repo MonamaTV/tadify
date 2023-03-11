@@ -12,7 +12,7 @@ const Nav = () => {
           width={80}
           height={90}
           alt="Logo"
-          className="invert"
+          className="invert dark:invert-0"
         />
         <ul className="my-4 list-none dark:text-white text-sm space-y-5">
           <li>
@@ -81,7 +81,7 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      <div className="md:hidden fixed bottom-0 bg-white dark:bg-gradient-to-b from-[#191414d6] to-[#191414] w-screen z-20 h-14">
+      <div className="md:hidden fixed bottom-0 bg-white dark:bg-gradient-to-b dark:from-[#191414d6] dark:to-[#191414] w-screen z-20 h-14">
         <ul className="py-2 list-none flex flex-row dark:text-white text-xs w-full justify-evenly items-start">
           <li>
             <Link href={"/tracks"}>

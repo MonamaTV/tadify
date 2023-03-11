@@ -24,7 +24,7 @@ const SelectSuggestedArtists = ({
           />
         ))}
 
-        <div className="space-x-2  flex flex-row w-full justify-center">
+        <div className="space-x-2  flex flex-row w-full justify-center pb-16">
           <Link href={"/playlists"}>
             <a className="py-2 px-5 text-xs border text-red-600  border-[red] my-4">
               Cancel
