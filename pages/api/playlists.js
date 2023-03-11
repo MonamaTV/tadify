@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       }
 
       res.json({
-        message: "Recently plays",
+        message: "Playlists",
         code: status,
         success: true,
         data,

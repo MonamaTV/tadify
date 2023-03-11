@@ -5,7 +5,11 @@ import { useState } from "react";
 import Artist from "../../src/components/Artist";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
-import { axioAPIClient } from "../../src/utils/axios";
+import {
+  axioAPIClient,
+  axiosClient,
+  getUserAccessData,
+} from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableArtistsList from "../../src/downloads/artists";
 import Meta from "../../src/components/Head";
@@ -163,15 +167,19 @@ const Artists = (props) => {
 
 export async function getServerSideProps(context) {
   try {
-    const { refresh_token, access_token } = cookie.parse(
-      context.req.headers.cookie
-    );
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
 
-    const res = await axioAPIClient().get("/artists", {
-      withCredentials: true,
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
+
+    const res = await axiosClient().get("/me/top/artists", {
       params: {
-        refresh_token,
-        access_token,
+        limit: 40,
+        time_range: "short_term",
+      },
+      headers: {
+        Authorization: "Bearer " + access_token,
       },
     });
 
@@ -186,7 +194,7 @@ export async function getServerSideProps(context) {
     }
 
     const { data } = res;
-    const items = data.data.items;
+    const items = data.items;
 
     return {
       props: {

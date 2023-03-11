@@ -5,7 +5,11 @@ import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
-import { axioAPIClient } from "../../src/utils/axios";
+import {
+  axioAPIClient,
+  axiosClient,
+  getUserAccessData,
+} from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 import Meta from "../../src/components/Head";
@@ -171,15 +175,19 @@ const Tracks = (props) => {
 };
 export async function getServerSideProps(context) {
   try {
-    const { refresh_token, access_token } = cookie.parse(
-      context.req.headers.cookie
-    );
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
 
-    const res = await axioAPIClient().get("/tracks", {
-      withCredentials: true,
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
+
+    const res = await axiosClient().get("/me/top/tracks", {
       params: {
-        refresh_token,
-        access_token,
+        limit: 40,
+        time_range: "short_term",
+      },
+      headers: {
+        Authorization: "Bearer " + access_token,
       },
     });
 
@@ -194,7 +202,7 @@ export async function getServerSideProps(context) {
     }
 
     const { data } = res;
-    const items = data.data.items;
+    const items = data.items;
     //generate a number between 0 and 5
 
     return {

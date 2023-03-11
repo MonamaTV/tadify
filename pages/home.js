@@ -14,8 +14,9 @@ const RedirectUser = () => {
         In order to use this app, you agree that you are granting it access to
         your Spotify profile. We use your profile data to display your favorite
         artists and tracks as well as your recently played tracks. And we will
-        have the functionality to create playlists on your behalf/account, given
-        you have granted the app access to your Spotify account.
+        have the functionality or ability to create playlists on your
+        behalf/account, given you have granted the app access to your Spotify
+        account.
       </p>
       <br />
       <h3 className="text-white text-2xl">Privacy</h3>
@@ -28,7 +29,7 @@ const RedirectUser = () => {
           target={"_blank"}
           className="text-blue-500 font-bold"
         >
-          here
+          here...
         </a>
       </p>
       <br />
@@ -36,7 +37,7 @@ const RedirectUser = () => {
         href={"/tracks"}
         className="px-10 py-3 bg-[#1db954] text-white  my-4 no-underline "
       >
-        Continue
+        Open the portal
       </a>
     </div>
   );

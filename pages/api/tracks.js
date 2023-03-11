@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const { refresh_token } = req.query;
-      req.headers;
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);

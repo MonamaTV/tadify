@@ -2,7 +2,11 @@ import Image from "next/image";
 import { useState } from "react";
 import * as cookie from "cookie";
 import { colors } from "../../src/utils/app";
-import { axioAPIClient } from "../../src/utils/axios";
+import {
+  axioAPIClient,
+  axiosClient,
+  getUserAccessData,
+} from "../../src/utils/axios";
 import Link from "next/link";
 import Meta from "../../src/components/Head";
 
@@ -104,15 +108,20 @@ const Playlists = (props) => {
 };
 export async function getServerSideProps(context) {
   try {
-    const { refresh_token, access_token } = cookie.parse(
-      context.req.headers.cookie
-    );
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
 
-    const res = await axioAPIClient().get("/playlists", {
-      withCredentials: true,
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
+
+    //Get time_range
+
+    const res = await axiosClient().get("/me/playlists", {
       params: {
-        refresh_token,
-        access_token,
+        limit: 30,
+      },
+      headers: {
+        Authorization: "Bearer " + access_token,
       },
     });
 
@@ -127,7 +136,7 @@ export async function getServerSideProps(context) {
     }
 
     const { data } = res;
-    const items = data.data.items;
+    const items = data.items;
 
     return {
       props: {

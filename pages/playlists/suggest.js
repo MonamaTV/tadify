@@ -1,14 +1,7 @@
-import Image from "next/image";
-import { useState } from "react";
 import * as cookie from "cookie";
 import { colors } from "../../src/utils/app";
-import {
-  axioAPIClient,
-  axiosClient,
-  getUserAccessData,
-} from "../../src/utils/axios";
+import { getUserAccessData } from "../../src/utils/axios";
 import Meta from "../../src/components/Head";
-import Loading from "../../src/components/Loading";
 import Suggestions from "../../src/components/Suggestions";
 
 const Suggest = (props) => {
@@ -26,35 +19,34 @@ const Suggest = (props) => {
   );
 };
 export async function getServerSideProps(context) {
-  //   try {
-  //     const { refresh_token } = cookie.parse(context.req.headers.cookie);
-  //     const {
-  //       data: { access_token },
-  //     } = await getUserAccessData(refresh_token);
+  try {
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
 
-  //     //Get time_range
-  //     //If user removed the app, start the auth again
-  //     if (!access_token) {
-  //       return {
-  //         redirect: {
-  //           permanent: false,
-  //           destination: "/",
-  //         },
-  //       };
-  //     }
+    //If user removed the app, start the auth again
+    if (!access_token) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+      };
+    }
 
-  return {
-    props: {
-      color: colors[Math.floor(Math.random() * colors.length)],
-    },
-  };
-  //   } catch (error) {
-  //     return {
-  //       redirect: {
-  //         permanent: false,
-  //         destination: "/",
-  //       },
-  //     };
-  //   }
+    return {
+      props: {
+        color: colors[Math.floor(Math.random() * colors.length)],
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
 }
 export default Suggest;
