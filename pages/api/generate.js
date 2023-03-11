@@ -1,6 +1,7 @@
 import { axiosClient, axiosOPENAIClient } from "../../src/utils/axios";
 import { getUserAccessData } from "../../src/utils/axios";
 import * as cookie from "cookie";
+
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
@@ -47,6 +48,7 @@ export default async function handler(req, res) {
       });
     }
   }
+
   if (req.method === "GET") {
     try {
       const { refresh_token } = cookie.parse(req.headers.cookie);

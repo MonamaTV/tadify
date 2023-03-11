@@ -10,8 +10,6 @@ export default async function handler(req, res) {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
 
-      //Get time_range
-
       const { data, status } = await axiosClient().get(
         "/me/player/recently-played",
         {
@@ -32,7 +30,7 @@ export default async function handler(req, res) {
         });
       }
 
-      res.json({
+      res.status(200).json({
         message: "Recently plays",
         code: status,
         success: true,

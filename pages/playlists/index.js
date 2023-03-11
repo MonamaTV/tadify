@@ -1,43 +1,16 @@
 import Image from "next/image";
-import { useState } from "react";
 import * as cookie from "cookie";
 import { colors } from "../../src/utils/app";
-import {
-  axioAPIClient,
-  axiosClient,
-  getUserAccessData,
-} from "../../src/utils/axios";
+import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import Link from "next/link";
 import Meta from "../../src/components/Head";
 
-const Playlists = (props) => {
-  const [playlists, setPlaylists] = useState(props.playlists ?? []);
-
-  //   const fetchTopTracks = async (range) => {
-  //     setTimeRange(range);
-  //     const ranges = ["short_term", "medium_term", "long_term"];
-  //     //
-  //     try {
-  //       const response = await axios.get("/api/tracks", {
-  //         withCredentials: true,
-  //         params: {
-  //           refresh_token: props.refresh_token,
-  //           range: ranges[--range],
-  //         },
-  //       });
-  //       const { data } = response;
-  //       setTracks(data.data.items);
-  //     } catch (error) {
-  //       setTracks([]);
-  //     }
-  //   };
-
+const Playlists = ({ playlists, color }) => {
   return (
     <>
       <Meta />
-
       <div
-        className={`flex  w-full relative bg-gradient-to-b ${props.color} to-[#191414] text-white md:p-10 flex-col md:flex-row sm:flex-row h-[240px] md:h-[250px]`}
+        className={`flex  w-full relative bg-gradient-to-b ${color} dark:to-[#191414] text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row h-[240px] md:h-[250px]`}
       >
         <div className="flex flex-col md:w-5/6 p-8 py-7 md:p-0">
           <h2 className="md:text-5xl font-bold text-4xl select-none">
@@ -50,17 +23,17 @@ const Playlists = (props) => {
               </a>
             </Link>
             <Link href={"/playlists/suggest"}>
-              <a className="border border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
+              <a className="border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
                 AI-inspired playlist
               </a>
             </Link>
           </div>
         </div>
       </div>
-      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] pb-12 min-h-screen">
+      <div className="py-1 px-5 md:px-10 bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] pb-12 min-h-screen">
         <div>
           <table className="my-2 w-full md:w-2/4 border-separate border-spacing-y-3 border-spacing-x-0">
-            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-100 ">
+            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 dark:text-gray-100 text-gray-900">
               <tr>
                 <th></th>
                 <th className="md:w-2/6 md:px-4 px-2"></th>
@@ -71,7 +44,7 @@ const Playlists = (props) => {
             <tbody className="w-full">
               {playlists.map((play, index) => (
                 <tr
-                  className=" text-gray-100 font-medium  w-full"
+                  className=" dark:text-gray-100 text-gray-900 font-medium  w-full"
                   key={play?.id}
                 >
                   <td className="w-10 text-center">{++index}</td>
@@ -106,6 +79,7 @@ const Playlists = (props) => {
     </>
   );
 };
+
 export async function getServerSideProps(context) {
   try {
     const { refresh_token } = cookie.parse(context.req.headers.cookie);
@@ -113,8 +87,6 @@ export async function getServerSideProps(context) {
     const {
       data: { access_token },
     } = await getUserAccessData(refresh_token);
-
-    //Get time_range
 
     const res = await axiosClient().get("/me/playlists", {
       params: {
@@ -125,7 +97,6 @@ export async function getServerSideProps(context) {
       },
     });
 
-    //If user removed the app, start the auth again
     if (res.status === 400) {
       return {
         redirect: {
@@ -142,7 +113,6 @@ export async function getServerSideProps(context) {
       props: {
         color: colors[Math.floor(Math.random() * colors.length)],
         playlists: items ?? [],
-        refresh_token,
       },
     };
   } catch (error) {

@@ -8,5 +8,5 @@
 
 ## Todo
 
-- [ ] Integrate with the ChatGTP to be able to generate playlist based on user prompts
-- [ ] Generate a playlist by simply giving the app a prompt. For example, "suggest raps songs that used to be popular in the 90s"
+- [x] Integrate with the ChatGTP to be able to generate playlist based on user prompts
+- [x] Generate a playlist by simply giving the app a prompt. For example, "suggest raps songs that used to be popular in the 90s"

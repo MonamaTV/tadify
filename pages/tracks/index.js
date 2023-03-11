@@ -47,7 +47,6 @@ const Tracks = (props) => {
       const response = await axios.get("/api/tracks", {
         withCredentials: true,
         params: {
-          refresh_token: props.refresh_token,
           range: ranges[--range],
         },
       });
@@ -98,7 +97,7 @@ const Tracks = (props) => {
     <>
       <Meta />
       <div
-        className={`flex w-full relative bg-gradient-to-b ${props.color} to-[#191414] text-white md:p-10 flex-col md:flex-row sm:flex-row`}
+        className={`flex w-full relative bg-gradient-to-b ${props.color} dark:to-[#191414] text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row`}
       >
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10 ">
@@ -137,11 +136,11 @@ const Tracks = (props) => {
         )}
         {/* Menu for mobile */}
       </div>
-      <div className="py-1 px-5 md:px-10 bg-gradient-to-b from-[#191414] to-[#191414] pb-12">
+      <div className="py-1 px-5 md:px-10 dark:bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] pb-12">
         <Filter handleFilter={fetchTopTracks} />
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">
-            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-100 ">
+            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
               <tr>
                 <th></th>
                 <th></th>
@@ -209,7 +208,6 @@ export async function getServerSideProps(context) {
       props: {
         color: colors[Math.floor(Math.random() * colors.length)],
         tracks: items ?? [],
-        refresh_token,
       },
     };
   } catch (error) {

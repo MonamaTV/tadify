@@ -1,16 +1,15 @@
 import { axiosClient } from "../../src/utils/axios";
 import { getUserAccessData } from "../../src/utils/axios";
 import * as cookie from "cookie";
-
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      const { refresh_token } = req.query;
+      const refresh = req?.query?.refresh_token;
+      const { refresh_token } = refresh || cookie.parse(req.headers.cookie);
+      // console.log(cookie.parse(req.headers.cookie));
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);
-
-      //Get time_range
 
       const ranges = ["long_term", "short_term", "medium_term"];
       const range = ranges.includes(req.query?.range)
@@ -42,6 +41,7 @@ export default async function handler(req, res) {
         data,
       });
     } catch (error) {
+      console.log(error);
       return res.status(400).json({
         message: "Failed to authenticate user",
         success: false,

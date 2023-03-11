@@ -4,6 +4,7 @@ import Tap from "../../src/components/Tap";
 import { colors } from "../../src/utils/app";
 import Meta from "../../src/components/Head";
 import Link from "next/link";
+import Image from "next/image";
 export default function Create(props) {
   if (props.artists.length < 1 || !props.artists) {
     return (
@@ -27,8 +28,11 @@ export default function Create(props) {
     <>
       <Meta />
       <div
-        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-gradient-to-b gradient via-[#191414] ${props.color} to-[#191414] flex flex-col justify-center md:items-center text-white pt-16 px-7`}
+        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-white dark:bg-gradient-to-b gradient via-white dark:via-[#191414] ${props.color} dark:to-[#191414] flex flex-col justify-center md:items-center dark:text-white pt-16 px-7`}
       >
+        <button className="absolute top-10 left-10 flex items-center justify-center w-14 py-1">
+          <Image src="/back.png" width={20} height={20} alt="Back" />
+        </button>
         <h1 className="text-4xl font-bold text-left">Create new playlist</h1>
         <Tap artists={props.artists} />
       </div>

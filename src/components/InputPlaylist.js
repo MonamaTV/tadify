@@ -1,6 +1,6 @@
 const InputPlaylist = ({ value, handleChange, handleContinue }) => {
   return (
-    <div className="flex flex-col w-full md:w-80">
+    <div className="flex flex-col w-full md:w-96">
       <p className="text-left mb-2 mt-2 text-sm">
         Enter the name of your playlist
       </p>
@@ -8,7 +8,7 @@ const InputPlaylist = ({ value, handleChange, handleContinue }) => {
         type="text"
         value={value}
         onChange={handleChange}
-        className="shadow-md px-3 text-white font-normal outline-none py-3 border  border-white text-xs bg-[#191414] w-full"
+        className="shadow-md px-3 dark:text-white font-normal outline-none py-3 border border-gray-900 dark:border-white text-xs dark:bg-[#191414] w-full"
         placeholder="E.g Private School Amapiano"
       />
       <button

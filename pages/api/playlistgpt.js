@@ -21,9 +21,9 @@ export default async function handler(req, res) {
       //Calculate the total number of tracks to be added to the track list
       const slicer = parseInt(length) / artistIDs.length;
 
-      const results = promiseRes.map((res) => {
-        if (res.status === "fulfilled") {
-          return res.value.data.tracks.slice(0, slicer);
+      const results = promiseRes.map((promise) => {
+        if (promise.status === "fulfilled") {
+          return promise.value.data.tracks.slice(0, slicer);
         }
       });
 
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       });
 
       //Create the playlist
-      const res = await createPlaylist(
+      const resGPT = await createPlaylist(
         access_token,
         name,
         tracksURIs,
@@ -45,8 +45,8 @@ export default async function handler(req, res) {
       );
 
       res.status(200).json({
-        data: res,
-        message: "tracks",
+        data: resGPT,
+        message: "Tracks",
         success: true,
       });
     } catch (error) {

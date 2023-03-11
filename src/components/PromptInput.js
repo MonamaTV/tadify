@@ -6,7 +6,7 @@ const PromptInput = ({ value, handleChange, handleContinue }) => {
       </p>
       <textarea
         placeholder="E.g popular Hip Hop music in South Africa"
-        className="border border-white  shadow-xl w-full md:w-96 resize-none outline-none text-white px-3 py-4 text-sm mt-3 bg-[#191414]"
+        className="border border-gray-900 dark:border-white  shadow-xl w-full md:w-96 resize-none outline-none text-gray-900 dark:text-white px-3 py-4 text-sm mt-3 dark:bg-[#191414]"
         rows={6}
         value={value}
         type={"text"}

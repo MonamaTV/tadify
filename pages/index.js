@@ -6,16 +6,22 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className=" bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
+    <div className=" dark:bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
 
-      <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
-      <p className="text-gray-100 md:w-96 text-center px-2 text-sm">
+      <Image
+        src={"/logo.svg"}
+        width={300}
+        height={70}
+        alt="Logo"
+        className="invert"
+      />
+      <p className="dark:text-gray-100 text-gray-900 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what has been your music pallete in last
         couple of months? You have come to the right place!
       </p>
       <Link href="/api/login">
-        <a className="px-10 py-3 bg-[#1db954] text-white  my-4 no-underline">
+        <a className="px-10 py-2 bg-[#1db954] text-white  my-4 no-underline">
           Continue With Spotify
         </a>
       </Link>

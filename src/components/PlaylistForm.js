@@ -1,6 +1,6 @@
 const PlaylistForm = ({ handleChange, handleContinue }) => {
   return (
-    <div className="flex flex-col w-full md:w-80">
+    <div className="flex flex-col w-full md:w-96">
       <div className="w-full my-1">
         <label htmlFor="playlist" className="text-left mb-2 mt-2 text-xs">
           Enter the name of your playlist
@@ -9,7 +9,7 @@ const PlaylistForm = ({ handleChange, handleContinue }) => {
           type="text"
           name="name"
           onChange={handleChange}
-          className="shadow-md px-3 text-white font-normal outline-none py-3 border  border-white text-xs bg-[#191414] w-full"
+          className="shadow-md px-3 dark:text-white text-gray-900 font-normal outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-[#191414] w-full"
           placeholder="E.g Private School Amapiano"
         />
       </div>
@@ -21,7 +21,7 @@ const PlaylistForm = ({ handleChange, handleContinue }) => {
           type="text"
           name="length"
           onChange={handleChange}
-          className="shadow-md px-3 text-white font-normal w-full outline-none py-3 border  border-white text-xs bg-[#191414]"
+          className="shadow-md px-3 dark:text-white text-gray-900 font-normal w-full outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-[#191414]"
           placeholder="1-100"
         />
       </div>

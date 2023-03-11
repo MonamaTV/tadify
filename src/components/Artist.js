@@ -14,7 +14,7 @@ const Artist = ({ artist, pos }) => {
   const photoUrl = images[0].url;
 
   return (
-    <tr className=" text-gray-100 font-medium  w-full ">
+    <tr className=" text-gray-900 dark:text-gray-100 font-medium  w-full ">
       <td className="w-1 text-center">{++pos}</td>
       <td className="flex justify-center items-center h-full md:w-full w-[100px]">
         <Image
