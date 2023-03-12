@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head />
-      <body>
+      <body className="transition-colors ease-in-out duration-400">
         <Main />
         <NextScript />
       </body>

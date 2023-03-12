@@ -125,7 +125,10 @@ const Tracks = (props) => {
               View
             </button>
             <button
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              ononClick={() => {
+                setTheme(theme === "light" ? "dark" : "light");
+                setIsComponentVisible(false);
+              }}
               className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
             >
               Toggle mode

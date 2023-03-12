@@ -5,11 +5,7 @@ import { useState } from "react";
 import Artist from "../../src/components/Artist";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
-import {
-  axioAPIClient,
-  axiosClient,
-  getUserAccessData,
-} from "../../src/utils/axios";
+import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableArtistsList from "../../src/downloads/artists";
 import Meta from "../../src/components/Head";
@@ -129,7 +125,10 @@ const Artists = (props) => {
               View
             </button>
             <button
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              onClick={() => {
+                setTheme(theme === "light" ? "dark" : "light");
+                setIsComponentVisible(false);
+              }}
               className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
             >
               Toggle mode
