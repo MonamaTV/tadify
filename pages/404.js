@@ -9,7 +9,7 @@ export default function Custom404() {
       <h2>Nkare o lahlegile...😢</h2>
       <div className="flex flex-row justify-between items-center gap-x-2 my-4">
         <Link href={"/"}>
-          <a className="bg-[#1db954] border-[#1db954] text-center px-3 py-1 text-sm w-36">
+          <a className="bg-[#1db954] border-[#1db954] text-white text-center px-3 py-1 text-sm w-36">
             Home
           </a>
         </Link>
