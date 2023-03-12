@@ -109,7 +109,7 @@ const Artists = (props) => {
         </div>
         <button
           onClick={() => setIsComponentVisible(true)}
-          className="absolute right-10 top-2 md:top-auto rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center"
+          className="absolute right-3 md:right-10 top-8 md:top-auto rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center"
         >
           <Image src={"/sharew.png"} width={20} height={20} alt="Share" />
         </button>
