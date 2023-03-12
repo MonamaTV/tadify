@@ -3,24 +3,31 @@ import "../styles/globals.css";
 import Layout from "./layout";
 
 function MyApp({ Component, pageProps, ...appProps }) {
-  const defaultRoutes = ["/", "/home", "/app"];
+  const userRoutes = [
+    "/artists",
+    "/plays",
+    "/playlists",
+    "/tracks",
+    "/playlists/create",
+    "/playlists/suggest",
+  ];
   const {
     router: { pathname },
   } = appProps;
 
-  if (defaultRoutes.includes(pathname)) {
+  if (userRoutes.includes(pathname)) {
     return (
-      <ThemeProvider attribute="class" enableSystem="true">
-        <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     );
   }
 
   return (
-    <ThemeProvider attribute="class">
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+    <ThemeProvider attribute="class" enableSystem="true">
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }

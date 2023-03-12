@@ -30,7 +30,7 @@ const Playlists = ({ playlists, color }) => {
           </h2>
           <div className="my-3 flex">
             <Link href={"/playlists/create"}>
-              <a className="bg-green-500 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
+              <a className="bg-[#1db954] py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black text-white mx-1 px-2">
                 From my fav artists
               </a>
             </Link>
