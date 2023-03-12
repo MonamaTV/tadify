@@ -6,17 +6,26 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const Home = () => {
-  const { systemTheme } = useTheme();
-
+  const { systemTheme, theme, setTheme } = useTheme();
+  const userTheme = theme ?? systemTheme;
   return (
-    <div className=" dark:bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
+    <div className="relative dark:bg-[#191414] bg-white w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
-      {systemTheme === "light" ? (
-        <Image src={"/logo1.svg"} width={300} height={70} alt="Logo" />
+      {userTheme === "light" ? (
+        <Image src={"/logo1.svg"} width={200} height={70} alt="Logo" />
       ) : (
-        <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
+        <Image src={"/logo.svg"} width={200} height={70} alt="Logo" />
       )}
-
+      <button
+        onClick={() => setTheme(userTheme === "light" ? "dark" : "light")}
+        className="absolute top-10 right-10 bg-inherit border-none outline-none"
+      >
+        {userTheme === "light" ? (
+          <Image src={"/sun.png"} width={20} height={20} alt="user theme" />
+        ) : (
+          <Image src={"/moon.png"} width={20} height={20} alt="user theme" />
+        )}
+      </button>
       <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what has been your music pallete in last
         couple of months? You have come to the right place!

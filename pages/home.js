@@ -1,13 +1,30 @@
 import * as cookie from "cookie";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Meta from "../src/components/Head";
 import { axioAPIClient } from "../src/utils/axios";
 const RedirectUser = () => {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const userTheme = theme ?? systemTheme;
   return (
     <div className=" dark:bg-[#191414] bg-white  w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
 
-      <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
+      {userTheme === "light" ? (
+        <Image src={"/logo1.svg"} width={300} height={70} alt="Logo" />
+      ) : (
+        <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
+      )}
+      <button
+        onClick={() => setTheme(userTheme === "light" ? "dark" : "light")}
+        className="absolute top-10 right-10 bg-inherit border-none outline-none"
+      >
+        {userTheme === "light" ? (
+          <Image src={"/sun.png"} width={20} height={20} alt="user theme" />
+        ) : (
+          <Image src={"/moon.png"} width={20} height={20} alt="user theme" />
+        )}
+      </button>
       <h3 className="dark:text-white text-gray-900  text-2xl">Access</h3>
       <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
         In order to use this app, you agree that you are granting it access to

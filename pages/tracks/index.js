@@ -116,7 +116,7 @@ const Tracks = (props) => {
         {isComponentVisible && (
           <div
             ref={ref}
-            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs dark:bg-[#191414] bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
+            className="absolute top-2 right-10 md:flex flex-col items-baseline  text-xs dark:bg-[#191414] bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
           >
             <button
               onClick={() => setView(true)}

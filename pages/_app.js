@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps, ...appProps }) {
   if (defaultRoutes.includes(pathname)) {
     return (
       <ThemeProvider attribute="class" enableSystem="true">
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </ThemeProvider>
     );
   }

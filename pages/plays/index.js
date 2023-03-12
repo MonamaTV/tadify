@@ -8,10 +8,12 @@ import {
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import Image from "next/image";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
-
+  const { theme, setTheme } = useTheme();
   const extractTopTrack = () => {
     const track = tracks[0];
     const { artists, name, uri, album } = track;
@@ -59,6 +61,16 @@ const Plays = (props) => {
             {extractTopTrack().displayArtists}
           </h4>
         </div>
+        <button
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          className="absolute right-10 top-2 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
+        >
+          {theme === "light" ? (
+            <Image src={"/sun.png"} width={20} height={20} alt="user theme" />
+          ) : (
+            <Image src={"/moon.png"} width={20} height={20} alt="user theme" />
+          )}
+        </button>
       </div>
       <div className="py-1 px-5 md:px-10 dark:bg-gradient-to-b from-[#191414] to-[#191414] pb-12">
         <div>

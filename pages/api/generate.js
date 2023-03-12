@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       const response = await axiosOPENAIClient().post("/completions", {
         model: "text-davinci-003",
         prompt: `Return a list of 10 artists based on the following prompt. DO NOT NUMBER THE LIST. Separate the artists in the list by comma. Do not mention anything else in your response except for the list/names. Here is the prompt: ${prompt}`,
-        temperature: 0.7,
+        temperature: 0.8,
         n: 1,
         top_p: 1,
         frequency_penalty: 0,
