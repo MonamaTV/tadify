@@ -64,7 +64,7 @@ const Home = () => {
         <div className="md:px-10">
           <div className="md:dark:bg-[#2520206f] my-3 px-5 py-5 space-y-0 md:w-[700px] md:px-10">
             <Image src={"/air.png"} width={30} height={30} alt="music" />
-            <h1 className=" font-semibold uppercase">Track your music taste</h1>
+            <h1 className=" font-semibold uppercase">See your music taste</h1>
             <p className="text-gray-400 text-xs">
               Look back in time to see who has been your favorite artists, the
               tracks you have been listening to religiously.
