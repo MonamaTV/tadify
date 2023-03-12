@@ -125,7 +125,7 @@ const Tracks = (props) => {
               View
             </button>
             <button
-              ononClick={() => {
+              onClick={() => {
                 setTheme(theme === "light" ? "dark" : "light");
                 setIsComponentVisible(false);
               }}

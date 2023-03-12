@@ -1,13 +1,19 @@
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Nav = () => {
   const router = useRouter();
+  const { theme, _ } = useTheme();
   return (
     <>
       <div className="hidden md:block h-screen w-1/6 fixed dark:bg-[#191414] px-10 pt-20 ">
-        <Image src={"/logo1.svg"} width={80} height={90} alt="Logo" />
+        {theme === "light" ? (
+          <Image src={"/logo1.svg"} width={80} height={90} alt="Logo" />
+        ) : (
+          <Image src={"/logo.svg"} width={80} height={90} alt="Logo" />
+        )}
         <ul className="my-4 list-none text-gray-900 dark:text-white text-sm space-y-5">
           <li>
             <Link href={"/tracks"}>

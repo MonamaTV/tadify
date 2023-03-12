@@ -3,19 +3,20 @@ import Meta from "../src/components/Head";
 import * as cookie from "cookie";
 import { getUserAccessData } from "../src/utils/axios";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const Home = () => {
+  const { systemTheme } = useTheme();
+
   return (
     <div className=" dark:bg-[#191414] w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
+      {systemTheme === "light" ? (
+        <Image src={"/logo1.svg"} width={300} height={70} alt="Logo" />
+      ) : (
+        <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
+      )}
 
-      <Image
-        src={"/logo.svg"}
-        width={300}
-        height={70}
-        alt="Logo"
-        className=""
-      />
       <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what has been your music pallete in last
         couple of months? You have come to the right place!
