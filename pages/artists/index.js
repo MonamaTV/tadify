@@ -17,8 +17,10 @@ import DynamicImage from "../../src/components/Image";
 import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const Artists = (props) => {
+  const { theme, setTheme } = useTheme();
   const [artists, setArtists] = useState(props.artists ?? []);
 
   const [view, setView] = useState(false);
@@ -118,18 +120,21 @@ const Artists = (props) => {
         {isComponentVisible && (
           <div
             ref={ref}
-            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs bg-[#191414] rounded-lg shadow-xl text-gray-100 px-4 py-4 gap-y-1 w-40"
+            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs dark:bg-[#191414] bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
           >
             <button
               onClick={() => setView(true)}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs"
+              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
             >
               View
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Create playlist
+            <button
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+            >
+              Toggle mode
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
+            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs">
               Twitter
             </button>
           </div>

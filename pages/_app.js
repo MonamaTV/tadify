@@ -1,3 +1,4 @@
+import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import Layout from "./layout";
 
@@ -12,9 +13,11 @@ function MyApp({ Component, pageProps, ...appProps }) {
   }
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }
 

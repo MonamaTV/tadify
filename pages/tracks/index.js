@@ -5,11 +5,7 @@ import Track from "../../src/components/Track";
 import * as cookie from "cookie";
 import Filter from "../../src/components/Filter";
 import useVisibility from "../../src/hooks/useVisibility";
-import {
-  axioAPIClient,
-  axiosClient,
-  getUserAccessData,
-} from "../../src/utils/axios";
+import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import Modal from "../../src/components/Modal";
 import DownloadableTracksList from "../../src/downloads/tracks";
 import Meta from "../../src/components/Head";
@@ -17,8 +13,10 @@ import DynamicImage from "../../src/components/Image";
 import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const Tracks = (props) => {
+  const { theme, setTheme } = useTheme();
   //
   const downloadFavoriteTracks = (e) => {
     e.target.disabled = true;
@@ -118,18 +116,21 @@ const Tracks = (props) => {
         {isComponentVisible && (
           <div
             ref={ref}
-            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs bg-[#191414] rounded-lg shadow-xl text-gray-100 px-4 py-4 gap-y-1 w-40"
+            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs dark:bg-[#191414] bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
           >
             <button
               onClick={() => setView(true)}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs"
+              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
             >
               View
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
-              Facebook
+            <button
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+            >
+              Toggle mode
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1 rounded-[0.45rem] text-xs">
+            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs">
               Twitter
             </button>
           </div>
@@ -140,7 +141,7 @@ const Tracks = (props) => {
         <Filter handleFilter={fetchTopTracks} />
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">
-            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100 ">
+            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100">
               <tr>
                 <th></th>
                 <th></th>

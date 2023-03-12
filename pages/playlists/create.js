@@ -4,13 +4,12 @@ import Tap from "../../src/components/Tap";
 import { colors } from "../../src/utils/app";
 import Meta from "../../src/components/Head";
 import Link from "next/link";
-import Image from "next/image";
 export default function Create(props) {
   if (props.artists.length < 1 || !props.artists) {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] via-[#191414] to-[#191414] text-white p-10  flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative back:bg-gradient-to-b dark:from-[#1db954] dark:via-[#191414] dark:to-[#191414] dark:text-white text-gray-900 p-10 bg-white   flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data on Spotfy yet...{" "}
             <Link href="/playlists/suggest">

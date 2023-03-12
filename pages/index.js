@@ -14,9 +14,9 @@ const Home = () => {
         width={300}
         height={70}
         alt="Logo"
-        className="invert"
+        className=""
       />
-      <p className="dark:text-gray-100 text-gray-900 md:w-96 text-center px-2 text-sm">
+      <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
         Welcome... if you have wondered what has been your music pallete in last
         couple of months? You have come to the right place!
       </p>
