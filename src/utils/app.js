@@ -20,3 +20,12 @@ export const colors = [
   "from-rose-700",
   "from-fuchsia-700",
 ];
+
+export const userRoutes = [
+  "/tracks",
+  "/artists",
+  "/plays",
+  "/playlists",
+  "/playlists/create",
+  "/playlists/suggest",
+];

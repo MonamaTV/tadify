@@ -1,16 +1,9 @@
 import { ThemeProvider } from "next-themes";
+import { userRoutes } from "../src/utils/app";
 import "../styles/globals.css";
 import Layout from "./layout";
 
 function MyApp({ Component, pageProps, ...appProps }) {
-  const userRoutes = [
-    "/artists",
-    "/plays",
-    "/playlists",
-    "/tracks",
-    "/playlists/create",
-    "/playlists/suggest",
-  ];
   const {
     router: { pathname },
   } = appProps;

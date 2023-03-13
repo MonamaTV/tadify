@@ -7,14 +7,8 @@ const RedirectUser = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const userTheme = theme ?? systemTheme;
   return (
-    <div className=" dark:bg-[#191414] bg-white  w-screen  h-screen flex flex-col justify-center items-center">
+    <div className=" dark:bg-gradient-to-b from-[#191414] via-[#191414] to-[#191414]   w-screen  h-screen flex flex-col justify-center items-center ">
       <Meta />
-
-      {userTheme === "light" ? (
-        <Image src={"/logo1.svg"} width={300} height={70} alt="Logo" />
-      ) : (
-        <Image src={"/logo.svg"} width={300} height={70} alt="Logo" />
-      )}
       <button
         onClick={() => setTheme(userTheme === "light" ? "dark" : "light")}
         className="absolute top-10 right-10 bg-inherit border-none outline-none"
@@ -25,33 +19,55 @@ const RedirectUser = () => {
           <Image src={"/moon.png"} width={20} height={20} alt="user theme" />
         )}
       </button>
-      <h3 className="dark:text-white text-gray-900  text-2xl">Access</h3>
-      <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
-        In order to use this app, you agree that you are granting it access to
-        your Spotify profile. We use your profile data to display your favorite
-        artists and tracks as well as your recently played tracks. And we will
-        have the functionality or ability to create playlists on your
-        behalf/account, given you have granted the app access to your Spotify
-        account.
-      </p>
+      {userTheme === "light" ? (
+        <Image
+          src={"/logo1.svg"}
+          width={300}
+          height={70}
+          alt="Logo"
+          className="mb-"
+        />
+      ) : (
+        <Image
+          src={"/logo.svg"}
+          width={300}
+          height={70}
+          alt="Logo"
+          className="mb-"
+        />
+      )}
+
+      <div className="md:w-[500px] sm:dark:bg-[#2520206f] px-7 py-5">
+        <h3 className="dark:text-white text-gray-900 font-semibold ">ACCESS</h3>
+        <p className=" text-gray-400 text-xs">
+          In order to use this app, you agree that you are granting it access to
+          your Spotify profile. We use your Spotify profile data to display your
+          favorite artists and tracks as well as your recently played tracks.
+          And we will have the functionality or ability to create playlists on
+          your behalf/account, given you have granted the app access to your
+          Spotify account.
+        </p>
+      </div>
       <br />
-      <h3 className="dark:text-white text-gray-900 text-2xl">Privacy</h3>
-      <p className="dark:text-gray-100 text-gray-600 md:w-96 text-center px-2 text-sm">
-        This Tadify app does not save or process any of your Spotify data to any
-        server. You can revoke its access to your Spotify profile
-        <a
-          href="https://www.spotify.com/za-en/account/apps/"
-          rel="noreferrer"
-          target={"_blank"}
-          className="text-blue-500 font-bold"
-        >
-          here...
-        </a>
-      </p>
+      <div className="md:w-[500px] sm:dark:bg-[#2520206f] px-7 py-5">
+        <h3 className="dark:text-white text-gray-900 font-semibold">PRIVACY</h3>
+        <p className=" text-gray-400 text-xs">
+          This Tadify app does not save or process any of your Spotify data to
+          any server. You can revoke its access to your Spotify profile{" "}
+          <a
+            href="https://www.spotify.com/za-en/account/apps/"
+            rel="noreferrer"
+            target={"_blank"}
+            className="text-blue-500 underline "
+          >
+            here...
+          </a>
+        </p>
+      </div>
       <br />
       <a
         href={"/tracks"}
-        className="px-10 py-2 bg-[#1db954] text-white  my-4 no-underline "
+        className="px-10 py-2 bg-[#1db954] text-white text-sm  no-underline text-center"
       >
         Open the portal
       </a>
