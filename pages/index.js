@@ -64,7 +64,7 @@ const Home = () => {
             <h1 className="text-gray-900 font-semibold uppercase dark:text-gray-100">
               See your music taste
             </h1>
-            <p className="text-gray-400  text-xs">
+            <p className="text-gray-400 text-xs">
               Look back in time to see who has been your favorite artists, the
               tracks you have been listening to religiously.
             </p>
@@ -74,7 +74,7 @@ const Home = () => {
             <h1 className="text-gray-900 dark:text-gray-100 font-semibold uppercase">
               Create playlists
             </h1>
-            <p className="  text-gray-400  text-xs">
+            <p className="text-gray-400 text-xs">
               With the power of AI, you can create playlists that you can only
               imagine. Create the ultimate soundtracks for any occasion.
             </p>
@@ -84,7 +84,7 @@ const Home = () => {
             <h1 className="text-gray-900 font-semibold uppercase dark:text-gray-100">
               Music recommendation
             </h1>
-            <p className="text-gray-400  text-xs">
+            <p className="text-gray-400 text-xs">
               Discover your new favorite tracks with personalized music
               recommendations. Let us guide you to the perfect sound based on
               your unique music taste and preferences!

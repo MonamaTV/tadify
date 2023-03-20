@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const Filter = ({ handleFilter }) => {
-  const [tapButton, setTapButton] = useState(1);
+const Filter = ({ handleFilter, filterValue = 1 }) => {
+  const [tapButton, setTapButton] = useState(filterValue);
   const fetchTop = (value) => {
     setTapButton(value);
 

@@ -14,9 +14,12 @@ import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import TracksLoading from "../../src/components/TracksLoading";
 
 const Tracks = (props) => {
   const { theme, setTheme } = useTheme();
+
+  const [loading, setLoading] = useState(false);
   //
   const downloadFavoriteTracks = (e) => {
     e.target.disabled = true;
@@ -39,6 +42,7 @@ const Tracks = (props) => {
 
   const fetchTopTracks = async (range) => {
     setTimeRange(range);
+    setLoading(true);
     const ranges = ["short_term", "medium_term", "long_term"];
     //
     try {
@@ -53,6 +57,7 @@ const Tracks = (props) => {
     } catch (error) {
       setTracks([]);
     }
+    setLoading(false);
   };
 
   const extractTopTrack = () => {
@@ -91,7 +96,7 @@ const Tracks = (props) => {
     );
   }
 
-  return (
+  return !loading ? (
     <>
       <Meta />
       <div
@@ -141,7 +146,7 @@ const Tracks = (props) => {
         {/* Menu for mobile */}
       </div>
       <div className="py-1 px-5 md:px-10 dark:bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] pb-12">
-        <Filter handleFilter={fetchTopTracks} />
+        <Filter handleFilter={fetchTopTracks} filterValue={timeRange} />
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">
             <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 text-gray-800 dark:text-gray-100">
@@ -174,6 +179,8 @@ const Tracks = (props) => {
         </Modal>
       )}
     </>
+  ) : (
+    <TracksLoading />
   );
 };
 export async function getServerSideProps(context) {
