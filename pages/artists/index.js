@@ -14,10 +14,13 @@ import html2canvas from "html2canvas";
 import { colors } from "../../src/utils/app";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import ArtistsLoading from "../../src/components/ArtistsLoading";
 
 const Artists = (props) => {
   const { theme, setTheme } = useTheme();
   const [artists, setArtists] = useState(props.artists ?? []);
+
+  const [loading, setLoading] = useState(false);
 
   const [view, setView] = useState(false);
   const [timeRange, setTimeRange] = useState(1);
@@ -39,6 +42,7 @@ const Artists = (props) => {
 
   const fetchTopArtists = async (range) => {
     setTimeRange(range);
+    setLoading(true);
     const ranges = ["short_term", "medium_term", "long_term"];
     try {
       const response = await axios.get("/api/artists", {
@@ -53,6 +57,7 @@ const Artists = (props) => {
     } catch (error) {
       setArtists([]);
     }
+    setLoading(false);
   };
 
   const favArtist = () => {
@@ -72,12 +77,16 @@ const Artists = (props) => {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useVisibility(false);
 
+  if (loading) {
+    return <ArtistsLoading />;
+  }
+
   if (artists.length < 1 || !artists) {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
-          <h3 className="font-bold text-2xl">
+        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col ">
+          <h3 className="font-semibold text-3xl text-gray-900 dark:text-gray-100">
             It seems like you do not have any data{" "}
             {
               ["for the last 4 weeks", "for the last 6 months", "Of all time"][
@@ -141,7 +150,7 @@ const Artists = (props) => {
       </div>
       <div className="py-1 px-5 md:px-10 pb-12  bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] to-[#191414] ">
         {/* Filtering */}
-        <Filter handleFilter={fetchTopArtists} />
+        <Filter handleFilter={fetchTopArtists} filterValue={timeRange} />
         {/* From 2 to 20 */}
         <div>
           <table className="my-2 mt-8 w-full md:w-3/4 border-separate border-spacing-y-2">

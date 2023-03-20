@@ -10,6 +10,7 @@ import DynamicImage from "../../src/components/Image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import TracksLoading from "../../src/components/TracksLoading";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
@@ -27,6 +28,10 @@ const Plays = (props) => {
       uri,
     };
   };
+
+  if (!props) {
+    return <TracksLoading />;
+  }
 
   if (tracks.length < 0 || !tracks) {
     return (
