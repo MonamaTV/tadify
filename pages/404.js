@@ -3,7 +3,7 @@ import Meta from "../src/components/Head";
 
 export default function Custom404() {
   return (
-    <div className=" dark:bg-[#191414] bg-white  w-screen  h-screen flex flex-col justify-center items-center">
+    <div className=" dark:bg-background bg-white  w-screen  h-screen flex flex-col justify-center items-center">
       <Meta />
       <h1 className="text-4xl font-bold">NOT FOUND!</h1>
       <h2>Nkare o lahlegile...</h2>

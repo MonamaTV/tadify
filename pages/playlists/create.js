@@ -9,7 +9,7 @@ export default function Create(props) {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative back:bg-gradient-to-b dark:from-primary dark:via-[#191414] dark:to-[#191414] dark:text-white text-gray-900 p-10 bg-white   flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative back:bg-gradient-to-b dark:from-primary dark:via-background dark:to-background dark:text-white text-gray-900 p-10 bg-white   flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data on Spotfy yet...{" "}
             <Link href="/playlists/suggest">
@@ -27,7 +27,7 @@ export default function Create(props) {
     <>
       <Meta />
       <div
-        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-white dark:bg-gradient-to-b gradient via-white dark:via-[#191414] ${props.color} dark:to-[#191414] flex flex-col justify-center md:items-center dark:text-white pt-16 px-7`}
+        className={`absolute top-0 left-0 w-screen md:border-l border-[#191919] min-h-screen bg-white dark:bg-gradient-to-b gradient via-white dark:via-background ${props.color} dark:to-background flex flex-col justify-center md:items-center dark:text-white pt-16 px-7`}
       >
         <h1 className="text-4xl font-bold text-left">Create new playlist</h1>
         <Tap artists={props.artists} />

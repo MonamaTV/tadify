@@ -8,7 +8,7 @@ const Nav = () => {
   const { theme, _ } = useTheme();
   return (
     <>
-      <div className="hidden md:block h-screen w-1/6 fixed dark:bg-[#191414] px-10 pt-20 transition-colors ease-in-out duration-400">
+      <div className="hidden md:block h-screen w-1/6 fixed dark:bg-background px-10 pt-20 transition-colors ease-in-out duration-400">
         {theme === "light" ? (
           <Image src={"/logodark.svg"} width={80} height={90} alt="Logo" />
         ) : (
@@ -81,7 +81,7 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      <div className="md:hidden fixed bottom-0 bg-white bg-gradient-to-b dark:from-[#191414] dark:to-[#191414fa] w-screen z-20 h-14 opacity-95 transition-colors ease-in-out duration-400">
+      <div className="md:hidden fixed bottom-0 bg-white bg-gradient-to-b dark:from-background dark:to-[#191414fa] w-screen z-20 h-14 opacity-95 transition-colors ease-in-out duration-400">
         <ul className="py-2 list-none flex flex-row text-gray-900 dark:text-white text-xs w-full justify-evenly items-start">
           <li>
             <Link href={"/tracks"}>

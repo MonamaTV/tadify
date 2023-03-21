@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Modal = ({ children, downloadStats, closeModal }) => {
   return (
-    <div className="w-screen h-screen fixed top-0 left-0 dark:bg-[#191414] bg-white flex flex-col-reverse justify-center py-10 gap-10 md:flex-row z-40 overflow-auto pb-24">
+    <div className="w-screen h-screen fixed top-0 left-0 dark:bg-background bg-white flex flex-col-reverse justify-center py-10 gap-10 md:flex-row z-40 overflow-auto pb-24">
       {children}
       <div className="text-gray-900 dark:text-white flex  flex-col px-10 md:p-10 ">
         <button

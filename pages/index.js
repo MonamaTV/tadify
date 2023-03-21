@@ -9,7 +9,7 @@ const Home = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const userTheme = theme ?? systemTheme;
   return (
-    <div className="relative dark:bg-gradient-to-b from-[#191414] via-[#191414] to-[#191414] bg-white min-h-screen flex flex-col transition-colors ease-in-out duration-700">
+    <div className="relative dark:bg-gradient-to-b from-background via-background to-background bg-white min-h-screen flex flex-col transition-colors ease-in-out duration-700">
       <Meta />
       <header className="flex flex-row items-center justify-between  container mx-auto py-2 px-3 md:px-20">
         {userTheme === "light" ? (

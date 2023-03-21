@@ -13,7 +13,7 @@ const Filter = ({ handleFilter, filterValue = 1 }) => {
       <button
         onClick={() => fetchTop(1)}
         className={`px-3 md:px-5 py-1 ${
-          tapButton === 1 ? "bg-primary text-white" : "dark:bg-[#191414]"
+          tapButton === 1 ? "bg-primary text-white" : "dark:bg-background"
         } mx-1  dark:text-gray-100 text-xs md:text-sm `}
       >
         Last 4 weeks
@@ -21,7 +21,7 @@ const Filter = ({ handleFilter, filterValue = 1 }) => {
       <button
         onClick={() => fetchTop(2)}
         className={`px-3 md:px-5 py-1 ${
-          tapButton === 2 ? "bg-primary text-white" : "dark:bg-[#191414]"
+          tapButton === 2 ? "bg-primary text-white" : "dark:bg-background"
         } mx-1  dark:text-gray-100 text-xs md:text-sm `}
       >
         Last 6 months
@@ -29,7 +29,7 @@ const Filter = ({ handleFilter, filterValue = 1 }) => {
       <button
         onClick={() => fetchTop(3)}
         className={`px-3 md:px-5 py-1 ${
-          tapButton === 3 ? "bg-primary text-white" : "dark:bg-[#191414]"
+          tapButton === 3 ? "bg-primary text-white" : "dark:bg-background"
         } mx-1  dark:text-gray-100 text-xs md:text-sm `}
       >
         All time

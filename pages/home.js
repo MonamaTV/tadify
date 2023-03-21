@@ -7,7 +7,7 @@ const RedirectUser = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const userTheme = theme ?? systemTheme;
   return (
-    <div className=" dark:bg-gradient-to-b from-[#191414] via-[#191414] to-[#191414]   w-screen  h-screen flex flex-col justify-center items-center ">
+    <div className=" dark:bg-gradient-to-b from-background via-background to-background   w-screen  h-screen flex flex-col justify-center items-center ">
       <Meta />
       <button
         onClick={() => setTheme(userTheme === "light" ? "dark" : "light")}

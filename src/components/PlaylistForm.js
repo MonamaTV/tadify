@@ -9,7 +9,7 @@ const PlaylistForm = ({ handleChange, handleContinue }) => {
           type="text"
           name="name"
           onChange={handleChange}
-          className="shadow-md px-3 dark:text-white text-gray-900 font-normal outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-[#191414] w-full"
+          className="shadow-md px-3 dark:text-white text-gray-900 font-normal outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-background w-full"
           placeholder="E.g Private School Amapiano"
         />
       </div>
@@ -21,7 +21,7 @@ const PlaylistForm = ({ handleChange, handleContinue }) => {
           type="text"
           name="length"
           onChange={handleChange}
-          className="shadow-md px-3 dark:text-white text-gray-900 font-normal w-full outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-[#191414]"
+          className="shadow-md px-3 dark:text-white text-gray-900 font-normal w-full outline-none py-3 border  border-gray-900 dark:border-white text-xs dark:bg-background"
           placeholder="1-100"
         />
       </div>

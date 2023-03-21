@@ -8,7 +8,7 @@ const InputPlaylist = ({ value, handleChange, handleContinue }) => {
         type="text"
         value={value}
         onChange={handleChange}
-        className="shadow-md px-3 dark:text-white font-normal outline-none py-3 border border-gray-900 dark:border-white text-xs dark:bg-[#191414] w-full"
+        className="shadow-md px-3 dark:text-white font-normal outline-none py-3 border border-gray-900 dark:border-white text-xs dark:bg-background w-full"
         placeholder="E.g Private School Amapiano"
       />
       <button

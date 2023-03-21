@@ -15,7 +15,7 @@ const Playlists = ({ playlists, color }) => {
     <>
       <Meta />
       <div
-        className={`flex  w-full relative bg-gradient-to-b ${color} dark:to-[#191414] text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row h-[240px] md:h-[250px]`}
+        className={`flex  w-full relative bg-gradient-to-b ${color} dark:to-background text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row h-[240px] md:h-[250px]`}
       >
         <button
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
@@ -45,7 +45,7 @@ const Playlists = ({ playlists, color }) => {
           </div>
         </div>
       </div>
-      <div className="py-1 px-5 md:px-10 bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] pb-12 min-h-screen">
+      <div className="py-1 px-5 md:px-10 bg-gradient-to-b dark:from-background dark:to-background pb-12 min-h-screen">
         <div>
           {playlists.length > 0 && (
             <table className="my-2 w-full md:w-2/4 border-separate border-spacing-y-3 border-spacing-x-0">

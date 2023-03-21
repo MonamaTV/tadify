@@ -85,7 +85,7 @@ const Artists = (props) => {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col bg-white">
+        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-background to-background text-white p-10  flex-col bg-white">
           <h3 className="text-2xl text-gray-900 dark:text-gray-100 text-center">
             It seems like you do not have any data{" "}
             {
@@ -94,7 +94,7 @@ const Artists = (props) => {
               ]
             }
           </h3>
-          <div className="py-1 px-5 md:px-10 pb-12  dark:bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] to-[#191414] text-black">
+          <div className="py-1 px-5 md:px-10 pb-12  dark:bg-gradient-to-b dark:from-background dark:to-background to-background text-black">
             <Filter handleFilter={fetchTopArtists} filterValue={0} />
           </div>
         </div>
@@ -106,7 +106,7 @@ const Artists = (props) => {
     <>
       <Meta />
       <div
-        className={`flex w-full bg-gradient-to-b ${props.color} dark:to-[#191414] text-gray-900 dark:text-white   md:p-10 md:pt-12 flex-col sm:flex-row relative transition-colors ease-in-out duration-200`}
+        className={`flex w-full bg-gradient-to-b ${props.color} dark:to-background text-gray-900 dark:text-white   md:p-10 md:pt-12 flex-col sm:flex-row relative transition-colors ease-in-out duration-200`}
       >
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
@@ -127,7 +127,7 @@ const Artists = (props) => {
         {isComponentVisible && (
           <div
             ref={ref}
-            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs dark:bg-[#191414] bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
+            className="absolute top-2 right-10 md:flex flex-col items-baseline text-xs dark:bg-background bg-white  shadow-xl dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40"
           >
             <button
               onClick={() => setView(true)}
@@ -150,7 +150,7 @@ const Artists = (props) => {
           </div>
         )}
       </div>
-      <div className="py-1 px-5 md:px-10 pb-12  bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] to-[#191414] ">
+      <div className="py-1 px-5 md:px-10 pb-12  bg-gradient-to-b dark:from-background dark:to-background to-background ">
         {/* Filtering */}
         <Filter handleFilter={fetchTopArtists} filterValue={timeRange} />
         {/* From 2 to 20 */}
