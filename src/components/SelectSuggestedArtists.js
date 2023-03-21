@@ -12,7 +12,7 @@ const SelectSuggestedArtists = ({
       <p className="text-sm my-1">
         {"Remove artists you do not want by clicking them..."}
       </p>
-      <div className="space-x-2 px-1 md:w-2/5 flex flex-row flex-wrap justify-center items-center">
+      <div className="gap-x-2 px-1 md:w-2/5 flex flex-row flex-wrap  md:justify-center md:items-center">
         {options.map((opt) => (
           <Button
             handleAdd={handleAdd}
