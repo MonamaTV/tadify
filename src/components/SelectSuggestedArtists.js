@@ -26,13 +26,11 @@ const SelectSuggestedArtists = ({
 
         <div className="space-x-2  flex flex-row w-full justify-center pb-16">
           <Link href={"/playlists"}>
-            <a className="py-2 px-5 text-xs border text-red-600  border-[red] my-4">
-              Cancel
-            </a>
+            <a className="py-2 px-5 text-xs text-red-600 my-4">Cancel</a>
           </Link>
           <button
             onClick={handleContinue}
-            className="py-2 px-5 text-xs  bg-[#1db954] my-4"
+            className="py-2 px-5 text-xs  bg-[#f43b3b] my-4 text-white"
           >
             Continue
           </button>

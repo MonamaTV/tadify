@@ -129,7 +129,7 @@ const Artists = (props) => {
           >
             <button
               onClick={() => setView(true)}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+              className=" hover:bg-primary w-full hover:text-white py-1  text-xs"
             >
               View
             </button>
@@ -138,11 +138,11 @@ const Artists = (props) => {
                 setTheme(theme === "light" ? "dark" : "light");
                 setIsComponentVisible(false);
               }}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+              className="hover:bg-primary w-full hover:text-white py-1  text-xs"
             >
               Toggle mode
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs">
+            <button className="hover:bg-primary w-full hover:text-white py-1  text-xs">
               Twitter
             </button>
           </div>

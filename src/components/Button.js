@@ -12,7 +12,9 @@ const Button = ({ id, name, url, handleAdd, artist, initial = false }) => {
         setClicked(!clicked);
       }}
       className={` my-1  text-xs  border ${
-        clicked ? "bg-[#FF5665] border-[#FF5665]" : "border border-[#564a4b]"
+        clicked
+          ? "bg-[#00A265] border-[#00A265] text-white"
+          : "border border-[#564a4b]"
       }  flex flex-row items-center justify-between space-x-1`}
     >
       <Image

@@ -10,9 +10,9 @@ const Nav = () => {
     <>
       <div className="hidden md:block h-screen w-1/6 fixed dark:bg-[#191414] px-10 pt-20 transition-colors ease-in-out duration-400">
         {theme === "light" ? (
-          <Image src={"/logo1.svg"} width={80} height={90} alt="Logo" />
+          <Image src={"/logodark.svg"} width={80} height={90} alt="Logo" />
         ) : (
-          <Image src={"/logo.svg"} width={80} height={90} alt="Logo" />
+          <Image src={"/logolight.svg"} width={80} height={90} alt="Logo" />
         )}
         <ul className="my-4 list-none text-gray-900 dark:text-white text-sm space-y-5">
           <li>
@@ -21,13 +21,13 @@ const Nav = () => {
                 <Image
                   src={
                     router.pathname === "/tracks"
-                      ? "/gartists.png"
+                      ? "/rartists.png"
                       : "/artists.png"
                   }
                   width={20}
                   height={20}
                   alt="Tracks"
-                />{" "}
+                />
                 Fav tracks
               </a>
             </Link>
@@ -38,13 +38,13 @@ const Nav = () => {
                 <Image
                   src={
                     router.pathname === "/artists"
-                      ? "/gfavorite.png"
+                      ? "/rfavorite.png"
                       : "/favorite.png"
                   }
                   width={20}
                   height={20}
                   alt="Artists"
-                />{" "}
+                />
                 Fav artists
               </a>
             </Link>
@@ -54,12 +54,12 @@ const Nav = () => {
               <a className="flex items-center gap-3">
                 <Image
                   src={
-                    router.pathname === "/playlists" ? "/gadd.png" : "/add.png"
+                    router.pathname === "/playlists" ? "/radd.png" : "/add.png"
                   }
                   width={20}
                   height={20}
                   alt="Artists"
-                />{" "}
+                />
                 Playlists
               </a>
             </Link>
@@ -69,12 +69,12 @@ const Nav = () => {
               <a className="flex items-center gap-3">
                 <Image
                   src={
-                    router.pathname === "/plays" ? "/gplay.png" : "/play.png"
+                    router.pathname === "/plays" ? "/rplay.png" : "/play.png"
                   }
                   width={20}
                   height={20}
                   alt="Plays"
-                />{" "}
+                />
                 Recent plays
               </a>
             </Link>
@@ -89,13 +89,13 @@ const Nav = () => {
                 <Image
                   src={
                     router.pathname === "/tracks"
-                      ? "/gartists.png"
+                      ? "/rartists.png"
                       : "/artists.png"
                   }
                   width={20}
                   height={20}
                   alt="Tracks"
-                />{" "}
+                />
                 Fav tracks
               </a>
             </Link>
@@ -106,13 +106,13 @@ const Nav = () => {
                 <Image
                   src={
                     router.pathname === "/artists"
-                      ? "/gfavorite.png"
+                      ? "/rfavorite.png"
                       : "/favorite.png"
                   }
                   width={20}
                   alt="Artists"
                   height={20}
-                />{" "}
+                />
                 Fav artists
               </a>
             </Link>
@@ -122,12 +122,12 @@ const Nav = () => {
               <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
-                    router.pathname === "/playlists" ? "/gadd.png" : "/add.png"
+                    router.pathname === "/playlists" ? "/radd.png" : "/add.png"
                   }
                   width={20}
                   alt="Artists"
                   height={20}
-                />{" "}
+                />
                 Playlists
               </a>
             </Link>
@@ -137,12 +137,12 @@ const Nav = () => {
               <a className="flex items-center gap-2 flex-col text-xs w-20">
                 <Image
                   src={
-                    router.pathname === "/plays" ? "/gplay.png" : "/play.png"
+                    router.pathname === "/plays" ? "/rplay.png" : "/play.png"
                   }
                   width={20}
                   height={20}
                   alt="Plays"
-                />{" "}
+                />
                 Recent plays
               </a>
             </Link>

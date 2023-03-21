@@ -30,7 +30,7 @@ const Playlists = ({ playlists, color }) => {
           </h2>
           <div className="my-3 flex">
             <Link href={"/playlists/create"}>
-              <a className="bg-[#1db954] py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black text-white mx-1 px-2">
+              <a className="bg-[#f43b3b] py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black text-white mx-1 px-2">
                 From my fav artists
               </a>
             </Link>
@@ -44,48 +44,52 @@ const Playlists = ({ playlists, color }) => {
       </div>
       <div className="py-1 px-5 md:px-10 bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] pb-12 min-h-screen">
         <div>
-          <table className="my-2 w-full md:w-2/4 border-separate border-spacing-y-3 border-spacing-x-0">
-            <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 dark:text-gray-100 text-gray-900">
-              <tr>
-                <th></th>
-                <th className="md:w-2/6 md:px-4 px-2"></th>
-                <th>Name</th>
-                <th>Created by</th>
-              </tr>
-            </thead>
-            <tbody className="w-full">
-              {playlists.map((play, index) => (
-                <tr
-                  className=" dark:text-gray-100 text-gray-900 font-medium  w-full"
-                  key={play?.id}
-                >
-                  <td className="w-10 text-center">{++index}</td>
-                  <td className="flex justify-center items-center h-full">
-                    <Image
-                      src={play?.images[0].url}
-                      width={60}
-                      height={60}
-                      className={`shadow-xl items-center justify-center duration-700 ease-in-out ${
-                        false ? "grayscale blur-2xl scale-110" : ""
-                      }`}
-                      alt="Cover art"
-                    />
-                  </td>
-                  <td className="text-xs md:text-sm md:w-2/6 md:px-0 px-2">
-                    <span className="block">
-                      <Link href={play?.uri}>{play?.name}</Link>
-                    </span>
-                    <small className="md:hidden text-center">
-                      Created by {play?.owner?.display_name}
-                    </small>
-                  </td>
-                  <td className="hidden md:table-cell md:text-sm">
-                    {play?.owner?.display_name}
-                  </td>
+          {playlists.length > 0 && (
+            <table className="my-2 w-full md:w-2/4 border-separate border-spacing-y-3 border-spacing-x-0">
+              <thead className="hidden md:table-header-group  w-full text-left px-5 h-14 dark:text-gray-100 text-gray-900">
+                <tr>
+                  <th></th>
+                  <th className="md:w-2/6 md:px-4 px-2"></th>
+                  <th>Name</th>
+                  <th>Created by</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="w-full">
+                {playlists.map((play, index) => (
+                  <tr
+                    className=" dark:text-gray-100 text-gray-900 font-medium  w-full"
+                    key={play?.id}
+                  >
+                    <td className="w-10 text-center">{++index}</td>
+                    <td className="flex justify-center items-center h-full">
+                      <Link href={play?.uri}>
+                        <Image
+                          src={play?.images[0].url}
+                          width={60}
+                          height={60}
+                          className={`shadow-xl cursor-pointer items-center justify-center duration-700 ease-in-out ${
+                            false ? "grayscale blur-2xl scale-110" : ""
+                          }`}
+                          alt="Cover art"
+                        />
+                      </Link>
+                    </td>
+                    <td className="text-xs md:text-sm md:w-2/6 md:px-0 px-2">
+                      <span className="block">
+                        <Link href={play?.uri}>{play?.name}</Link>
+                      </span>
+                      <small className="md:hidden text-center">
+                        Created by {play?.owner?.display_name}
+                      </small>
+                    </td>
+                    <td className="hidden md:table-cell md:text-sm">
+                      {play?.owner?.display_name}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>

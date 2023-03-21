@@ -29,7 +29,9 @@ const Track = ({ track, pos }) => {
         </span>
         <small className="md:hidden text-center">{displayArtists}</small>
       </td>
-      <td className="hidden md:table-cell md:text-sm">{displayArtists}</td>
+      <td className="hidden md:table-cell md:text-sm">
+        <Link href={uri}>{displayArtists}</Link>
+      </td>
     </tr>
   );
 };

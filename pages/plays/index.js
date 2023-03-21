@@ -37,7 +37,7 @@ const Plays = (props) => {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-primary to-[#191414] text-white p-10  flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data yet...{" "}
           </h3>
@@ -55,7 +55,7 @@ const Plays = (props) => {
     <div>
       <Meta />
 
-      <div className="flex w-full relative bg-gradient-to-b from-[#1db954] dark:to-[#191414] text-gray-900 dark:text-white md:p-10  flex-col md:flex-row sm:flex-row">
+      <div className="flex w-full relative bg-gradient-to-b from-primary dark:to-[#191414] text-gray-900 dark:text-white md:p-10  flex-col md:flex-row sm:flex-row">
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
@@ -63,7 +63,9 @@ const Plays = (props) => {
             <Link href={extractTopTrack().uri}>{extractTopTrack().name}</Link>
           </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
-            {extractTopTrack().displayArtists}
+            <Link href={extractTopTrack().uri}>
+              {extractTopTrack().displayArtists}
+            </Link>
           </h4>
         </div>
         <button

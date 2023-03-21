@@ -13,9 +13,19 @@ const Home = () => {
       <Meta />
       <header className="flex flex-row items-center justify-between  container mx-auto py-2 px-3 md:px-20">
         {userTheme === "light" ? (
-          <Image src={"/logo1.svg"} width={80} height={70} alt="Logo" />
+          <Image
+            src={"/logodark.svg"}
+            width={80}
+            height={70}
+            alt="Logo in dark mode"
+          />
         ) : (
-          <Image src={"/logo.svg"} width={80} height={70} alt="Logo" />
+          <Image
+            src={"/logolight.svg"}
+            width={80}
+            height={70}
+            alt="Logo in light mode"
+          />
         )}
         <nav className="flex items-center gap-x-5">
           <Link href="/api/login">

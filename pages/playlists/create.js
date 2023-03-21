@@ -9,7 +9,7 @@ export default function Create(props) {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative back:bg-gradient-to-b dark:from-[#1db954] dark:via-[#191414] dark:to-[#191414] dark:text-white text-gray-900 p-10 bg-white   flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative back:bg-gradient-to-b dark:from-primary dark:via-[#191414] dark:to-[#191414] dark:text-white text-gray-900 p-10 bg-white   flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data on Spotfy yet...{" "}
             <Link href="/playlists/suggest">

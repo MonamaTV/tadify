@@ -14,7 +14,7 @@ const PromptInput = ({ value, handleChange, handleContinue }) => {
       ></textarea>
       <button
         onClick={handleContinue}
-        className="py-3 px-5 text-xs w-full md:w-96 bg-[#1db954] my-4 "
+        className="py-3 px-5 text-xs w-full md:w-96 bg-[#f43b3b] my-4 text-white "
       >
         Continue
       </button>

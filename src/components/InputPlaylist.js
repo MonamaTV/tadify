@@ -13,7 +13,7 @@ const InputPlaylist = ({ value, handleChange, handleContinue }) => {
       />
       <button
         onClick={handleContinue}
-        className="py-3 px-5 text-xs  bg-[#1db954] my-4"
+        className="py-3 px-5 text-xs  bg-[#f43b3b] my-4 text-white"
       >
         Continue
       </button>

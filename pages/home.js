@@ -21,7 +21,7 @@ const RedirectUser = () => {
       </button>
       {userTheme === "light" ? (
         <Image
-          src={"/logo1.svg"}
+          src={"/logodark.svg"}
           width={300}
           height={70}
           alt="Logo"
@@ -29,7 +29,7 @@ const RedirectUser = () => {
         />
       ) : (
         <Image
-          src={"/logo.svg"}
+          src={"/logolight.svg"}
           width={300}
           height={70}
           alt="Logo"
@@ -67,7 +67,7 @@ const RedirectUser = () => {
       <br />
       <a
         href={"/tracks"}
-        className="px-10 py-2 bg-[#1db954] text-white text-sm  no-underline text-center"
+        className="px-10 py-2 bg-[#f43b3b] text-white text-sm  no-underline text-center"
       >
         Open the portal
       </a>

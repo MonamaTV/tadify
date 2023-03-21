@@ -81,7 +81,7 @@ const Tracks = (props) => {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative bg-gradient-to-b from-[#1db954] to-[#191414] text-white p-10  flex-col ">
+        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col ">
           <h3 className="font-bold text-2xl">
             It seems like you do not have any data{" "}
             {
@@ -109,7 +109,9 @@ const Tracks = (props) => {
             <Link href={extractTopTrack().uri}>{extractTopTrack().name}</Link>
           </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
-            {extractTopTrack().displayArtists}
+            <Link href={extractTopTrack().uri}>
+              {extractTopTrack().displayArtists}
+            </Link>
           </h4>
         </div>
         <button
@@ -125,7 +127,7 @@ const Tracks = (props) => {
           >
             <button
               onClick={() => setView(true)}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+              className="hover:bg-primary w-full hover:text-white py-1  text-xs"
             >
               View
             </button>
@@ -134,11 +136,11 @@ const Tracks = (props) => {
                 setTheme(theme === "light" ? "dark" : "light");
                 setIsComponentVisible(false);
               }}
-              className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs"
+              className="hover:bg-primary w-full hover:text-white py-1  text-xs"
             >
               Toggle mode
             </button>
-            <button className=" hover:bg-[#1db954] w-full hover:text-white py-1  text-xs">
+            <button className="hover:bg-primary w-full hover:text-white py-1  text-xs">
               Twitter
             </button>
           </div>
