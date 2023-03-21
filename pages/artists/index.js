@@ -85,16 +85,18 @@ const Artists = (props) => {
     return (
       <>
         <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col ">
-          <h3 className="font-semibold text-3xl text-gray-900 dark:text-gray-100">
+        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col bg-white">
+          <h3 className="text-2xl text-gray-900 dark:text-gray-100 text-center">
             It seems like you do not have any data{" "}
             {
-              ["for the last 4 weeks", "for the last 6 months", "Of all time"][
-                --timeRange
+              ["for the last 4 weeks", "for the last 6 months", "of all time"][
+                timeRange - 1
               ]
             }
           </h3>
-          <Filter handleFilter={fetchTopArtists} />
+          <div className="py-1 px-5 md:px-10 pb-12  dark:bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] to-[#191414] text-black">
+            <Filter handleFilter={fetchTopArtists} filterValue={0} />
+          </div>
         </div>
       </>
     );

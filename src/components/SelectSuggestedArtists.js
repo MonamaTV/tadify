@@ -30,7 +30,7 @@ const SelectSuggestedArtists = ({
           </Link>
           <button
             onClick={handleContinue}
-            className="py-2 px-5 text-xs  bg-[#f43b3b] my-4 text-white"
+            className="py-2 px-5 text-xs  bg-primary my-4 text-white"
           >
             Continue
           </button>

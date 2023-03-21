@@ -67,7 +67,7 @@ const RedirectUser = () => {
       <br />
       <a
         href={"/tracks"}
-        className="px-10 py-2 bg-[#f43b3b] text-white text-sm  no-underline text-center"
+        className="px-10 py-2 bg-primary text-white text-sm  no-underline text-center"
       >
         Open the portal
       </a>

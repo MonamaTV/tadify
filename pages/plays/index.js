@@ -14,7 +14,32 @@ import TracksLoading from "../../src/components/TracksLoading";
 
 const Plays = (props) => {
   const tracks = props.tracks?.map((track) => track.track) ?? [];
+
   const { theme, setTheme } = useTheme();
+
+  if (!props) {
+    return <TracksLoading />;
+  }
+
+  if (tracks.length < 1 || !tracks) {
+    return (
+      <>
+        <Meta />
+        <div className="flex w-full justify-center items-center min-h-screen  relative dark:bg-gradient-to-b from-[#191414] to-[#191414] text-white p-10  flex-col bg-white">
+          <h3 className="text-2xl text-gray-900 dark:text-gray-100 text-center">
+            It seems like you do not have any recent plays
+          </h3>
+          <div className="py-1 px-5 md:px-10 pb-12  dark:bg-gradient-to-b dark:from-[#191414] dark:to-[#191414] to-[#191414] text-black">
+            <br />
+            <Link href="/tracks">
+              <a className="text-sm text-white bg-primary px-5 py-1">Go home</a>
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   const extractTopTrack = () => {
     const track = tracks[0];
     const { artists, name, uri, album } = track;
@@ -29,42 +54,19 @@ const Plays = (props) => {
     };
   };
 
-  if (!props) {
-    return <TracksLoading />;
-  }
-
-  if (tracks.length < 0 || !tracks) {
-    return (
-      <>
-        <Meta />
-        <div className="flex w-full justify-center items-center h-screen  relative dark:bg-gradient-to-b from-primary to-[#191414] text-white p-10  flex-col ">
-          <h3 className="font-bold text-2xl">
-            It seems like you do not have any data yet...{" "}
-          </h3>
-          <Link href="/tracks">
-            <a className="inline-block  border px-2 py-1 border-white">
-              Go back home
-            </a>
-          </Link>
-        </div>
-      </>
-    );
-  }
-
   return (
     <div>
       <Meta />
-
       <div className="flex w-full relative bg-gradient-to-b from-primary dark:to-[#191414] text-gray-900 dark:text-white md:p-10  flex-col md:flex-row sm:flex-row">
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
-            <Link href={extractTopTrack().uri}>{extractTopTrack().name}</Link>
+            <Link href={extractTopTrack()?.uri}>{extractTopTrack()?.name}</Link>
           </h2>
           <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
-            <Link href={extractTopTrack().uri}>
-              {extractTopTrack().displayArtists}
+            <Link href={extractTopTrack()?.uri}>
+              {extractTopTrack()?.displayArtists}
             </Link>
           </h4>
         </div>
