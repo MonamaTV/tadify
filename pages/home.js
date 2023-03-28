@@ -52,13 +52,13 @@ const RedirectUser = () => {
       <div className="md:w-[500px] sm:dark:bg-[#2520206f] px-7 py-5">
         <h3 className="dark:text-white text-gray-900 font-semibold">PRIVACY</h3>
         <p className=" text-gray-400 text-xs">
-          This Tadify app does not save or process any of your Spotify data to
+          This Tadify app does not process or save any of your Spotify data to
           any server. You can revoke its access to your Spotify profile{" "}
           <a
             href="https://www.spotify.com/za-en/account/apps/"
             rel="noreferrer"
             target={"_blank"}
-            className="text-blue-500 underline "
+            className="text-blue-500 underline"
           >
             here...
           </a>

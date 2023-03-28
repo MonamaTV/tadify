@@ -64,11 +64,11 @@ const Plays = (props) => {
           <h2 className="md:text-5xl font-bold text-2xl select-none">
             <Link href={extractTopTrack()?.uri}>{extractTopTrack()?.name}</Link>
           </h2>
-          <h4 className="my-2 sm:my-4 text-sm sm:text-base ">
+          <h3 className="my-2 sm:my-4 text-sm sm:text-base ">
             <Link href={extractTopTrack()?.uri}>
               {extractTopTrack()?.displayArtists}
             </Link>
-          </h4>
+          </h3>
         </div>
         <button
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
