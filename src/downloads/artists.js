@@ -9,7 +9,7 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
   return (
     <div
       {...props}
-      className="flex w-full md:w-[500px]  bg-gradient-to-b from-background to-background text-white p-10 flex-col h-[750px] justify-center relative min-h-[700px] border border-gray-500"
+      className="flex w-full md:w-[500px]  bg-gradient-to-b from-background to-background text-white p-10 flex-col h-[750px] justify-center relative min-h-[700px] "
     >
       <h2 className="font-bold text-2xl">My Spotify Top Artists</h2>
       <p className="text-sm">{timeRange}</p>
@@ -21,18 +21,18 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
             .slice(0, 3)
             .map((gen) => gen)
             .join(", ");
-          const photoUrl = images[0].url;
+          // const photoUrl = images[0].url;
           return (
             <div className="flex items-center gap-2 my-2" key={id}>
               <p className="w-5 pb-4">{++index}</p>
-              <Image
+              {/* <Image
                 src={photoUrl}
                 width={60}
                 height={60}
                 alt={name}
                 className="shadow-2xl shadow-black"
-              />
-              <h4 className="pl-3 text-sm font-normal w-64 pb-4">
+              /> */}
+              <h4 className="pl-3 text-3xl font-bold w-64 pb-4">
                 {name}
                 <span className="block text-xs font-light">
                   {displayGenres}

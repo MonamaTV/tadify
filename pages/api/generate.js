@@ -111,6 +111,7 @@ export default async function handler(req, res) {
         artists,
       });
     } catch (error) {
+      console.log(error.data);
       res.status(400).json({
         message: "Failed to generate artists list",
         success: false,

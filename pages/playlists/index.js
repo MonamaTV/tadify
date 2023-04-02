@@ -37,11 +37,15 @@ const Playlists = ({ playlists, color }) => {
                 From my fav artists
               </a>
             </Link>
-            <Link href={"/playlists/suggest"}>
-              <a className="border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
+            <button
+              disabled={true}
+              href={"/playlists/suggest"}
+              className="cursor-not-allowed"
+            >
+              <a className=" border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
                 AI-inspired playlist
               </a>
-            </Link>
+            </button>
           </div>
         </div>
       </div>
