@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Meta = ({ title = "Tadify", description = "" }) => {
+const Meta = () => {
   return (
     <Head>
       <link rel="shortcut icon" href="fav.svg" />
@@ -22,7 +22,7 @@ const Meta = ({ title = "Tadify", description = "" }) => {
         property="og:description"
         content="Get your Spotify top artists, tracks & manage playlists"
       />
-      <meta property="og:image" content="./public/logo.png" />
+      <meta property="og:image" content="logo.png" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="https://tadify.vercel.app" />
@@ -32,7 +32,7 @@ const Meta = ({ title = "Tadify", description = "" }) => {
         name="twitter:description"
         content="Get your Spotify top artists, tracks & manage playlists"
       />
-      <meta name="twitter:image" content="./public/logo.png" />
+      <meta name="twitter:image" content="logo.png" />
     </Head>
   );
 };
