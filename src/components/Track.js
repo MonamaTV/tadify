@@ -16,6 +16,7 @@ const Track = ({ track, pos }) => {
           src={cover}
           width={70}
           height={70}
+          priority
           className={`shadow-xl items-center justify-center duration-700 ease-in-out ${
             loadingImg ? "grayscale blur-2xl scale-110" : ""
           }`}
