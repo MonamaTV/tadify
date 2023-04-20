@@ -43,7 +43,7 @@ const Playlists = ({ playlists, color }) => {
               className="cursor-not-allowed"
             >
               <a className=" border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
-                AI-inspired playlist
+                AI playlist
               </a>
             </button>
           </div>
