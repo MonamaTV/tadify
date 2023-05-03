@@ -117,16 +117,19 @@ const Nav = () => {
           <div
             ref={ref}
             onClick={() => setIsComponentVisible(!isComponentVisible)}
-            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none hover:bg-background-light"
+            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none hover:bg-gray-100 hover:dark:bg-background-light"
           >
             {user ? (
               <>
-                <Image
-                  width={35}
-                  height={35}
-                  src={user.images[0].url}
-                  alt="Profile picture"
-                />
+                {user.images.length > 0 && (
+                  <Image
+                    width={35}
+                    height={35}
+                    src={user.images[0].url}
+                    className="rounded-full"
+                    alt="Profile picture"
+                  />
+                )}
                 <div className="flex flex-col mx-4 justify-start items-start">
                   <p className="text-sm ">{user.display_name}</p>
                   <small className="text-xs font-normal ">

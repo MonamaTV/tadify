@@ -7,8 +7,8 @@ const DynamicImage = ({ imgUrl }) => {
   return (
     <Image
       src={imgUrl}
-      width={"300"}
-      height={"300"}
+      width={"400"}
+      height={"400"}
       className={`fixed top-0 left-0 object-cover object-top shadow-2xl shadow-red-900 duration-700 ease-in-out ${
         loading ? "grayscale blur-2xl scale-110" : ""
       }`}
