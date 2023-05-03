@@ -120,7 +120,7 @@ const Tracks = (props) => {
           onClick={() => setIsComponentVisible(true)}
           className="absolute right-3 md:right-10 top-8 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
         >
-          <Image src={"/sharew.png"} width={20} height={20} alt="Share" />
+          <Image src={"/settings.png"} width={20} height={20} alt="Share" />
         </button>
         {isComponentVisible && (
           <div
@@ -149,7 +149,7 @@ const Tracks = (props) => {
         )}
         {/* Menu for mobile */}
       </div>
-      <div className="py-1 px-5 md:px-10 dark:bg-gradient-to-b dark:from-background dark:to-background pb-12">
+      <div className="py-1 px-5 md:px-10 dark:bg-gradient-to-b dark:from-background dark:to-background pb-12 relative">
         <Filter handleFilter={fetchTopTracks} filterValue={timeRange} />
         <div>
           <table className="my-2 w-full md:w-3/4 border-separate border-spacing-y-3 border-spacing-x-0">

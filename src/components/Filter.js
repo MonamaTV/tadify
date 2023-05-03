@@ -9,7 +9,7 @@ const Filter = ({ handleFilter, filterValue = 1 }) => {
   };
 
   return (
-    <div className="flex flex-row mt-10">
+    <div className="sticky left-0 top-0 flex flex-row mt-1 py-3 z-30 dark:bg-background bg-white">
       <button
         onClick={() => fetchTop(1)}
         className={`px-3 md:px-5 py-1 ${
