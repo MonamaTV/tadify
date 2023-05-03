@@ -2,10 +2,32 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useVisibility from "../hooks/useVisibility";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import * as cookie from "cookie";
 
 const Nav = () => {
   const router = useRouter();
-  const { theme, _ } = useTheme();
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useVisibility(false);
+  const { theme } = useTheme();
+
+  const [user, setUser] = useState(null);
+
+  const getUser = async () => {
+    try {
+      const { data } = await axios.get("/api/users");
+      setUser(data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <div className="hidden md:block h-screen w-1/6 fixed dark:bg-background px-10 pt-20 transition-colors ease-in-out duration-400">
@@ -80,6 +102,41 @@ const Nav = () => {
             </Link>
           </li>
         </ul>
+        <div>
+          {isComponentVisible && (
+            <div className="absolute bottom-14 md:flex flex-col items-baseline  text-xs dark:bg-background bg-white  border dark:border-background-light select-none dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40">
+              <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
+                Open Spotify
+              </button>
+
+              <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
+                Logout
+              </button>
+            </div>
+          )}
+          <div
+            ref={ref}
+            onClick={() => setIsComponentVisible(!isComponentVisible)}
+            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none hover:bg-background-light"
+          >
+            {user ? (
+              <>
+                <Image
+                  width={35}
+                  height={35}
+                  src={user.images[0].url}
+                  alt="Profile picture"
+                />
+                <div className="flex flex-col mx-4 justify-start items-start">
+                  <p className="text-sm ">{user.display_name}</p>
+                  <small className="text-xs font-normal ">
+                    {user.followers.total} followers
+                  </small>
+                </div>
+              </>
+            ) : null}
+          </div>
+        </div>
       </div>
       <div className="md:hidden fixed bottom-0 bg-white bg-gradient-to-b dark:from-background dark:to-[#191414fa] w-screen z-20 h-14 opacity-95 transition-colors ease-in-out duration-400">
         <ul className="py-2 list-none flex flex-row text-gray-900 dark:text-white text-xs w-full justify-evenly items-start">

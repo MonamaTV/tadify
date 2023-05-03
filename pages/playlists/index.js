@@ -33,18 +33,15 @@ const Playlists = ({ playlists, color }) => {
           </h2>
           <div className="my-3 flex">
             <Link href={"/playlists/create"}>
-              <a className="bg-primary py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black text-white mx-1 px-2">
+              <a className="bg-primary border border-primary py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black text-white mx-1 px-2">
                 From my fav artists
               </a>
             </Link>
             <button
               disabled={true}
-              href={"/playlists/suggest"}
-              className="cursor-not-allowed"
+              className="cursor-not-allowed  border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-20 text-xs shadow-2xl text-center shadow-black mx-1 px-2"
             >
-              <a className=" border border-gray-900 dark:border-gray-100 py-1.5 my-3 w-40 text-xs shadow-2xl text-center shadow-black mx-1 px-2">
-                AI playlist
-              </a>
+              AI playlist
             </button>
           </div>
         </div>
