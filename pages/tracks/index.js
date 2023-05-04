@@ -105,7 +105,7 @@ const Tracks = (props) => {
         className={`flex w-full relative bg-gradient-to-b ${props.color} dark:to-background text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row transition-colors ease-in-out duration-400`}
       >
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
-        <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10 ">
+        <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
             <Link href={extractTopTrack().uri}>{extractTopTrack().name}</Link>

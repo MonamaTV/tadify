@@ -88,7 +88,7 @@ const Playlists = ({ playlists, color }) => {
         </div>
       </div>
       {isOpen && playlistId ? (
-        <div className="bg-gray-100/80 dark:bg-gray-500/70 w-[100vw] h-[100vh] fixed top-0 left-0">
+        <div className="bg-gray-100/80 dark:bg-gray-500/70 w-[100vw] h-[100vh] fixed top-0 left-0 overflow-auto">
           <UpdatePlaylist playlistId={playlistId} closeUpdate={closeUpdate} />
         </div>
       ) : null}
