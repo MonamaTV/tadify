@@ -21,7 +21,7 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
 
   return (
     playlist && (
-      <div className="bg-gray-100/80 dark:bg-background w-[100vw] md:w-[25vw] h-[100vh] fixed top-0 right-0 shadow border-gray-300 border-l dark:border-gray-800 px-4 py-5 flex justify-center md:justify-start  flex-col overflow-scroll">
+      <div className="bg-white dark:bg-background w-[100vw] md:w-[25vw] md:fixed fixed top-0 md:right-0 md:left-auto left-0 shadow border-gray-300 border-l dark:border-gray-800 px-4 py-5 flex justify-center md:justify-start flex-col overflow-auto pb-44 z-30">
         <button
           onClick={closeUpdate}
           className="w-20 bg-red-700 text-white text-xs px-3 py-1 my-1"
