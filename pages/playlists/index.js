@@ -5,11 +5,26 @@ import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import Link from "next/link";
 import Meta from "../../src/components/Head";
 import { useTheme } from "next-themes";
-import { useState } from "react";
 import Playlist from "../../src/components/Playlist";
+import axios from "axios";
+import UpdatePlaylist from "../../src/components/UpdatePlaylist";
+import { useState } from "react";
 
 const Playlists = ({ playlists, color }) => {
   const { theme, setTheme } = useTheme();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [playlistId, setPlaylistId] = useState("");
+
+  const openUpdatePlaylist = (id) => {
+    setIsOpen(true);
+    setPlaylistId(id);
+  };
+
+  const closeUpdate = () => {
+    setIsOpen(false);
+    setPlaylistId("");
+  };
 
   return (
     <>
@@ -60,13 +75,23 @@ const Playlists = ({ playlists, color }) => {
               </thead>
               <tbody className="w-full">
                 {playlists.map((play, index) => (
-                  <Playlist play={play} key={play?.id} index={index} />
+                  <Playlist
+                    play={play}
+                    key={play?.id}
+                    index={index}
+                    handleClick={openUpdatePlaylist}
+                  />
                 ))}
               </tbody>
             </table>
           )}
         </div>
       </div>
+      {isOpen && playlistId ? (
+        <div className="bg-gray-100/80 dark:bg-gray-500/70 w-[100vw] h-[100vh] fixed top-0 left-0 ">
+          <UpdatePlaylist playlistId={playlistId} closeUpdate={closeUpdate} />
+        </div>
+      ) : null}
     </>
   );
 };

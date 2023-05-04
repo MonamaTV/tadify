@@ -20,7 +20,7 @@ const Modal = ({ children, downloadStats, closeModal }) => {
 
         <button
           onClick={downloadStats}
-          className="bg-primary px-10 py-2 rounded-3xl my-3 disabled:bg-[#858a87] disabled:cursor-not-allowed text-white"
+          className="bg-primary px-10 py-2  my-3 disabled:bg-[#858a87] disabled:cursor-not-allowed text-white"
         >
           Download
         </button>
