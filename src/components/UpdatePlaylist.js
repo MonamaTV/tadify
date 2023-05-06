@@ -10,15 +10,46 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
     try {
       const { data } = await axios.get(`/api/playlist/${playlistId}`);
       setPlaylist(data?.data);
-      setTracks(data?.data?.tracks?.items);
+      setTracks(data?.data.tracks.items);
     } catch (error) {
       setPlaylist([]);
     }
   };
 
-  const handleDragEnd = (node, trackId, trackPosition) => {
-    console.log(node);
+  const handleDragEnd = (node, trackId, newPosition) => {
+    if (newPosition === undefined || newPosition === null) return;
+    if (oldPosition === newPosition) return;
+
+    if (oldPosition === newPosition + 1) return;
+
+    const tracksCopy = [...tracks];
+
+    const copy = tracksCopy[oldPosition - 1];
+    tracksCopy.splice(--oldPosition, 1);
+    tracksCopy.splice(--newPosition, 0, copy);
+    newPosition = oldPosition = 0;
+    node.currentTarget.classList.remove("border-primary", "border-b-2", "pb-2");
+
+    setTracks(tracksCopy);
   };
+
+  console.log(tracks);
+
+  const handleDragOver = (node) => {
+    node.preventDefault();
+    node.currentTarget.classList.add(
+      "border-primary",
+      "border-b-2",
+      "pb-2",
+      "z-30"
+    );
+  };
+
+  const handleDragLeave = (node) => {
+    node.currentTarget.classList.remove("border-primary", "border-b-2", "pb-2");
+  };
+
+  let oldPosition = null;
 
   useEffect(() => {
     fetchPlaylistTracks();
@@ -33,29 +64,36 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
         >
           Close
         </button>
-        {/* {playlist.images[0]?.url && (
-          <Image
-            src={playlist.images[0]?.url}
-            width={"350"}
-            height={"350"}
-            alt="Playlist image"
-          />
-        )} */}
+
         <h3 className="font-bold text-xl mt-3 dark:text-white text-gray-900">
           {playlist.name}
         </h3>
         <p className="mb-3">{playlist?.tracks?.items?.length} tracks</p>
         <small className=" text-xs">Drag and drop to sort your playlist</small>
         <div>
-          {playlist?.tracks?.items?.map((item, index) => {
+          {tracks?.map((item, index) => {
             const track = item.track;
             return (
               <div
-                key={track.id}
-                draggable="true"
-                onDragStart={(e) => console.log("I am getting dragged")}
-                onDragEnd={(e) => handleDragEnd(e, track.id, index)}
-                className="flex flex-row items-center gap-3 my-2 px-1"
+                key={track.id + new Date()}
+                id={track.id}
+                draggable
+                onDragOver={handleDragOver}
+                onDragEnd={(e) => {
+                  e.currentTarget.classList.remove(
+                    "border-primary",
+                    "border-b-2",
+                    "pb-2",
+                    "opacity-50"
+                  );
+                }}
+                onDragLeave={handleDragLeave}
+                onDragStart={(e) => {
+                  e.currentTarget.classList.add("opacity-50");
+                  oldPosition = index;
+                }}
+                onDrop={(e) => handleDragEnd(e, track.id, index)}
+                className="flex flex-row items-center gap-3 my-2 px-1 transition-all duration-400"
               >
                 <p className="w-4">{++index}.</p>
                 <Image
@@ -63,8 +101,12 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
                   width={50}
                   height={50}
                   alt="Cover art"
+                  draggable={false}
                 />
-                <h4 className="flex flex-col w-[100%] text-gray-900 dark:text-gray-100 font-medium ">
+                <h4
+                  draggable={false}
+                  className="flex flex-col w-[100%] text-gray-900 dark:text-gray-100 font-medium "
+                >
                   <span className="text-xs md:text-sm ">
                     {track.name.slice(0, 20) + "..."}
                   </span>
