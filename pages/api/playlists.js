@@ -73,6 +73,38 @@ export default async function handler(req, res) {
       });
     }
   }
+
+  if (req.method === "PUT") {
+    try {
+      const { refresh_token } = cookie.parse(req.headers.cookie);
+      const {
+        data: { access_token },
+      } = await getUserAccessData(refresh_token);
+      const { playlistId, uris } = req.body;
+      const { data } = await axiosClient().put(
+        `/playlists/${playlistId}/tracks?uris=${uris}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + access_token,
+          },
+        }
+      );
+      res.status(200).json({
+        message: "Updated playlist",
+        success: true,
+        code: 200,
+        data,
+      });
+    } catch (error) {
+      console.log(error.response);
+      res.status(401).json({
+        message: "Failed to update your playlist",
+        success: false,
+        code: 401,
+      });
+    }
+  }
 }
 
 export const getUsersDetails = async (access_token) => {

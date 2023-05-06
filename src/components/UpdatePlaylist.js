@@ -1,10 +1,12 @@
-"use client";
 import axios from "axios";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import PlaylistItem from "./PlaylistItem";
 
 const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
+  const ref = useRef();
+
   const [tracks, setTracks] = useState([]);
+  const [uris, setUris] = useState(null);
   const [playlist, setPlaylist] = useState(null);
   const fetchPlaylistTracks = async () => {
     try {
@@ -16,24 +18,50 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
     }
   };
 
-  const handleDragEnd = (node, trackId, newPosition) => {
+  const [oldPosition, setPosition] = useState(0);
+
+  const handleDrop = async (node, newPosition) => {
     if (newPosition === undefined || newPosition === null) return;
+    if (oldPosition === undefined || oldPosition === null) return;
     if (oldPosition === newPosition) return;
+
+    node.currentTarget.classList.remove("border-primary", "border-b-2", "pb-2");
 
     if (oldPosition === newPosition + 1) return;
 
     const tracksCopy = [...tracks];
-
+    //Copy the track before removing it
     const copy = tracksCopy[oldPosition - 1];
+    //Remove the track
     tracksCopy.splice(--oldPosition, 1);
-    tracksCopy.splice(--newPosition, 0, copy);
-    newPosition = oldPosition = 0;
-    node.currentTarget.classList.remove("border-primary", "border-b-2", "pb-2");
+    //Check whether the track is being moved to
+    if (oldPosition > newPosition) {
+      tracksCopy.splice(newPosition, 0, copy);
+    } else {
+      tracksCopy.splice(newPosition - 1, 0, copy);
+    }
+    //Nullify the postions and update the tracks usestate
+    newPosition = 0;
+    setPosition(0);
 
     setTracks(tracksCopy);
+    setUris(tracksCopy.map((track) => track?.track?.uri).join(","));
   };
 
-  console.log(tracks);
+  const updateSpotifyPlaylist = async () => {
+    ref.current.classList.add("opacity-40");
+    ref.current.classList.add("cursor-not-allowed");
+    try {
+      await axios.put("/api/playlists", {
+        uris,
+        playlistId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    ref.current.classList.remove("opacity-40");
+    ref.current.classList.remove("cursor-not-allowed");
+  };
 
   const handleDragOver = (node) => {
     node.preventDefault();
@@ -49,7 +77,10 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
     node.currentTarget.classList.remove("border-primary", "border-b-2", "pb-2");
   };
 
-  let oldPosition = null;
+  useEffect(() => {
+    if (!uris) return;
+    updateSpotifyPlaylist();
+  }, [uris]);
 
   useEffect(() => {
     fetchPlaylistTracks();
@@ -57,8 +88,9 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
 
   return (
     playlist && (
-      <div className="bg-white dark:bg-background w-[100vw] md:w-[30vw] md:fixed fixed top-0 md:right-0 md:left-auto left-0 shadow border-gray-300 h-[100vh] border-l dark:border-gray-800 px-4 py-5 flex   flex-col pb-20 z-30 text-gray-900 dark:text-white overflow-y-scroll">
+      <div className="bg-white dark:bg-background w-[100vw] md:w-[40vw] md:fixed fixed top-0 md:right-0 md:left-auto left-0 shadow border-gray-300 h-[100vh] border-l dark:border-gray-800 px-4 py-5 flex   flex-col pb-20 z-30 text-gray-900 dark:text-white overflow-y-scroll">
         <button
+          draggable={false}
           onClick={closeUpdate}
           className="w-20 bg-red-700 text-white text-xs px-3 py-1 my-1"
         >
@@ -68,56 +100,25 @@ const UpdatePlaylist = ({ playlistId, closeUpdate }) => {
         <h3 className="font-bold text-xl mt-3 dark:text-white text-gray-900">
           {playlist.name}
         </h3>
-        <p className="mb-3">{playlist?.tracks?.items?.length} tracks</p>
-        <small className=" text-xs">Drag and drop to sort your playlist</small>
-        <div>
+        <p className="mb-3" draggable={false}>
+          {playlist?.tracks?.items?.length} tracks
+        </p>
+        <small draggable={false} className="text-xs">
+          Drag and drop to sort your playlist
+        </small>
+        <div ref={ref}>
           {tracks?.map((item, index) => {
             const track = item.track;
             return (
-              <div
-                key={track.id + new Date()}
-                id={track.id}
-                draggable
-                onDragOver={handleDragOver}
-                onDragEnd={(e) => {
-                  e.currentTarget.classList.remove(
-                    "border-primary",
-                    "border-b-2",
-                    "pb-2",
-                    "opacity-50"
-                  );
-                }}
-                onDragLeave={handleDragLeave}
-                onDragStart={(e) => {
-                  e.currentTarget.classList.add("opacity-50");
-                  oldPosition = index;
-                }}
-                onDrop={(e) => handleDragEnd(e, track.id, index)}
-                className="flex flex-row items-center gap-3 my-2 px-1 transition-all duration-400"
-              >
-                <p className="w-4">{++index}.</p>
-                <Image
-                  src={track.album.images[0].url}
-                  width={50}
-                  height={50}
-                  alt="Cover art"
-                  draggable={false}
-                />
-                <h4
-                  draggable={false}
-                  className="flex flex-col w-[100%] text-gray-900 dark:text-gray-100 font-medium "
-                >
-                  <span className="text-xs md:text-sm ">
-                    {track.name.slice(0, 20) + "..."}
-                  </span>
-                  <span className="text-xs">
-                    {track.artists
-                      .map((artist) => artist.name)
-                      .join(", ")
-                      .slice(0, 50)}
-                  </span>
-                </h4>
-              </div>
+              <PlaylistItem
+                handleDragLeave={handleDragLeave}
+                handleDrop={handleDrop}
+                handleDragOver={handleDragOver}
+                setPosition={setPosition}
+                track={track}
+                key={track.id}
+                index={index}
+              />
             );
           })}
         </div>

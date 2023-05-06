@@ -12,7 +12,6 @@ const Playlist = ({ play, index, handleClick }) => {
     >
       <td className="w-10 text-center">{++index}</td>
       <td className="flex justify-center items-center h-full">
-        {/* <Link href={play?.uri}> */}
         <Image
           src={play?.images[0].url}
           width={60}
@@ -23,7 +22,6 @@ const Playlist = ({ play, index, handleClick }) => {
           alt="playlist art"
           onLoadingComplete={() => setLoading(false)}
         />
-        {/* </Link> */}
       </td>
       <td className="text-xs md:text-sm md:w-2/6 md:px-0 px-2">
         <span className="block">
