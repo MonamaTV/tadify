@@ -57,7 +57,7 @@ const Plays = (props) => {
   return (
     <div>
       <Meta />
-      <div className="flex w-full relative bg-gradient-to-b from-primary dark:to-background text-gray-900 dark:text-white md:p-10  flex-col md:flex-row sm:flex-row">
+      <div className="flex w-full relative bg-gradient-to-b from-primary dark:to-background  text-gray-900 dark:text-white md:p-10  flex-col md:flex-row sm:flex-row">
         <DynamicImage imgUrl={extractTopTrack()?.cover} />
         <div className="flex flex-col justify-center px-8 md:pl-10 md:w-5/6 sm:pl-10">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>

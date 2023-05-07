@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
   const timeRange = [
     "For the last 4 weeks",
@@ -7,10 +9,10 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
   return (
     <div
       {...props}
-      className="flex w-full md:w-[500px]  bg-gradient-to-b from-background to-background text-white p-10 flex-col h-[750px] justify-center relative min-h-[700px] "
+      className="flex w-full md:w-[500px]  bg-gradient-to-b from-background to-background text-white p-10 flex-col justify-start relative "
     >
-      <h2 className="font-bold text-2xl">My Spotify Top Artists</h2>
-      <p className="text-sm">{timeRange}</p>
+      <h2 className="font-bold text-xl">My Spotify Top Artists</h2>
+      <p className="text-xs">{timeRange}</p>
       <div className="my-4">
         {data.slice(0, 10).map((artist, index) => {
           const { name, genres, id } = artist;
@@ -20,10 +22,10 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
             .map((gen) => gen)
             .join(", ");
           return (
-            <div className="flex items-center gap-2 my-2" key={id}>
-              <p className="w-5 pb-4">{++index}</p>
+            <div className="flex items-center gap-2 my-1" key={id}>
+              <p className="w-5 pb-4">{++index}.</p>
 
-              <h4 className="pl-3 text-3xl font-bold w-64 pb-4">
+              <h4 className="pl-3 text-xl font-bold w-64 pb-4">
                 {name}
                 <span className="block text-xs font-light">
                   {displayGenres}
@@ -33,8 +35,8 @@ const DownloadableArtistsList = ({ data, range = 0, ...props }) => {
           );
         })}
       </div>
-      <div className="absolute bottom-5 sm:bottom-10 left-8">
-        <img src={"/spotify.png"} width={80} height={25} />
+      <div className="flex flex-row">
+        <Image src={"/spotify.png"} width={80} height={23} />
       </div>
     </div>
   );

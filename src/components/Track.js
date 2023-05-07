@@ -13,17 +13,6 @@ const Track = ({ track, pos }) => {
     <tr className=" text-gray-900 dark:text-gray-100 font-medium  w-full">
       <td className="w-10 text-center">{++pos}.</td>
       <td className="flex justify-center items-center h-full">
-        {/* <Image
-          src={cover}
-          width={70}
-          height={70}
-          priority
-          className={`shadow-xl items-center justify-center duration-700 ease-in-out ${
-            loadingImg ? "grayscale blur-2xl scale-110" : ""
-          }`}
-          alt="Cover art"
-          onLoadingComplete={() => setLoadingImg(false)}
-        /> */}
         <DynamicImage
           imgUrl={cover}
           width={"70"}

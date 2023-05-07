@@ -30,7 +30,7 @@ const Nav = () => {
 
   return (
     <>
-      <div className="hidden md:block h-screen w-1/6 fixed dark:bg-background px-10 pt-20 transition-colors ease-in-out duration-400">
+      <div className="hidden md:block h-screen w-1/6 fixed dark:bg-background px-10 pt-2 transition-colors ease-in-out duration-400">
         {theme === "light" ? (
           <Image src={"/logodark.svg"} width={80} height={90} alt="Logo" />
         ) : (
@@ -117,7 +117,7 @@ const Nav = () => {
           <div
             ref={ref}
             onClick={() => setIsComponentVisible(!isComponentVisible)}
-            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none hover:bg-gray-100 hover:dark:bg-background-light"
+            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none"
           >
             {user ? (
               <>
