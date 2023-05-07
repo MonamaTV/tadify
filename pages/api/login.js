@@ -1,8 +1,4 @@
-import {
-  axiosAuthClient,
-  axiosAccessTokenClient,
-  axiosRefreshAccessTokenClient,
-} from "../../src/utils/axios";
+import { axiosAuthClient, axiosAccessTokenClient } from "../../src/utils/axios";
 
 import * as cookie from "cookie";
 

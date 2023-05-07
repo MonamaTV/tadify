@@ -144,9 +144,6 @@ const Artists = (props) => {
             >
               Toggle mode
             </button>
-            <button className="hover:bg-primary w-full hover:text-white py-1  text-xs">
-              Twitter
-            </button>
           </div>
         )}
       </div>

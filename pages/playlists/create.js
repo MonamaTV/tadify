@@ -4,6 +4,7 @@ import Tap from "../../src/components/Tap";
 import { colors } from "../../src/utils/app";
 import Meta from "../../src/components/Head";
 import Link from "next/link";
+
 export default function Create(props) {
   if (props.artists.length < 1 || !props.artists) {
     return (

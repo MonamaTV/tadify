@@ -81,6 +81,7 @@ export default async function handler(req, res) {
       const resultsArray = results.trim().split(", ");
 
       //Build an array of promises for each item in the array
+      //This will search for every artist in the list returned by the chatgpt
       const promises = resultsArray.map((item) => {
         return axiosClient().get("/search", {
           params: {
@@ -111,7 +112,6 @@ export default async function handler(req, res) {
         artists,
       });
     } catch (error) {
-      console.log(error.data);
       res.status(400).json({
         message: "Failed to generate artists list",
         success: false,

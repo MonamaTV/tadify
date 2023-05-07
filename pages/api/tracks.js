@@ -6,7 +6,6 @@ export default async function handler(req, res) {
     try {
       const refresh = req?.query?.refresh_token;
       const { refresh_token } = refresh || cookie.parse(req.headers.cookie);
-      // console.log(cookie.parse(req.headers.cookie));
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);

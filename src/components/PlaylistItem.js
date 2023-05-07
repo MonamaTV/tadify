@@ -46,7 +46,7 @@ const PlaylistItem = ({
         <span className="text-xs md:text-sm ">
           {track.name.slice(0, 40) + "..."}
         </span>
-        <span className="text-xs">
+        <span className="text-xs dark:text-gray-300 text-gray-700">
           {track.artists
             .map((artist) => artist.name)
             .join(", ")

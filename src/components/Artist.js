@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import DynamicImage from "./Image";
 
 const Artist = ({ artist, pos }) => {
   const { name, images, genres, uri } = artist;
@@ -17,7 +18,7 @@ const Artist = ({ artist, pos }) => {
     <tr className=" text-gray-900 dark:text-gray-100 font-medium  w-full ">
       <td className="w-1 text-center">{++pos}.</td>
       <td className="flex justify-center items-center h-full md:w-full w-[100px]">
-        <Image
+        {/* <Image
           src={photoUrl}
           width={70}
           height={70}
@@ -25,6 +26,12 @@ const Artist = ({ artist, pos }) => {
             loading ? "grayscale blur-2xl scale-110" : ""
           }`}
           onLoadingComplete={() => setLoading(false)}
+          alt="Artist photo"
+        /> */}
+        <DynamicImage
+          imgUrl={photoUrl}
+          width={"70"}
+          height={"70"}
           alt="Artist photo"
         />
       </td>

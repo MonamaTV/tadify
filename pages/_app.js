@@ -8,19 +8,17 @@ function MyApp({ Component, pageProps, ...appProps }) {
     router: { pathname },
   } = appProps;
 
-  if (userRoutes.includes(pathname)) {
-    return (
-      <ThemeProvider attribute="class">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    );
-  }
+  const isLoggedIn = userRoutes.includes(pathname);
 
   return (
     <ThemeProvider attribute="class" enableSystem="true">
-      <Component {...pageProps} />
+      {isLoggedIn ? (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </ThemeProvider>
   );
 }

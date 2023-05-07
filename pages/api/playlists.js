@@ -131,8 +131,12 @@ export const createPlaylist = async (access_token, name, tracks, userID) => {
     }
   );
 
+  return addTracksToPlaylist(playlist?.id, tracks, access_token);
+};
+
+export const addTracksToPlaylist = async (playlistId, tracks, access_token) => {
   const { data } = await axiosClient().post(
-    `/playlists/${playlist?.id}/tracks`,
+    `/playlists/${playlistId}/tracks`,
     {
       uris: tracks,
     },

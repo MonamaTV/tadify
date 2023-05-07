@@ -6,7 +6,6 @@ import Link from "next/link";
 import Meta from "../../src/components/Head";
 import { useTheme } from "next-themes";
 import Playlist from "../../src/components/Playlist";
-import axios from "axios";
 import UpdatePlaylist from "../../src/components/UpdatePlaylist";
 import { useState } from "react";
 
