@@ -40,12 +40,10 @@ const Suggestions = () => {
         params: {
           prompt,
         },
-        //the request takes time because it hits the server, then the server sends a request to ChatGPT and the Spotify Web API.
-        // timeout: 10000,
       });
 
       // //very tedious
-      const suggested = data.artists.map((item) => {
+      const suggested = data?.artists?.map((item) => {
         const { artists } = item;
         if (artists) {
           return {
@@ -56,7 +54,7 @@ const Suggestions = () => {
         }
       });
       setSuggestedArtists(suggested);
-      setTap((prev) => prev + 1);
+      setTap((next) => next + 1);
     } catch (error) {
       setSuggestedArtists([]);
     }

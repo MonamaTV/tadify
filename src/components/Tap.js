@@ -20,7 +20,7 @@ const Tap = ({ artists }) => {
   const handlePlaylistNameChange = (event) => {
     setPlaylistName(event.target.value);
   };
-  const handleArtistsInput = (id) => {
+  const handleSelectArtists = (id) => {
     const index = selectedArtistsIds.findIndex((trackID) => trackID === id);
     if (index === -1) {
       //   if (selectedArtistsIds.length >= 5) return;
@@ -39,7 +39,7 @@ const Tap = ({ artists }) => {
     setLoading(true);
     try {
       if (selectedArtistsIds.length < 1) return;
-      const { data, status } = await axios.post("/api/generate", {
+      const { data } = await axios.post("/api/generate", {
         seed_artists: selectedArtistsIds.join(","),
         seed_tracks: "",
         seed_genres: "",
@@ -101,7 +101,7 @@ const Tap = ({ artists }) => {
         <Select
           options={artistsAsArray}
           heading={"Select 5 artists you want in the playlist"}
-          handleAdd={handleArtistsInput}
+          handleAdd={handleSelectArtists}
           handleContinue={generateRecommendedTracks}
         />
       );
