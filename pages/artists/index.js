@@ -152,7 +152,7 @@ const Artists = (props) => {
         <Filter handleFilter={fetchTopArtists} filterValue={timeRange} />
         {/* From 2 to 20 */}
         <div>
-          <table className="my-2 mt-8 w-full md:w-3/4 border-separate border-spacing-y-2">
+          <table className="my-2 mt-4 w-full md:w-3/4 border-separate border-spacing-y-2">
             <tbody className="w-full">
               {artists.slice(1, artists.length).map((artist, index) => (
                 <Artist artist={artist} pos={++index} key={artist.id} />
