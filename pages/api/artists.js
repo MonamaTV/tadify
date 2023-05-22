@@ -5,8 +5,10 @@ import * as cookie from "cookie";
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      const { refresh_token } = req.query ?? cookie.parse(req.headers.cookie);
-
+      const token = req.query?.refresh_token;
+      const refresh_token = token
+        ? token
+        : cookie.parse(req.headers.cookie)?.refresh_token;
       const {
         data: { access_token },
       } = await getUserAccessData(refresh_token);

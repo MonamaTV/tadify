@@ -15,6 +15,8 @@ const Nav = () => {
 
   const [user, setUser] = useState(null);
 
+  const [score, setScore] = useState(0);
+
   const getUser = async () => {
     try {
       const { data } = await axios.get("/api/users");
@@ -24,8 +26,28 @@ const Nav = () => {
     }
   };
 
+  const getUserTopArtists = async () => {
+    try {
+      const { data } = await axios.get("/api/artists", {
+        params: {
+          range: "long_term",
+        },
+      });
+      const totalPopularity = data?.data?.items.reduce((sum, artist) => {
+        return sum + artist.popularity;
+      }, 0);
+
+      setScore(
+        Math.floor((totalPopularity / (data.data.items.length * 100)) * 100)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUser();
+    getUserTopArtists();
   }, []);
 
   return (
@@ -117,7 +139,7 @@ const Nav = () => {
           <div
             ref={ref}
             onClick={() => setIsComponentVisible(!isComponentVisible)}
-            className=" absolute bottom-3 w-40 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none"
+            className=" absolute bottom-3 w-42 text-center py-2 flex flex-row items-center justify-center active:bg-primary px-3 dark:text-white text-gray-900 cursor-pointer dark:active:text-white active:text-white select-none"
           >
             {user ? (
               <>
@@ -133,7 +155,7 @@ const Nav = () => {
                 <div className="flex flex-col mx-4 justify-start items-start">
                   <p className="text-sm ">{user.display_name}</p>
                   <small className="text-xs font-normal ">
-                    {user.followers.total} followers
+                    {score} basic score
                   </small>
                 </div>
               </>
