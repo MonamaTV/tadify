@@ -25,6 +25,7 @@ export const userRoutes = [
   "/tracks",
   "/artists",
   "/plays",
+  "/profile",
   "/playlists",
   "/playlists/create",
   "/playlists/suggest",

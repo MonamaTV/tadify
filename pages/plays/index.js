@@ -1,10 +1,6 @@
 import Track from "../../src/components/Track";
 import * as cookie from "cookie";
-import {
-  axioAPIClient,
-  axiosClient,
-  getUserAccessData,
-} from "../../src/utils/axios";
+import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import Meta from "../../src/components/Head";
 import DynamicImage from "../../src/components/Image";
 import Link from "next/link";

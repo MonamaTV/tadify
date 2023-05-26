@@ -128,6 +128,9 @@ const Nav = () => {
           {isComponentVisible && (
             <div className="absolute bottom-14 md:flex flex-col items-baseline  text-xs dark:bg-background bg-white  border dark:border-background-light select-none dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40">
               <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
+                Tadify profile
+              </button>
+              <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
                 Open Spotify
               </button>
 
@@ -154,7 +157,7 @@ const Nav = () => {
                 )}
                 <div className="flex flex-col mx-4 justify-start items-start">
                   <p className="text-sm ">{user.display_name}</p>
-                  <small className="text-xs font-normal ">
+                  <small className="text-[10px] font-normal ">
                     {score} basic score
                   </small>
                 </div>
