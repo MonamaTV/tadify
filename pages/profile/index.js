@@ -1,29 +1,26 @@
 import Image from "next/image";
+import Meta from "../../src/components/Head";
 
 const Profile = () => {
   return (
     <div className="container">
+      <Meta />
       <div className=" flex relative bg-gradient-to-b from-primary dark:to-background text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row">
-        <div className=" flex md:flex-row flex-col md:items-center gap-2 p-5">
-          <Image
-            src="/all.webp"
-            width={"300"}
-            height={"300"}
-            className="md:rounded-lg"
-          />
+        <div className="md:py-7 md:px-0 px-5 py-5 flex md:flex-row  items-center gap-3">
+          <Image src="/all.webp" width={"140"} height={"140"} />
           <div className="">
-            <h3 className="md:text-5xl font-bold text-2xl select-none">
+            <h3 className="md:text-5xl font-bold text-3xl select-none">
               Tadima
             </h3>
             <small>12 followers</small>
           </div>
         </div>
       </div>
-      <div className="md:p-10 px-5 lg:w-3/5 w-full mx-auto pb-20">
+      <div className="md:p-10 px-5 lg:w-3/5 w-full  pb-20">
         <p className="text-xs w-full">
-          Note: your profile picture and username will automatically become
-          public once you publish your profile. So, everyone with your Tadify
-          profile link will be able to see them.
+          NB: Your Spotify profile picture and name will automatically become
+          public once you publish your profile. Everyone with your Tadify
+          profile link will bbe able to see them.
         </p>
         {/* Form */}
         <form className="container mx-auto">
@@ -75,8 +72,8 @@ const Profile = () => {
             </select>
           </div>
           <div className="flex flex-col my-2">
-            <button className="text-xs bg-primary p-3 py-2 w-1/3">
-              Save Changes
+            <button className="text-xs bg-primary p-3 py-2 w-2/3">
+              Save & Publish
             </button>
           </div>
         </form>
