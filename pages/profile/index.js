@@ -7,7 +7,6 @@ const Profile = () => {
   return (
     <div className="container">
       <Meta />
-
       <div className=" flex relative bg-gradient-to-b from-primary dark:to-background text-gray-900 dark:text-white md:px-10 md:py-10 flex-col md:flex-row sm:flex-row">
         <button
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
@@ -97,7 +96,7 @@ const Profile = () => {
             </select>
           </div>
           <div className="flex flex-col my-2">
-            <button className="text-xs bg-primary p-3 py-2 w-2/3">
+            <button className="text-xs bg-primary text-white p-3 py-2 w-2/3">
               Save & Publish
             </button>
           </div>

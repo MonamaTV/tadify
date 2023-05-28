@@ -106,7 +106,7 @@ const Artists = (props) => {
     <>
       <Meta />
       <div
-        className={`flex w-full bg-gradient-to-b ${props.color} dark:to-background text-gray-900 dark:text-white   md:p-10 md:pt-12 flex-col sm:flex-row relative transition-colors ease-in-out duration-200`}
+        className={`flex w-full md:bg-gradient-to-b ${props.color} dark:to-background text-gray-900 dark:text-white   md:p-10 md:pt-12 flex-col sm:flex-row relative transition-colors ease-in-out duration-200`}
       >
         <DynamicImage imgUrl={favArtist()?.photoUrl} />
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
