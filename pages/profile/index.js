@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Meta from "../../src/components/Head";
 import { useTheme } from "next-themes";
-
+import { getUserAccessData } from "../../src/utils/axios";
+import * as cookie from "cookie";
 const Profile = () => {
   const { theme, setTheme } = useTheme();
   return (
@@ -105,5 +106,34 @@ const Profile = () => {
     </div>
   );
 };
+export async function getServerSideProps(context) {
+  try {
+    const { refresh_token } = cookie.parse(context.req.headers.cookie);
 
+    const {
+      data: { access_token },
+    } = await getUserAccessData(refresh_token);
+
+    //If user removed the app, start the auth again
+    if (!access_token) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+      };
+    }
+
+    return {
+      props: {},
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
+}
 export default Profile;
