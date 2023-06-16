@@ -118,7 +118,7 @@ const Tracks = (props) => {
         </div>
         <button
           onClick={() => setIsComponentVisible(true)}
-          className="absolute right-3 md:right-10 top-8 md:top-auto  rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
+          className="absolute right-3 md:right-10 top-8 md:top-auto rounded-lg text-gray-100 text-xs px-4 py-1 md:flex items-center justify-center "
         >
           <Image src={"/settings.png"} width={20} height={20} alt="Share" />
         </button>
@@ -184,6 +184,7 @@ const Tracks = (props) => {
     <TracksLoading />
   );
 };
+
 export async function getServerSideProps(context) {
   try {
     const { refresh_token } = cookie.parse(context.req.headers.cookie);
@@ -231,4 +232,5 @@ export async function getServerSideProps(context) {
     };
   }
 }
+
 export default Tracks;

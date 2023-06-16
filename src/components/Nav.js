@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import useVisibility from "../hooks/useVisibility";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import * as cookie from "cookie";
 
 const Nav = () => {
   const router = useRouter();
@@ -127,11 +126,11 @@ const Nav = () => {
         <div>
           {isComponentVisible && (
             <div className="absolute bottom-14 md:flex flex-col items-baseline  text-xs dark:bg-background bg-white  border dark:border-background-light select-none dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40">
-              <Link href="/profile">
+              {/* <Link href="/profile">
                 <a className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
                   Tadify profile
                 </a>
-              </Link>
+              </Link> */}
               <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
                 Open Spotify
               </button>
