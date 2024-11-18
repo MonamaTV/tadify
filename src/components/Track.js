@@ -13,12 +13,14 @@ const Track = ({ track, pos }) => {
     <tr className=" text-gray-900 dark:text-gray-100 font-medium  w-full">
       <td className="w-10 text-center">{++pos}.</td>
       <td className="flex justify-center items-center h-full">
-        <DynamicImage
-          imgUrl={cover}
-          width={"70"}
-          height={"70"}
-          alt="Cover art"
-        />
+        <Link href={uri}>
+          <DynamicImage
+            imgUrl={cover}
+            width={"70"}
+            height={"70"}
+            alt="Cover art"
+          />
+        </Link>
       </td>
       <td className="text-xs md:text-sm md:w-2/6 md:px-4 px-2">
         <span className="block">

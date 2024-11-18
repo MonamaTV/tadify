@@ -28,12 +28,14 @@ const Artist = ({ artist, pos }) => {
           onLoadingComplete={() => setLoading(false)}
           alt="Artist photo"
         /> */}
-        <DynamicImage
-          imgUrl={photoUrl}
-          width={"70"}
-          height={"70"}
-          alt="Artist photo"
-        />
+        <Link href={uri}>
+          <DynamicImage
+            imgUrl={photoUrl}
+            width={"70"}
+            height={"70"}
+            alt="Artist photo"
+          />{" "}
+        </Link>
       </td>
       <td className="">
         <span className="text-sm md:text-[1.1em]">
