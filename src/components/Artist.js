@@ -34,7 +34,7 @@ const Artist = ({ artist, pos }) => {
             width={"70"}
             height={"70"}
             alt="Artist photo"
-          />{" "}
+          />
         </Link>
       </td>
       <td className="">
