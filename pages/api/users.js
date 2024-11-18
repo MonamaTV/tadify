@@ -1,6 +1,5 @@
 import { axiosClient, getUserAccessData } from "../../src/utils/axios";
 import * as cookie from "cookie";
-import prisma from "../../src/utils/prisma";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
