@@ -131,13 +131,16 @@ const Nav = () => {
                   Tadify profile
                 </a>
               </Link> */}
-              <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
+              <Link
+                href={"spotify://"}
+                className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs"
+              >
                 Open Spotify
-              </button>
+              </Link>
 
-              <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
+              {/* <button className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
                 Logout
-              </button>
+              </button> */}
             </div>
           )}
           <div

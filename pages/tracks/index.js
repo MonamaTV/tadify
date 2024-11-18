@@ -104,7 +104,9 @@ const Tracks = (props) => {
       <div
         className={`flex w-full relative md:bg-gradient-to-b ${props.color} dark:to-background text-gray-900 dark:text-white md:p-10 flex-col md:flex-row sm:flex-row transition-colors ease-in-out duration-400`}
       >
-        <DynamicImage imgUrl={extractTopTrack()?.cover} />
+        <Link className="hover:cursor-pointer" href={extractTopTrack().uri}>
+          <DynamicImage imgUrl={extractTopTrack()?.cover} />
+        </Link>
         <div className="flex flex-col justify-center px-5 md:pl-10 md:w-5/6 sm:pl-10 ">
           <p className="my-2 mt-4 sm:my-4 text-sm sm:text-base">No. 1</p>
           <h2 className="md:text-5xl font-bold text-2xl select-none">
@@ -187,7 +189,7 @@ const Tracks = (props) => {
 
 export async function getServerSideProps(context) {
   try {
-    const { refresh_token } = cookie.parse(context.req.headers.cookie);
+    const { refresh_token } = cookie.parse(context.req.headers["cookie"]);
 
     const {
       data: { access_token },

@@ -18,12 +18,12 @@ const Modal = ({ children, downloadStats, closeModal }) => {
         </button>
         <h2 className="text-3xl font-bold"> Stats</h2>
 
-        <button
+        {/* <button
           onClick={downloadStats}
           className="bg-primary px-10 py-2  my-3 disabled:bg-[#858a87] disabled:cursor-not-allowed text-white"
         >
           Download
-        </button>
+        </button> */}
       </div>
     </div>
   );

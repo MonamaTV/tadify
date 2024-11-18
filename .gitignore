@@ -13,6 +13,7 @@
 /.next/
 /out/
 /.vscode/
+/.idea
 .env.local
 
 # production
