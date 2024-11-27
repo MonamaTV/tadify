@@ -126,7 +126,6 @@ export async function getServerSideProps(context) {
 
     const { data } = res;
     const items = data.items;
-
     return {
       props: {
         color: colors[Math.floor(Math.random() * colors.length)],
