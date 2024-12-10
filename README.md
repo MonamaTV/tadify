@@ -21,4 +21,4 @@
 - [ ] Add db to save user's credit
 - [ ] ??? Integrate with Apple Music ???
 
-You can reach me via (https://twitter.com/monama_tad)[Twitter]
+You can reach me via [Twitter](https://twitter.com/monama_tad)
