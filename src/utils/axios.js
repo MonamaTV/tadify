@@ -79,6 +79,17 @@ export const axiosOPENAIClient = () => {
   });
 };
 
+export const axiosGeminiClient = () => {
+  return axios.create({
+    baseURL: process.env.GEMINI_BASE_URL,
+
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.GEMINI_AI_API_KEY,
+    },
+  });
+};
+
 export const getUserAccessData = async (refresh) => {
   const REDIRECT_URI =
     process.env.NODE_ENV === "development"

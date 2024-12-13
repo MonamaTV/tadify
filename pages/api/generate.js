@@ -1,6 +1,7 @@
 import { axiosClient, axiosOPENAIClient } from "../../src/utils/axios";
 import { getUserAccessData } from "../../src/utils/axios";
 import * as cookie from "cookie";
+import { generateArtists } from "../../src/utils/gemini";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -65,23 +66,29 @@ export default async function handler(req, res) {
           code: 400,
         });
       }
-      const response = await axiosOPENAIClient().post("/completions", {
-        model: "text-davinci-003",
-        prompt: `Return a list of 10 artists based on the following prompt. DO NOT NUMBER THE LIST. Separate the artists in the list by comma. Do not mention anything else in your response except for the list/names. Here is the prompt: ${prompt}`,
-        temperature: 0.8,
-        n: 1,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-        max_tokens: 200,
-      });
+      const newPrompt = `Return a list of 10 artists based on the following prompt. DO NOT NUMBER THE LIST. Separate the artists in the list by comma. Do not mention anything else in your response except for the list/names. Here is the prompt: ${prompt}`;
 
-      const results = response.data.choices[0].text;
+      const geminiArtists = await generateArtists(newPrompt);
+      // const response = await axiosOPENAIClient().post("/completions", {
+      //   model: "text-davinci-003",
+      //   prompt: `Return a list of 10 artists based on the following prompt. DO NOT NUMBER THE LIST. Separate the artists in the list by comma. Do not mention anything else in your response except for the list/names. Here is the prompt: ${prompt}`,
+      //   temperature: 0.8,
+      //   n: 1,
+      //   top_p: 1,
+      //   frequency_penalty: 0,
+      //   presence_penalty: 0,
+      //   max_tokens: 200,
+      // });
 
-      const resultsArray = results.trim().split(", ");
+      // const results = response.data.choices[0].text;
+
+      console.log({ geminiArtists });
+
+      const resultsArray = geminiArtists.trim().split(", ");
 
       //Build an array of promises for each item in the array
       //This will search for every artist in the list returned by the chatgpt
+      console.log("Here");
       const promises = resultsArray.map((item) => {
         return axiosClient().get("/search", {
           params: {
@@ -94,6 +101,7 @@ export default async function handler(req, res) {
           },
         });
       });
+      console.log("Got here");
 
       //settle all the promises
       const promiseRes = await Promise.allSettled(promises);
@@ -104,14 +112,17 @@ export default async function handler(req, res) {
         }
       });
 
+      console.log({ artists });
+
       res.status(200).json({
         message: "Suggested artists",
         success: true,
         code: 200,
-        results,
+        results: geminiArtists,
         artists,
       });
     } catch (error) {
+      console.log(error);
       res.status(400).json({
         message: "Failed to generate artists list",
         success: false,
