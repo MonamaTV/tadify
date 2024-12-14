@@ -38,7 +38,12 @@ const Tap = ({ artists }) => {
   const generateRecommendedTracks = async () => {
     setLoading(true);
     try {
-      if (selectedArtistsIds.length < 1) return;
+      console.log(selectedArtistsIds);
+      if (selectedArtistsIds.length < 1) {
+        alert("Select at least one artist");
+        setLoading(false);
+        return;
+      }
       const { data } = await axios.post("/api/generate", {
         seed_artists: selectedArtistsIds.join(","),
         seed_tracks: "",

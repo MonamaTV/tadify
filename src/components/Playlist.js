@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const Playlist = ({ play, index, handleClick }) => {
   const [loading, setLoading] = useState(true);
-  console.log(play);
   return (
     <tr
       className=" dark:text-gray-100 text-gray-900 font-medium  w-full"
