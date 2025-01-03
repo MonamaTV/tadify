@@ -240,11 +240,11 @@ const Nav = () => {
           <li>
             <Link href={"/plays"}>
               <a className="flex items-center gap-2 flex-col text-xs w-20">
-                {user.images.length > 0 && (
+                {user?.images.length > 0 && (
                   <Image
                     width={20}
                     height={20}
-                    src={user.images[0].url}
+                    src={user?.images[0].url}
                     className="rounded-full"
                     alt="Profile picture"
                   />
