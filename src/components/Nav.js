@@ -126,11 +126,12 @@ const Nav = () => {
         <div>
           {isComponentVisible && (
             <div className="absolute bottom-14 md:flex flex-col items-baseline  text-xs dark:bg-background bg-white  border dark:border-background-light select-none dark:text-gray-100 text-gray-900 px-4 py-4 gap-y-1 w-40">
-              {/* <Link href="/profile">
-                <a className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs">
-                  Tadify profile
-                </a>
-              </Link> */}
+              <Link
+                href="/profile"
+                className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs"
+              >
+                Tadify profile
+              </Link>
               <Link
                 href={"spotify://"}
                 className="text-left px-2 hover:bg-primary w-full hover:text-white py-1  text-xs"
@@ -233,6 +234,22 @@ const Nav = () => {
                   alt="Plays"
                 />
                 Recent plays
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href={"/plays"}>
+              <a className="flex items-center gap-2 flex-col text-xs w-20">
+                {user.images.length > 0 && (
+                  <Image
+                    width={20}
+                    height={20}
+                    src={user.images[0].url}
+                    className="rounded-full"
+                    alt="Profile picture"
+                  />
+                )}
+                Profile
               </a>
             </Link>
           </li>
