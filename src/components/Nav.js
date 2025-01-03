@@ -238,7 +238,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/plays"}>
+            <Link href={"/profile"}>
               <a className="flex items-center gap-2 flex-col text-xs w-20">
                 {user?.images.length > 0 && (
                   <Image
@@ -249,7 +249,13 @@ const Nav = () => {
                     alt="Profile picture"
                   />
                 )}
-                Profile
+                <span
+                  className={
+                    router.pathname === "/profile" ? "text-primary" : ""
+                  }
+                >
+                  Profile
+                </span>
               </a>
             </Link>
           </li>
