@@ -3,9 +3,10 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import Meta from "../src/components/Head";
 import { axioAPIClient } from "../src/utils/axios";
-const RedirectUser = () => {
+const RedirectUser = ({ state }) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const userTheme = theme ?? systemTheme;
+
   return (
     <div className=" dark:bg-gradient-to-b from-background via-background to-background   w-screen  h-screen flex flex-col justify-center items-center ">
       <Meta />
@@ -66,8 +67,9 @@ const RedirectUser = () => {
       </div>
       <br />
       <a
-        href={"/tracks"}
-        className="px-10 py-2 bg-primary text-white text-sm  no-underline text-center"
+        href={`${state === "" ? `/tracks` : state}`}
+        className="px-10 py-2 bg-primary text-white text-sm no-underline
+        text-center"
       >
         Open the portal
       </a>
@@ -120,7 +122,7 @@ export async function getServerSideProps(context) {
     context.res.setHeader("Set-Cookie", [accessCookie, refreshCookie]);
 
     return {
-      props: { state: true },
+      props: { state: context.query?.state || "" },
     };
   } catch (error) {
     if (error?.response?.data?.error === "invalid_grant") {
