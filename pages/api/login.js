@@ -4,7 +4,9 @@ import * as cookie from "cookie";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const url = axiosAuthClient().getUri().toString();
+    //get state params from req
+    const state = req.query?.state;
+    const url = axiosAuthClient(state).getUri().toString();
     res.redirect(url);
   }
 
