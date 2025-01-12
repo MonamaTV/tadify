@@ -5,7 +5,7 @@ import { getUserAccessData } from "../src/utils/axios";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
-const Home = () => {
+const Home = ({ state }) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const userTheme = theme ?? systemTheme;
   return (
@@ -28,7 +28,7 @@ const Home = () => {
           />
         )}
         <nav className="flex items-center gap-x-5">
-          <Link href="/api/login">
+          <Link href={`/api/login${state ? `?state=` + state : ""}`}>
             <a className="bg-[#1db954] px-3 text-white border-[#1db954] py-1 text-sm outline outline-none">
               Login with Spotify
             </a>
@@ -109,6 +109,7 @@ const Home = () => {
 export async function getServerSideProps(context) {
   try {
     const { refresh_token } = cookie.parse(context.req.headers.cookie);
+
     const {
       data: { access_token },
     } = await getUserAccessData(refresh_token);
@@ -121,12 +122,14 @@ export async function getServerSideProps(context) {
         },
       };
     }
+
     return {
-      props: { data: [] },
+      props: { state: context.query?.state || "" },
     };
   } catch (error) {
+    console.log();
     return {
-      props: { data: [] },
+      props: { state: context.query?.state || "" },
     };
   }
 }
