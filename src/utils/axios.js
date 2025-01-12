@@ -5,7 +5,7 @@ const encodeBasicAuth = Buffer.from(
   process.env.CLIENT_ID + ":" + process.env.CLIENT_SECRET
 ).toString("base64");
 
-export const axiosAuthClient = () => {
+export const axiosAuthClient = (state = "/") => {
   const REDIRECT_URI =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000/home"
@@ -17,6 +17,7 @@ export const axiosAuthClient = () => {
       response_type: "code",
       redirect_uri: REDIRECT_URI,
       scope: scopes,
+      state: state,
     },
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
