@@ -1,6 +1,5 @@
 import { axiosClient, getUserAccessData } from "../../../src/utils/axios";
 import * as cookie from "cookie";
-import { createPlaylist, getUsersDetails } from "../playlists";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
